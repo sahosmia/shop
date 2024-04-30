@@ -1,0 +1,10 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "product"
+    }
+  ],
+  "categories": [{ "id": 1, "title": "new", "image":"src/assets/categories/baby.png" }],
+  "carts": []
+}
