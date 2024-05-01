@@ -4,11 +4,16 @@ import { motion } from "framer-motion";
 import { upFadeVariants } from "../motions";
 import { toast } from "react-toastify";
 import { ProductsPropsType } from "../types";
+import { useCartDispatchContext } from "../context/CartContext";
 
+const ProductList = ({ products }: ProductsPropsType) => {
+  const { dispatch } = useCartDispatchContext();
 
-const ProductList = ({products}:ProductsPropsType) => {
-
-  const handleAddtoCart = () => {
+  const handleAddtoCart = (id: number) => {
+    dispatch({
+      type: "addCart",
+      id,
+    });
     toast.success("add success");
   };
 
@@ -19,7 +24,7 @@ const ProductList = ({products}:ProductsPropsType) => {
           variants={upFadeVariants}
           initial="initial"
           whileInView="whileInView"
-          whileHover={{y: -10, transition: { type:"spring", duration: .3}}}
+          whileHover={{ y: -10, transition: { type: "spring", duration: 0.3 } }}
           viewport={{ once: true }}
           key={product.id}
           className="shadow-lg"
@@ -65,8 +70,11 @@ const ProductList = ({products}:ProductsPropsType) => {
 
             <motion.button
               initial={{ backgroundColor: "#1a1a1a" }}
-              whileHover={{ backgroundColor: "#3a3a3a", transition:{duration:.3} }}
-              onClick={handleAddtoCart}
+              whileHover={{
+                backgroundColor: "#3a3a3a",
+                transition: { duration: 0.3 },
+              }}
+              onClick={()=>handleAddtoCart(product.id)}
               className="w-full   text-sm text-center py-2 mt-5 text-white rounded-full"
             >
               Add To Cart

@@ -16,10 +16,10 @@ const ProductPage = () => {
   const target = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
+    // get prev data or first data method
     const getData = () => {
       const start = perPage * page;
       const end = perPage * (page + 1);
-
       const data = productsData.slice(start, end);
 
       if (
@@ -28,8 +28,10 @@ const ProductPage = () => {
       ) {
         setHasMore(false);
       } else {
-        setProducts((prev) => [...prev, ...data]);
-        setPage((prevPage) => prevPage + 1);
+        setTimeout(() => { // for small slow loading
+          setPage((prevPage) => prevPage + 1);
+          setProducts((prev) => [...prev, ...data]);
+        }, 1000);
       }
     };
 
@@ -68,7 +70,12 @@ const ProductPage = () => {
           </div>
           <div className="col-span-12 lg:col-span-9">
             <ProductList products={products} />
-            {hasMore && <p ref={target}>load more</p>}
+
+            {hasMore && (
+              <p className="flex justify-center pt-20" ref={target}>
+                load more....
+              </p>
+            )}
           </div>
         </div>
       </section>

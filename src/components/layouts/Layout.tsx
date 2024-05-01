@@ -2,8 +2,13 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Helmet } from "react-helmet";
+import { useCartContext } from "../../context/CartContext";
 
 const Layout = () => {
+
+  const {carts} = useCartContext()
+  console.log(carts.length);
+  
   return (
     <>
     <Helmet>

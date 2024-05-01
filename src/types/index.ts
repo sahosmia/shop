@@ -7,7 +7,7 @@ export type ProductType = {
   title: string;
   description: string;
   price: number;
-  discountPercentage: number;
+  discountPercentage: number | null;
   rating: number;
   stock: number;
   brand: string;
@@ -16,6 +16,14 @@ export type ProductType = {
   images: string[];
 };
 
+export type ProductSingleType = {
+  product: ProductType | undefined;
+};
+
 export type ProductsPropsType = {
-products:ProductType[]
+  products: ProductType[];
+};
+export type CardItemPropsType = {
+  product: ProductType | undefined;
+  onDelete: (id:number) => void;
 };

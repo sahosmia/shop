@@ -1,6 +1,10 @@
+import { BiCart } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../../context/CartContext";
 
 const Header = () => {
+  const { carts } = useCartContext();
+
   return (
     <header className="bg-primary-400 text-white h-16">
       <div className="container flex justify-between items-center h-full">
@@ -18,9 +22,22 @@ const Header = () => {
             <li>
               <Link to="/products">Product</Link>
             </li>
+            <li>
+              <Link to="/carts" className=" relative">
+                <span className="text-2xl">
+                  <BiCart />
+                </span>{" "}
+                {carts.length !== 0 && (
+                  <span className=" absolute -top-1 -right-1 text-xs font-medium bg-purple-600 rounded-full w-4 h-4 grid place-content-center">
+                    {carts.length}
+                  </span>
+                )}
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
+      <BiCart />
     </header>
   );
 };
