@@ -7,7 +7,6 @@ import { useCartContext } from "../../context/CartContext";
 const Layout = () => {
 
   const {carts} = useCartContext()
-  console.log(carts.length);
   
   return (
     <>

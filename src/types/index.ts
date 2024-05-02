@@ -7,7 +7,7 @@ export type ProductType = {
   title: string;
   description: string;
   price: number;
-  discountPercentage: number | null;
+  discountPercentage: number;
   rating: number;
   stock: number;
   brand: string;
@@ -25,5 +25,30 @@ export type ProductsPropsType = {
 };
 export type CardItemPropsType = {
   product: ProductType | undefined;
-  onDelete: (id:number) => void;
+  onDelete: (id: number) => void;
+};
+
+export type CartsType = {
+  carts: number[];
+};
+
+export const enum Cart_Reducer_Action_Type {
+  ADD_CART,
+  DELETE_CART,
+}
+
+export type CartReducerAction = {
+  type: Cart_Reducer_Action_Type;
+  id: number;
+};
+
+export type CartsContextType = {
+  carts: number[];
+  dispatch: () => void;
+};
+
+export type CuponType = {
+  id: number;
+  code: string;
+  discount: number;
 };

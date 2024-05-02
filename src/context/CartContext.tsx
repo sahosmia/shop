@@ -1,16 +1,13 @@
 import { createContext, ReactNode, useContext, useReducer } from "react";
 import { cartReducer } from "../reducer/CartReducer";
 import { cartsData } from "../data/dummy";
+import { CartsType } from "../types";
 
-export const CartContext = createContext(null);
-export const CartDispatchContext = createContext(null);
+export const CartContext = createContext<CartsType|null>(null);
+export const CartDispatchContext = createContext({});
 
 // Step 2: Create a provider component
-export default function CartContextProvider({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function CartContextProvider({ children }:{children:ReactNode}) {
   const [carts, dispatch] = useReducer(cartReducer, cartsData);
 
   return (

@@ -3,15 +3,15 @@ import { getDiscountPrice } from "../utils";
 import { motion } from "framer-motion";
 import { upFadeVariants } from "../motions";
 import { toast } from "react-toastify";
-import { ProductsPropsType } from "../types";
-import { useCartDispatchContext } from "../context/CartContext";
+import { Cart_Reducer_Action_Type, ProductsPropsType } from "../types";
+import { useCartContext } from "../context/CartContext";
 
 const ProductList = ({ products }: ProductsPropsType) => {
-  const { dispatch } = useCartDispatchContext();
+  const { dispatch } = useCartContext();
 
   const handleAddtoCart = (id: number) => {
     dispatch({
-      type: "addCart",
+      type: Cart_Reducer_Action_Type.ADD_CART,
       id,
     });
     toast.success("add success");

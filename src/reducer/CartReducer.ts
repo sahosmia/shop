@@ -1,13 +1,17 @@
-type State = number[];
-type Action = { type: "addCart", id: number } | { type: "deleteCart"; id: number };
+import { Cart_Reducer_Action_Type, CartReducerAction } from "../types";
 
-export const cartReducer = (state: State, action: Action) => {
+type State = number[];
+// type Action = { type: "ADD_CART", id: number } | { type: "DELETE_CART"; id: number };
+
+export const cartReducer = (state: State, action: CartReducerAction) : State => {
+
   switch (action.type) {
-    case "addCart":
+    case Cart_Reducer_Action_Type.ADD_CART:
       return [...state, action.id];
-    case "deleteCart":
+    case Cart_Reducer_Action_Type.DELETE_CART:
       return state.filter((item) => item !== action.id);
     default:
       throw new Error("Unsupported action type");
   }
+
 };
