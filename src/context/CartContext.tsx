@@ -1,18 +1,29 @@
 import { createContext, ReactNode, useContext, useReducer } from "react";
 import { cartReducer } from "../reducer/CartReducer";
-import { cartsData } from "../data/dummy";
-import { CartsType } from "../types";
+import { CartReducerAction } from "../types";
 
-export const CartContext = createContext<CartsType|null>(null);
-export const CartDispatchContext = createContext({});
+type CartsType = {
+  carts: number[];
+};
+
+export const CartContext = createContext<CartsType | null>(null);
+export const CartDispatchContext = createContext<React.Dispatch<CartReducerAction> | null>(
+  null
+);
 
 // Step 2: Create a provider component
-export default function CartContextProvider({ children }:{children:ReactNode}) {
+
+const cartsData = [1, 6];
+export default function CartContextProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const [carts, dispatch] = useReducer(cartReducer, cartsData);
 
   return (
     <CartContext.Provider value={{ carts }}>
-      <CartDispatchContext.Provider value={{ dispatch }}>
+      <CartDispatchContext.Provider value={dispatch}>
         {children}
       </CartDispatchContext.Provider>
     </CartContext.Provider>

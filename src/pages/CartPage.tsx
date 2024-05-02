@@ -5,17 +5,15 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import { BiSend } from "react-icons/bi";
 import { useCartContext, useCartDispatchContext } from "../context/CartContext";
-import { Cart_Reducer_Action_Type, CuponType } from "../types";
+import { CuponType } from "../types";
 
 const CartPage = () => {
+  const { carts }: { carts: number[] } = useCartContext() ?? { carts: [] };
+  const dispatch = useCartDispatchContext() ?? (() => {}); // Assign the context value or a dummy function as a fallback
 
-  const { carts } = useCartContext();
-  const { dispatch } = useCartDispatchContext();
   const [cupon, setCupon] = useState("");
   const [cuponError, setCuponError] = useState("");
-  const [cuponAvailable, setCuponAvailable] = useState<CuponType|null>(null);
-
-  
+  const [cuponAvailable, setCuponAvailable] = useState<CuponType | null>(null);
 
   // get Product item  from products by product id
   const cartProducts = productsData.filter((product) =>
@@ -40,7 +38,7 @@ const CartPage = () => {
   // handle delete
   const onDelete = (id: number) => {
     dispatch({
-      type: Cart_Reducer_Action_Type.DELETE_CART,
+      type: "DELETE_CART",
       id,
     });
     toast.success(`delete ${id}`);

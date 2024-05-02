@@ -3,15 +3,16 @@ import { getDiscountPrice } from "../utils";
 import { motion } from "framer-motion";
 import { upFadeVariants } from "../motions";
 import { toast } from "react-toastify";
-import { Cart_Reducer_Action_Type, ProductsPropsType } from "../types";
-import { useCartContext } from "../context/CartContext";
+import { ProductsPropsType } from "../types";
+import { useCartDispatchContext } from "../context/CartContext";
 
 const ProductList = ({ products }: ProductsPropsType) => {
-  const { dispatch } = useCartContext();
+  const contextDispatch = useCartDispatchContext();
+  const dispatch = contextDispatch || (() => {}); // Providing a dummy function as a fallback
 
   const handleAddtoCart = (id: number) => {
     dispatch({
-      type: Cart_Reducer_Action_Type.ADD_CART,
+      type: "ADD_CART",
       id,
     });
     toast.success("add success");
@@ -74,7 +75,7 @@ const ProductList = ({ products }: ProductsPropsType) => {
                 backgroundColor: "#3a3a3a",
                 transition: { duration: 0.3 },
               }}
-              onClick={()=>handleAddtoCart(product.id)}
+              onClick={() => handleAddtoCart(product.id)}
               className="w-full   text-sm text-center py-2 mt-5 text-white rounded-full"
             >
               Add To Cart

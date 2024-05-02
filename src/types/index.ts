@@ -32,15 +32,9 @@ export type CartsType = {
   carts: number[];
 };
 
-export const enum Cart_Reducer_Action_Type {
-  ADD_CART,
-  DELETE_CART,
-}
-
-export type CartReducerAction = {
-  type: Cart_Reducer_Action_Type;
-  id: number;
-};
+export type CartReducerAction =
+  | { type: "ADD_CART"; id: number }
+  | { type: "DELETE_CART"; id: number };
 
 export type CartsContextType = {
   carts: number[];

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
 
 const Header = () => {
-  const { carts } = useCartContext();
+  const { carts }: { carts: number[] } = useCartContext() ?? { carts: [] };
 
   return (
     <header className="bg-primary-400 text-white h-16">
