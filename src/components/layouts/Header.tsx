@@ -1,9 +1,10 @@
 import { BiCart } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
+import { CartItemType } from "../../types";
 
 const Header = () => {
-  const { carts }: { carts: number[] } = useCartContext() ?? { carts: [] };
+  const { carts }: { carts: CartItemType[] } = useCartContext() ?? { carts: [] };
 
   return (
     <header className="bg-primary-400 text-white h-16">

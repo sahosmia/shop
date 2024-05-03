@@ -17,22 +17,22 @@ const Footer = () => {
         <div className="col-span-4 md:col-auto">
           <h6>Important Link</h6>
           <ul>
-            <li><Link to="#">Text 1</Link></li>
-            <li><Link to="#">Text 2</Link></li>
-            <li><Link to="#">Text 3</Link></li>
-            <li><Link to="#">Text 4</Link></li>
-            <li><Link to="#">Text 5</Link></li>
+            <li><Link to="/">Text 1</Link></li>
+            <li><Link to="/">Text 2</Link></li>
+            <li><Link to="/">Text 3</Link></li>
+            <li><Link to="/">Text 4</Link></li>
+            <li><Link to="/">Text 5</Link></li>
           </ul>
         </div>
 
         <div className="col-span-4 md:col-auto">
           <h6>Important Link</h6>
           <ul>
-            <li><Link to="#">Text 1</Link></li>
-            <li><Link to="#">Text 2</Link></li>
-            <li><Link to="#">Text 3</Link></li>
-            <li><Link to="#">Text 4</Link></li>
-            <li><Link to="#">Text 5</Link></li>
+            <li><Link to="/">Text 1</Link></li>
+            <li><Link to="/">Text 2</Link></li>
+            <li><Link to="/">Text 3</Link></li>
+            <li><Link to="/">Text 4</Link></li>
+            <li><Link to="/">Text 5</Link></li>
           </ul>
         </div>
 

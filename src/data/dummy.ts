@@ -114,7 +114,10 @@ export const cupons = [
   },
 ];
 
-export const cartsData = [1, 6];
+export const cartsData = [
+  { id: 1, productId: 2, quantity: 1 },
+  { id: 2, productId: 6, quantity: 3 },
+];
 
 export const productsData = [
   {
@@ -124,7 +127,7 @@ export const productsData = [
     price: 549,
     discountPercentage: 12.96,
     rating: 4.69,
-    stock: 94,
+    stock: 4,
     brand: "Apple",
     category: "smartphones",
     thumbnail: "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
@@ -144,7 +147,7 @@ export const productsData = [
     price: 899,
     discountPercentage: 17.94,
     rating: 4.44,
-    stock: 34,
+    stock: 4,
     brand: "Apple",
     category: "smartphones",
     thumbnail: "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",

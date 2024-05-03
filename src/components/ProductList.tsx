@@ -13,7 +13,9 @@ const ProductList = ({ products }: ProductsPropsType) => {
   const handleAddtoCart = (id: number) => {
     dispatch({
       type: "ADD_CART",
-      id,
+      id:id,
+      productId:id,
+      quantity:1
     });
     toast.success("add success");
   };

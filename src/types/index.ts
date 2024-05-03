@@ -16,30 +16,39 @@ export type ProductType = {
   images: string[];
 };
 
-export type ProductSingleType = {
-  product: ProductType | undefined;
+export type CartProductType = {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  brand: string;
+  category: string;
+  thumbnail: string;
+  images: string[];
+  quantity:number
 };
 
 export type ProductsPropsType = {
   products: ProductType[];
 };
-export type CardItemPropsType = {
-  product: ProductType | undefined;
-  onDelete: (id: number) => void;
+
+export type CartItemType = {
+  id: number;
+  productId: number;
+  quantity: number;
 };
 
-export type CartsType = {
-  carts: number[];
+export type CardItemPropsType = {
+  cartItem: CartItemType;
 };
 
 export type CartReducerAction =
-  | { type: "ADD_CART"; id: number }
-  | { type: "DELETE_CART"; id: number };
-
-export type CartsContextType = {
-  carts: number[];
-  dispatch: () => void;
-};
+  | { type: "ADD_CART"; id: number; productId: number; quantity: number }
+  | { type: "UPDATE_QUANTITY_CART"; id: number; quantity: number }
+  | { type: "DELETE_CART"; productId: number };
 
 export type CuponType = {
   id: number;

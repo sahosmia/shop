@@ -1,63 +1,62 @@
 import { Helmet } from "react-helmet";
 import { cupons, productsData } from "../data/dummy";
 import CartItem from "../components/CartItem";
-import { toast } from "react-toastify";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BiSend } from "react-icons/bi";
-import { useCartContext, useCartDispatchContext } from "../context/CartContext";
-import { CuponType } from "../types";
+import { useCartContext } from "../context/CartContext";
+import { CartItemType, CuponType } from "../types";
+import TotalCartCard from "../components/Cart/TotalCartCard";
 
 const CartPage = () => {
-  const { carts }: { carts: number[] } = useCartContext() ?? { carts: [] };
-  const dispatch = useCartDispatchContext() ?? (() => {}); // Assign the context value or a dummy function as a fallback
+  const { carts }: { carts: CartItemType[] } = useCartContext() ?? {
+    carts: [],
+  };
 
-  const [cupon, setCupon] = useState("");
-  const [cuponError, setCuponError] = useState("");
-  const [cuponAvailable, setCuponAvailable] = useState<CuponType | null>(null);
-
-  // get Product item  from products by product id
-  const cartProducts = productsData.filter((product) =>
-    carts.includes(product.id)
+  const [coupon, setCoupon] = useState("");
+  const [couponError, setCouponError] = useState("");
+  const [couponAvailable, setCouponAvailable] = useState<CuponType | null>(
+    null
   );
 
-  // total amount
-  const totalAmount = cartProducts.reduce((total, product) => {
-    const discountedPrice =
-      product.price - (product.price * product.discountPercentage) / 100;
-    return total + discountedPrice;
-  }, 0);
-
-  const cuponDiscount = () => {
-    if (cuponAvailable) {
-      return (totalAmount * cuponAvailable.discount) / 100;
+  useEffect(() => {
+    const savedCoupon = localStorage.getItem("coupon");
+    if (savedCoupon) {
+      setCoupon(savedCoupon);
     }
-    return 0;
-  };
-  const subtotal = totalAmount - cuponDiscount();
 
-  // handle delete
-  const onDelete = (id: number) => {
-    dispatch({
-      type: "DELETE_CART",
-      id,
-    });
-    toast.success(`delete ${id}`);
-  };
+    const couponExits = cupons.find((item) => item.code === savedCoupon);
+
+    if (couponExits) {
+      setCouponAvailable(couponExits);
+    } else {
+      setCouponError("Cupon is not available");
+    }
+  }, []);
+
+  const cartProducts = carts.map((cart) => {
+    const data = productsData.find((item) => item.id === cart.productId);
+    if (data) {
+      return { ...data, quantity: cart.quantity };
+    } else {
+      throw new Error(`Product with ID ${cart.productId} not found.`);
+    }
+  });
 
   // handle Cupon
   const handleCupon = () => {
-    setCuponError("");
-    setCuponAvailable(null);
-    if (cupon !== "") {
-      const cuponExits = cupons.find((item) => item.code === cupon);
-      if (cuponExits) {
-        setCuponAvailable(cuponExits);
+    setCouponError("");
+    setCouponAvailable(null);
+    if (coupon !== "") {
+      const couponExits = cupons.find((item) => item.code === coupon);
+      if (couponExits) {
+        setCouponAvailable(couponExits);
       } else {
-        setCuponError("Cupon is not available");
+        setCouponError("Cupon is not available");
       }
     } else {
-      setCuponError("your cupon is empthy");
+      setCouponError("your cupon is empthy");
     }
+    localStorage.setItem("coupon", coupon);
   };
 
   return (
@@ -69,67 +68,55 @@ const CartPage = () => {
 
       <section className="py-20">
         <div className="container grid grid-cols-12 gap-5">
-          {cartProducts.length > 0 ? (
+          {carts.length > 0 ? (
             <>
               <div className="col-span-9">
                 <div className="divide-y border">
-                  {cartProducts.map((c) => (
-                    <CartItem key={c.id} product={c} onDelete={onDelete} />
+                  <div className="flex divide-x">
+                    <div className="flex-1 p-2">Name</div>
+                    <div className="flex-1 p-2">Price</div>
+                    <div className="flex-1 p-2">Quantity</div>
+                    <div className="flex-1 p-2">Discount</div>
+                    <div className="flex-1 p-2">Stock</div>
+                    <div className="flex-1 p-2 flex justify-center">Action</div>
+                  </div>
+                  {carts.map((cartItem) => (
+                    <CartItem key={cartItem.id} cartItem={cartItem} />
                   ))}
                 </div>
 
                 <div className="flex mt-3 rounded overflow-hidden">
                   <input
                     type="text"
-                    value={cupon}
-                    onChange={(e) => setCupon(e.target.value)}
+                    value={coupon}
+                    onChange={(e) => setCoupon(e.target.value)}
                     placeholder="Apply copun code"
                     className="border-none bg-slate-200 text-sm p-3"
                   />
                   <button
                     type="button"
                     onClick={handleCupon}
-                    disabled
-                    className={`bg-primary-500 cursor-pointer px-4 overflow-hidden text-white ${
-                      cupon === "" &&
-                      "disabled:bg-primary-400 disabled:cursor-not-allowed"
-                    }`}
+                    className="bg-primary-500 cursor-pointer px-4 overflow-hidden text-white"
                   >
                     <BiSend />
                   </button>
                 </div>
-                {cuponError !== "" && (
+                {couponError !== "" && (
                   <div className="text-red-600 text-sm font-semibold pt-1">
-                    {cuponError}{" "}
+                    {couponError}
                   </div>
                 )}
-                {cuponAvailable && (
+                {couponAvailable && (
                   <div className="text-green-600 text-sm font-semibold pt-1">
                     Your cupon code is available !!
                   </div>
                 )}
               </div>
               <div className=" col-span-3">
-                <div className="divide-y border">
-                  <div className="flex divide-x">
-                    <div className="flex-1 p-2">Total</div>
-                    <div className="flex-1 p-2 text-end">
-                      {totalAmount.toFixed(2)}
-                    </div>
-                  </div>
-                  <div className="flex divide-x">
-                    <div className="flex-1 p-2">Discount</div>
-                    <div className="flex-1 p-2 text-end">
-                      {cuponDiscount().toFixed(2)}
-                    </div>
-                  </div>
-                  <div className="flex divide-x">
-                    <div className="flex-1 p-2">Sub Total</div>
-                    <div className="flex-1 p-2 text-end">
-                      {subtotal.toFixed(2)}
-                    </div>
-                  </div>
-                </div>
+                <TotalCartCard
+                  cartProducts={cartProducts}
+                  cuponAvailable={couponAvailable}
+                />
 
                 <button className="bg-primary-500 text-white w-full py-2 mt-2 rounded">
                   Checkout
