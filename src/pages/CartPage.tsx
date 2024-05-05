@@ -17,6 +17,7 @@ const CartPage = () => {
   const [couponAvailable, setCouponAvailable] = useState<CuponType | null>(
     null
   );
+  const [stockError, setStockError] = useState(false);
 
   useEffect(() => {
     const savedCoupon = localStorage.getItem("coupon");
@@ -33,6 +34,9 @@ const CartPage = () => {
       localStorage.setItem("coupon", "");
     }
   }, []);
+  const onStockOut = (status: boolean) => {
+    setStockError(status);
+  };
 
   const cartProducts = carts.map((cart) => {
     const data = productsData.find((item) => item.id === cart.productId);
@@ -72,6 +76,7 @@ const CartPage = () => {
           {carts.length > 0 ? (
             <>
               <div className="col-span-9">
+                {stockError && <p>stock out</p>}
                 <div className="divide-y border">
                   <div className="flex divide-x">
                     <div className="flex-1 p-2">Name</div>
@@ -82,7 +87,11 @@ const CartPage = () => {
                     <div className="flex-1 p-2 flex justify-center">Action</div>
                   </div>
                   {carts.map((cartItem) => (
-                    <CartItem key={cartItem.id} cartItem={cartItem} />
+                    <CartItem
+                      key={cartItem.id}
+                      cartItem={cartItem}
+                      onStockError={onStockOut}
+                    />
                   ))}
                 </div>
 
@@ -119,9 +128,15 @@ const CartPage = () => {
                   cuponAvailable={couponAvailable}
                 />
 
-                <button className="bg-primary-500 text-white w-full py-2 mt-2 rounded">
-                  Checkout
-                </button>
+                {stockError ? (
+                  <div className="text-red-600 text-sm font-semibold pt-1">
+                    To do checkout , first you need to check product stock in
+                  </div>
+                ) : (
+                  <button className="bg-primary-500 text-white w-full py-2 mt-2 rounded">
+                    Checkout
+                  </button>
+                )}
               </div>
             </>
           ) : (

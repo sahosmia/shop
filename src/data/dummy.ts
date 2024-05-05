@@ -115,7 +115,8 @@ export const cupons = [
 ];
 
 export const cartsData = [
-  { id: 1, productId: 2, quantity: 1 },
+  { id: 1, productId: 2, quantity: 6 },
+  { id: 3, productId: 1, quantity: 8 },
   { id: 2, productId: 6, quantity: 3 },
 ];
 

@@ -43,6 +43,7 @@ export type CartItemType = {
 
 export type CardItemPropsType = {
   cartItem: CartItemType;
+  onStockError:(status:boolean) => void;
 };
 
 export type CartReducerAction =
