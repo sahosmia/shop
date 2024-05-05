@@ -3,8 +3,10 @@ import { CardItemPropsType } from "../types";
 import { productsData } from "../data/dummy";
 import { toast } from "react-toastify";
 import { useCartDispatchContext } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 const CartItem = ({ cartItem }: CardItemPropsType) => {
+  // const [cartItemQuantity, setCartItemQuantity] = useState(cartItem.id)
   const dispatch = useCartDispatchContext() ?? (() => {});
 
   const product = productsData.find((item) => item.id === cartItem.productId);
@@ -30,15 +32,15 @@ const CartItem = ({ cartItem }: CardItemPropsType) => {
     }
 
     dispatch({
-      type: "UPDATE_QUANTITY_CART",
-      id: cartItem.id,
+      type: "ADD_CART",
       quantity: type === "plus" ? cartItem.quantity + 1 : cartItem.quantity - 1,
+      productId:cartItem.productId
     });
   };
 
   return (
     <div className="flex divide-x">
-      <div className="flex-1 p-2">{product?.title}</div>
+      <div className="flex-1 p-2"><Link  to={`/products/${product.id}`}>{product?.title}</Link></div>
       <div className="flex-1 p-2">{product?.price}</div>
       <div className="flex-1 p-2 flex gap-3 place-content-center">
         <div className="rounded border">

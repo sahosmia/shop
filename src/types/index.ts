@@ -46,7 +46,7 @@ export type CardItemPropsType = {
 };
 
 export type CartReducerAction =
-  | { type: "ADD_CART"; id: number; productId: number; quantity: number }
+  | { type: "ADD_CART";  productId: number; quantity: number }
   | { type: "UPDATE_QUANTITY_CART"; id: number; quantity: number }
   | { type: "DELETE_CART"; productId: number };
 

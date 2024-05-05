@@ -29,7 +29,8 @@ const CartPage = () => {
     if (couponExits) {
       setCouponAvailable(couponExits);
     } else {
-      setCouponError("Cupon is not available");
+      setCoupon("");
+      localStorage.setItem("coupon", "");
     }
   }, []);
 

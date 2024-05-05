@@ -7,15 +7,13 @@ import { ProductsPropsType } from "../types";
 import { useCartDispatchContext } from "../context/CartContext";
 
 const ProductList = ({ products }: ProductsPropsType) => {
-  const contextDispatch = useCartDispatchContext();
-  const dispatch = contextDispatch || (() => {}); // Providing a dummy function as a fallback
+  const dispatch = useCartDispatchContext() ?? (() => {});
 
   const handleAddtoCart = (id: number) => {
     dispatch({
       type: "ADD_CART",
-      id:id,
-      productId:id,
-      quantity:1
+      productId: id,
+      quantity: 1,
     });
     toast.success("add success");
   };
@@ -48,6 +46,7 @@ const ProductList = ({ products }: ProductsPropsType) => {
               >
                 {product.title}
               </Link>
+
               <span className="text-[#b8b843]">
                 <Link to={`/category/${product.category}`}>
                   ( {product.category})
@@ -65,12 +64,6 @@ const ProductList = ({ products }: ProductsPropsType) => {
               ${getDiscountPrice(product.price, product.discountPercentage)}
             </p>
 
-            {/* <AddtoCartButton
-        product={item}
-        isPrice={false}
-        className="w-full bg-[#1a1a1a] hover:bg-[#3a3a3a] text-center py-3 mt-5 text-white rounded-full"
-      /> */}
-
             <motion.button
               initial={{ backgroundColor: "#1a1a1a" }}
               whileHover={{
@@ -82,11 +75,6 @@ const ProductList = ({ products }: ProductsPropsType) => {
             >
               Add To Cart
             </motion.button>
-            {/* <button onClick={handleAddtoCart} className={className}>
-        Add To Cart
-        {isPrice &&
-          `- $ ${getDiscountPrice(product.price, product.discountPercentage)}`}
-      </button> */}
           </div>
         </motion.div>
       ))}

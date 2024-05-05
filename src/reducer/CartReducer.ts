@@ -1,4 +1,5 @@
 import { CartItemType, CartReducerAction } from "../types";
+import { getCartNextID } from "../utils";
 
 export const cartReducer = (
   state: CartItemType[],
@@ -6,28 +7,28 @@ export const cartReducer = (
 ): CartItemType[] => {
   // checkExists is declear beacuse switch block is not support to declear any variable
   let checkExists;
+  const nextId = getCartNextID(state);
 
   switch (action.type) {
     // Add to cart by product item
+    // check this product is added or not in cart
+    // checkExists is true && update the quantity property
+    // checkexists  is false & add new cart item
     case "ADD_CART":
-      // check this product is added or not in cart
       checkExists = state.find((item) => item.productId === action.productId);
 
       if (checkExists) {
-        // checkExists is true && increment the quantity property
         return state.map((item) => {
-          if (item.id === action.id) {
-            return { ...item, quantity: action.quantity + item.quantity };
+          if (item.productId === action.productId) {
+            return { ...item, quantity: action.quantity };
           }
-
           return item;
         });
       } else {
-        // checkexists  is false & add new cart item
         return [
           ...state,
           {
-            id: action.id,
+            id: nextId,
             productId: action.productId,
             quantity: action.quantity,
           },
