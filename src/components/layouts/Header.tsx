@@ -1,11 +1,12 @@
 import { BiCart } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { useCartContext } from "../../context/CartContext";
-import { CartItemType } from "../../types";
+import { CartItemReduxType } from "../../types";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-  const { carts }: { carts: CartItemType[] } = useCartContext() ?? { carts: [] };
-
+  const carts = useSelector(
+    (state: { carts: CartItemReduxType[] }) => state.carts
+  );
   return (
     <header className="bg-primary-400 text-white h-16">
       <div className="container flex justify-between items-center h-full">

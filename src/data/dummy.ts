@@ -1,82 +1,82 @@
-export const categories = [
+export const categoriesData = [
   {
-    id: "1",
+    id: 1,
     title: "smartphones",
   },
   {
-    id: "2",
+    id: 2,
     title: "laptops",
   },
   {
-    id: "3",
+    id: 3,
     title: "fragrances",
   },
   {
-    id: "4",
+    id: 4,
     title: "skincare",
   },
   {
-    id: "5",
+    id: 5,
     title: "groceries",
   },
   {
-    id: "6",
+    id: 6,
     title: "home-decoration",
   },
   {
-    id: "7",
+    id: 7,
     title: "furniture",
   },
   {
-    id: "8",
+    id: 8,
     title: "tops",
   },
   {
-    id: "9",
+    id: 9,
     title: "womens-dresses",
   },
   {
-    id: "10",
+    id: 10,
     title: "womens-shoes",
   },
   {
-    id: "11",
+    id: 11,
     title: "mens-shirts",
   },
   {
-    id: "12",
+    id: 12,
     title: "mens-shoes",
   },
   {
-    id: "13",
+    id: 13,
     title: "mens-watches",
   },
   {
-    id: "14",
+    id: 14,
     title: "womens-watches",
   },
   {
-    id: "15",
+    id: 15,
     title: "womens-bags",
   },
   {
-    id: "16",
+    id: 16,
     title: "womens-jewellery",
   },
   {
-    id: "17",
+    id: 17,
     title: "sunglasses",
   },
   {
-    id: "18",
+    id: 18,
     title: "automotive",
   },
   {
-    id: "19",
+    id: 19,
     title: "motorcycle",
   },
   {
-    id: "20",
+    id: 20,
     title: "lighting",
   },
 ];
@@ -125,7 +125,7 @@ export const productsData = [
     id: 1,
     title: "iPhone 9",
     description: "An apple mobile which is nothing like apple",
-    price: 549,
+    price: 20,
     discountPercentage: 12.96,
     rating: 4.69,
     stock: 4,

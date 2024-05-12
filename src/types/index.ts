@@ -41,6 +41,12 @@ export type CartItemType = {
   quantity: number;
 };
 
+export type CartItemReduxType = {
+  id: number;
+  productId: number;
+  quantity: number;
+};
+
 export type CardItemPropsType = {
   cartItem: CartItemType;
   onStockError:(status:boolean) => void;

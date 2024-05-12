@@ -3,14 +3,14 @@ import { cupons, productsData } from "../data/dummy";
 import CartItem from "../components/CartItem";
 import { useEffect, useState } from "react";
 import { BiSend } from "react-icons/bi";
-import { useCartContext } from "../context/CartContext";
-import { CartItemType, CuponType } from "../types";
+import { CartItemReduxType, CuponType } from "../types";
 import TotalCartCard from "../components/Cart/TotalCartCard";
+import { useSelector } from "react-redux";
 
 const CartPage = () => {
-  const { carts }: { carts: CartItemType[] } = useCartContext() ?? {
-    carts: [],
-  };
+  const carts = useSelector(
+    (state: { carts: CartItemReduxType[] }) => state.carts
+  );
 
   const [coupon, setCoupon] = useState("");
   const [couponError, setCouponError] = useState("");
@@ -76,7 +76,6 @@ const CartPage = () => {
           {carts.length > 0 ? (
             <>
               <div className="col-span-9">
-                {stockError && <p>stock out</p>}
                 <div className="divide-y border">
                   <div className="flex divide-x">
                     <div className="flex-1 p-2">Name</div>

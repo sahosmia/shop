@@ -10,10 +10,7 @@ export const cartReducer = (
   const nextId = getCartNextID(state);
 
   switch (action.type) {
-    // Add to cart by product item
-    // check this product is added or not in cart
-    // checkExists is true && update the quantity property
-    // checkexists  is false & add new cart item
+   
     case "ADD_CART":
       checkExists = state.find((item) => item.productId === action.productId);
 
