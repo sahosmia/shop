@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { CartItemReduxType } from "../../types";
 import { getCartNextID } from "../../utils";
 
-const initialState: CartItemReduxType[] = [];
+const initialState: CartItemReduxType[] = [
+{id: 1, productId: 1, quantity: 1}];
 
 const cartsSlice = createSlice({
   name: "carts",

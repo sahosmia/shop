@@ -6,7 +6,10 @@ const HomePage = () => {
       <title>HomePage</title>
       <meta name="description" content="Anything will never seo." />
     </Helmet>
-    <div>HomePage</div>
+    
+    <section className="">
+asdf
+    </section>
     </>
   )
 }

@@ -89,13 +89,14 @@ const ProductPage = () => {
                       key={category.id}
                     >
                       <button
-                        className="capitalize text-sm font-semibold"
+                        className="capitalize text-sm font-semibold flex justify-between gap-5"
                         type="button"
                         onClick={() =>
                           handleSelectedCategoryChange(category.title)
                         }
                       >
-                        {category.title}({category.quantity})
+                        <div className="inline-block">{category.title}</div>{" "}
+                        <div className="inline-block">({category.quantity})</div>
                       </button>
                     </li>
                   ))}
@@ -130,7 +131,9 @@ const ProductPage = () => {
             {loading ? (
               <h1>loading...</h1>
             ) : totalItems === 0 ? (
-              <h1>No data</h1>
+              <div>
+                <p>No data here</p>
+              </div>
             ) : (
               <>
                 <div className="flex gap-4 items-center pb-2">

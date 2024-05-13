@@ -6,6 +6,7 @@ import { BiSend } from "react-icons/bi";
 import { CartItemReduxType, CuponType } from "../types";
 import TotalCartCard from "../components/Cart/TotalCartCard";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const carts = useSelector(
@@ -72,9 +73,9 @@ const CartPage = () => {
       </Helmet>
 
       <section className="py-20">
-        <div className="container grid grid-cols-12 gap-5">
+        <div className="container">
           {carts.length > 0 ? (
-            <>
+            <div className=" grid grid-cols-12 gap-5">
               <div className="col-span-9">
                 <div className="divide-y border">
                   <div className="flex divide-x">
@@ -132,14 +133,24 @@ const CartPage = () => {
                     To do checkout , first you need to check product stock in
                   </div>
                 ) : (
-                  <button className="bg-primary-500 text-white w-full py-2 mt-2 rounded">
+                  <Link
+                    to="/checkout"
+                    className="w-full inline-block text-center bg-primary-500 text-white py-2 mt-2 rounded"
+                  >
                     Checkout
-                  </button>
+                  </Link>
                 )}
               </div>
-            </>
+            </div>
           ) : (
-            <h1>no data</h1>
+            <div className="bg-red-200 w-full p-5 rounded ">
+              <p>
+                No Data here.{" "}
+                <Link className="text-blue-400" to="/products">
+                  Continue Shoping
+                </Link>
+              </p>
+            </div>
           )}
         </div>
       </section>

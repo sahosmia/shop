@@ -7,8 +7,6 @@ import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
-import CategoryPage from "./pages/CategoryPage";
-import CategorySinglePage from "./pages/CategorySinglePage";
 
 import { Provider } from "react-redux";
 import store from "./app/store.ts";
@@ -24,8 +22,6 @@ const App = () => {
               path="products/:productId"
               element={<ProductDetailsPage />}
             />
-            <Route path="categories" element={<CategoryPage />} />
-            <Route path="categories/:slug" element={<CategorySinglePage />} />
             <Route path="carts" element={<CartPage />} />
             <Route path="checkout" element={<CheckoutPage />} />
 
