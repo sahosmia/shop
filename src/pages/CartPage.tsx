@@ -3,20 +3,22 @@ import { cupons, productsData } from "../data/dummy";
 import CartItem from "../components/CartItem";
 import { useEffect, useState } from "react";
 import { BiSend } from "react-icons/bi";
-import { useCartContext } from "../context/CartContext";
-import { CartItemType, CuponType } from "../types";
+import { CartItemReduxType, CuponType } from "../types";
 import TotalCartCard from "../components/Cart/TotalCartCard";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
-  const { carts }: { carts: CartItemType[] } = useCartContext() ?? {
-    carts: [],
-  };
+  const carts = useSelector(
+    (state: { carts: CartItemReduxType[] }) => state.carts
+  );
 
   const [coupon, setCoupon] = useState("");
   const [couponError, setCouponError] = useState("");
   const [couponAvailable, setCouponAvailable] = useState<CuponType | null>(
     null
   );
+  const [stockError, setStockError] = useState(false);
 
   useEffect(() => {
     const savedCoupon = localStorage.getItem("coupon");
@@ -33,6 +35,9 @@ const CartPage = () => {
       localStorage.setItem("coupon", "");
     }
   }, []);
+  const onStockOut = (status: boolean) => {
+    setStockError(status);
+  };
 
   const cartProducts = carts.map((cart) => {
     const data = productsData.find((item) => item.id === cart.productId);
@@ -68,9 +73,9 @@ const CartPage = () => {
       </Helmet>
 
       <section className="py-20">
-        <div className="container grid grid-cols-12 gap-5">
+        <div className="container">
           {carts.length > 0 ? (
-            <>
+            <div className=" grid grid-cols-12 gap-5">
               <div className="col-span-9">
                 <div className="divide-y border">
                   <div className="flex divide-x">
@@ -82,7 +87,11 @@ const CartPage = () => {
                     <div className="flex-1 p-2 flex justify-center">Action</div>
                   </div>
                   {carts.map((cartItem) => (
-                    <CartItem key={cartItem.id} cartItem={cartItem} />
+                    <CartItem
+                      key={cartItem.id}
+                      cartItem={cartItem}
+                      onStockError={onStockOut}
+                    />
                   ))}
                 </div>
 
@@ -119,13 +128,29 @@ const CartPage = () => {
                   cuponAvailable={couponAvailable}
                 />
 
-                <button className="bg-primary-500 text-white w-full py-2 mt-2 rounded">
-                  Checkout
-                </button>
+                {stockError ? (
+                  <div className="text-red-600 text-sm font-semibold pt-1">
+                    To do checkout , first you need to check product stock in
+                  </div>
+                ) : (
+                  <Link
+                    to="/checkout"
+                    className="w-full inline-block text-center bg-primary-500 text-white py-2 mt-2 rounded"
+                  >
+                    Checkout
+                  </Link>
+                )}
               </div>
-            </>
+            </div>
           ) : (
-            <h1>no data</h1>
+            <div className="bg-red-200 w-full p-5 rounded ">
+              <p>
+                No Data here.{" "}
+                <Link className="text-blue-400" to="/products">
+                  Continue Shoping
+                </Link>
+              </p>
+            </div>
           )}
         </div>
       </section>

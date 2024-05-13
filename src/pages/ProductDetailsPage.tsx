@@ -3,17 +3,18 @@ import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import { productsData } from "../data/dummy";
 import { motion } from "framer-motion";
-import { useCartContext, useCartDispatchContext } from "../context/CartContext";
 import { toast } from "react-toastify";
 import ProductNotFound from "../components/Error/ProductNotFound";
-import { ProductType } from "../types";
+import { CartItemReduxType, ProductType } from "../types";
+import { useDispatch, useSelector } from "react-redux";
+import { ADD_CART } from "../features/carts/cartsSlice";
 
 const ProductDetailsPage: React.FC = () => {
   const [cartQuantity, setCartQuantity] = useState<number>(1);
-  const dispatch = useCartDispatchContext() || (() => {});
-
-  const { carts } = useCartContext() || { carts: [] };
-
+  const dispatch = useDispatch();
+  const carts = useSelector(
+    (state: { carts: CartItemReduxType[] }) => state.carts
+  );
   const { productId } = useParams<{ productId: string }>();
   const product: ProductType | undefined = productsData.find(
     (item) => productId && item.id === parseInt(productId)
@@ -39,6 +40,13 @@ const ProductDetailsPage: React.FC = () => {
         productId: product.id,
         quantity: cartQuantity,
       });
+
+      dispatch(
+        ADD_CART({
+          productId: product.id,
+          quantity: cartQuantity,
+        })
+      );
       toast.success("Product added to cart.");
     }
   };
