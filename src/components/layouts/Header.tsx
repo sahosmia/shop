@@ -1,95 +1,99 @@
-import { BiCart } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { CartItemReduxType } from "../../types";
 import { useSelector } from "react-redux";
 import { BiUser } from "react-icons/bi";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import Logo from "../tools/Logo";
+import {
+  MdOutlineFavoriteBorder,
+  MdOutlineSearch,
+  MdOutlineShoppingCart,
+} from "react-icons/md";
 
 const Header = () => {
   const carts = useSelector(
     (state: { carts: CartItemReduxType[] }) => state.carts
   );
-  const [profileDropdownShow, setProfileDropDownShow] = useState(false);
   const menuList = [
-    { menu: "My Acount", url: "/", auth: true },
-    { menu: "Login", url: "/" },
-    { menu: "Wish List", url: "/", auth: true },
-    { menu: "Cart List", url: "/", auth: true },
-    { menu: "Checkout", url: "/checkout", auth: true },
-    { menu: "Log Out", url: "/" },
+    { label: "My Acount", url: "/", auth: true },
+    { label: "Login", url: "/" },
+    { label: "Wish List", url: "/", auth: true },
+    { label: "Cart List", url: "/", auth: true },
+    { label: "Checkout", url: "/checkout", auth: true },
+    { label: "Log Out", url: "/" },
   ];
-  const userIconRef = useRef<HTMLDivElement>(null);
-  const menuRef = useRef<HTMLDivElement>(null);
+
+  const headerRef = useRef<HTMLHeadingElement | null>(null);
   useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (
-        !menuRef.current.contains(e.target) &&
-        !userIconRef.current.contains(e.target)
-      ) {
-        setProfileDropDownShow(false);
+    window.addEventListener("scroll", () => {
+      const position = window.pageYOffset;
+      if (headerRef.current) {
+        if (position > 200) {
+          headerRef.current.classList.add("fixed");
+        } else {
+          headerRef.current.classList.remove("fixed");
+        }
       }
-    };
-
-    window.addEventListener("click", handler);
-
-    return () => {
-      window.removeEventListener("click", handler);
-    };
+    });
   }, []);
+
   return (
-    <header className="bg-primary-400 text-white h-16">
+    <header
+      ref={headerRef}
+      className=" border-b bg-white  py-6 min-h-14  top-0 left-0 right-0 z-10 transition-all duration-1000"
+    >
       <div className="container flex justify-between items-center h-full">
-        <div>
-          <Link to="/">Logo</Link>
-        </div>
-        <div>
+        <div className="flex items-center gap-5">
+          <Logo />
           <ul className="flex gap-5">
             <li>
-              <Link to="/">Home</Link>
-            </li>
-
-            <li>
-              <Link to="/products">Product</Link>
-            </li>
-            <li>
-              <Link to="/carts" className=" relative">
-                <span className="text-2xl">
-                  <BiCart />
-                </span>{" "}
-                {carts.length !== 0 && (
-                  <span className=" absolute -top-1 -right-1 text-xs  bg-purple-600 rounded-full w-4 h-4 grid place-content-center">
-                    {carts.length}
-                  </span>
-                )}
+              <Link className=" font-medium text-ass" to="/">
+                Home
               </Link>
             </li>
 
-            <li className="relative">
-              <div
-                className=" inline-block text-2xl"
-                onClick={() => setProfileDropDownShow(!profileDropdownShow)}
-                ref={userIconRef}
-              >
-                <BiUser />
-              </div>
-              {profileDropdownShow && (
-                <div
-                  ref={menuRef}
-                  className=" absolute right-[0%] bg-gray-200 p-5 rounded w-40 text-black"
-                >
-                  {menuList.map((menu) => (
-                    <Link
-                      key={menu.menu}
-                      className="block text-sm font-medium"
-                      to={menu.url}
-                    >
-                      {menu.menu}
-                    </Link>
-                  ))}
-                </div>
-              )}
+            <li>
+              <Link className="font-medium text-ass" to="/products">
+                Product
+              </Link>
             </li>
           </ul>
+        </div>
+        <div className="flex gap-10">
+          <div className="flex  items-center divide-x divide-ass ">
+            <div className="flex item-center cursor-pointer relative mr-3">
+              <MdOutlineSearch className="h-6 w-6 text-ass" />
+            </div>
+            <div className="flex items-center gap-4 pl-3">
+              <div className="flex items-center justify-center  group relative">
+                <BiUser className="h-6 w-6 text-ass cursor-pointer" />
+                <div className=" absolute invisible opacity-0 translate-y-5 group-hover:translate-y-0  group-hover:opacity-100 group-hover:visible top-full -right-1/2 bg-white shadow-sm border p-5 rounded w-48 text-black z-20 transition-all duration-300">
+                  {menuList.map((menu) => (
+                    <div className="py-2" key={menu.label}>
+                      <Link
+                        className="inline text-sm text-ass hover:text-primary2 transition-all"
+                        to={menu.url}
+                      >
+                        {menu.label}
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex items-center justify-center cursor-pointer">
+                <MdOutlineFavoriteBorder className="h-6 w-6 text-ass" />
+              </div>
+              <Link
+                to="/carts"
+                className="flex items-center justify-center cursor-pointer relative"
+              >
+                <MdOutlineShoppingCart className="h-6 w-6 text-ass" />
+                <span className="bg-primary text-white absolute -top-[9px] -right-2 w-5 h-5 text-xs font-medium rounded-full grid place-content-center">
+                  {carts.length}
+                </span>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </header>

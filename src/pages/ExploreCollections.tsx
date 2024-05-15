@@ -95,7 +95,7 @@ const ExploreCollections = () => {
         {/* Images displayed in a row */}
         <div className="flex space-x-4 overflow-hidden my-5">
           {displayedImages.map((image) => (
-            <button
+            <div
               key={image.id}
               className="relative "
               onClick={() => alert(`Clicked on ${image.description}`)}
@@ -109,7 +109,7 @@ const ExploreCollections = () => {
                 alt={image.description}
                 className="w-full  h-[600px] object-cover rounded-lg"
               />
-            </button>
+            </div>
           ))}
         </div>
 

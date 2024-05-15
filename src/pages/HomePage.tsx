@@ -1,11 +1,13 @@
 import { Helmet } from "react-helmet";
-import TempHeader from "../components/layouts/TempHeader";
 import BrandBlock from "./BrandBlock";
 import CustomerReview from "./CustomerReview";
 import ExploreCollections from "./ExploreCollections";
 import FeaturesPage from "./FeaturesPage";
 import ProductForHomePage from "./ProductForHomePage";
 import ShopNowForHomePage from "./ShopNowForHomePage";
+import HeroSlider from "../components/Home/HeroSlider";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const HomePage = () => {
   const features = [
@@ -41,8 +43,8 @@ const HomePage = () => {
         <title>HomePage</title>
         <meta name="description" content="Anything will never seo." />
       </Helmet>
-      <div>HomePage</div>
-      <TempHeader />
+      {/* <TempHeader /> */}
+      <HeroSlider/>
       <ProductForHomePage />
       <ExploreCollections />
       <ProductForHomePage />

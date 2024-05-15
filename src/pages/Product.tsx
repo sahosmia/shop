@@ -1,5 +1,4 @@
 const Product = ({ product }) => {
-  console.log(product);
   return (
     <div className="cursor-pointer block mt-5">
       <div className="bg-white relative overflow-hidden rounded-3xl ">

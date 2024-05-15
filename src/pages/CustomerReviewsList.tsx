@@ -24,8 +24,8 @@ const CustomerReviewsList = ({ reviews }) => {
         className="mySwiper rounded-2xl "
       >
         {reviews.map((review, index) => (
-          <SwiperSlide className=" ">
-            <Review key={index} {...review} />
+          <SwiperSlide className=" " key={index}>
+            <Review  {...review} />
           </SwiperSlide>
 
           // Spreading props to individual review component
@@ -36,3 +36,19 @@ const CustomerReviewsList = ({ reviews }) => {
 };
 
 export default CustomerReviewsList;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

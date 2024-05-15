@@ -1,22 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 
-import colors from "tailwindcss/colors";
+// import colors from "tailwindcss/colors";
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        primary: {
-          100: colors.red[100],
-          200: colors.red[200],
-          300: colors.red[300],
-          400: colors.red[400],
-          500: colors.red[500],
-          600: colors.red[600],
-          700: colors.red[700],
-          800: colors.red[800],
-        },
+        primary2: "#006769",
+        primary: "#40A578",
+        secondary: "#E6FF94",
+        secondary2: "#9DDE8B",
+        ass: "#333",
+        assLight: "#7E7E7E",
+      },
+      borderColor: {
+        color: "#ececec",
       },
     },
 

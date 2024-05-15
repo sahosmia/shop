@@ -7,15 +7,14 @@ import {
   BiLogoYoutube,
   BiRightArrowAlt,
 } from "react-icons/bi";
+import Logo from "../tools/Logo";
 
 const Footer = () => {
   return (
     <footer className="bg-primary-400 text-white py-16">
       <div className="container grid grid-cols-12 gap-10">
         <div className="col-span-3 md:col-span-4">
-          <Link to="/">
-            <div className="text-3xl poetsen-one-regular mb-3">Shop</div>
-          </Link>
+          <Logo/>
           <p className="text-sm w-10/12 mb-4">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
             eaque voluptate cupiditate quibusdam ex error maiores voluptates,
