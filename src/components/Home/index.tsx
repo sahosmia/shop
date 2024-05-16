@@ -9,3 +9,4 @@ export { default as ProductForHomePage } from "./ProductForHomePage";
 export { default as Review } from "./Review";
 export { default as Service } from "./Service";
 export { default as ShopNowForHomePage } from "./ShopNowForHomePage";
+export { default as BottomToTop } from "./BottomToTop";

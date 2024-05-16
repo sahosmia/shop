@@ -8,7 +8,6 @@ const HeroSlider = () => {
     // slidesToScroll: 1,
     autoplay:true,
     autoplaySpeed:5000,
-    fade:true
     
   };
   return (

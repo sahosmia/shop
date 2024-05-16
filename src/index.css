@@ -8,6 +8,9 @@
   margin: 0;
   outline: 0;
 }
+body{
+  position: relative;
+}
 
 .roboto-thin {
   font-family: "Roboto", sans-serif;

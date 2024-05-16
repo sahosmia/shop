@@ -8,6 +8,7 @@ import {
   ProductForHomePage,
   ShopNowForHomePage,
   HeroSlider,
+  BottomToTop,
 } from "../components/Home";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -30,6 +31,7 @@ const HomePage = () => {
       <FeaturesPage/>
       <CustomerReview />
       <BrandBlock />
+      <BottomToTop/>
     </>
   );
 };
