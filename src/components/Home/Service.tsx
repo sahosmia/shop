@@ -1,4 +1,3 @@
-import { PiPhoneCallThin } from "react-icons/pi";
 const iconMap = {
   support: "📞", // You can replace these with an icon library or custom icons
   "money-back": "💸",
@@ -25,4 +24,3 @@ const Service = ({ icon, heading, description }) => {
 };
 
 export default Service;
-<dir></dir>;

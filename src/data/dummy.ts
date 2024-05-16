@@ -126,7 +126,7 @@ export const productsData = [
     title: "iPhone 9",
     description: "An apple mobile which is nothing like apple",
     price: 20,
-    discountPercentage: 12.96,
+    discountPercentage: 0,
     rating: 4.69,
     stock: 4,
     brand: "Apple",
