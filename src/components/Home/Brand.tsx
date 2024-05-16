@@ -1,19 +1,21 @@
-const Brand = ({id,img}) => {
+import { brands } from "../../data/designData";
+
+const Brand = () => {
   return (
-    <div>
-      <div className="relative flex items-center justify-center h-36px]  mr-10">
-       
-          <img
-            src={img}
-            loading="lazy"
-            width={300}
-            height={300}
-            decoding="async"
-            key={id}
-            className="w-auto h-full duration-500 relative object-cover"
-            alt=""
-          />
-       
+    <div className=" py-8 md:py-16 bg-slate-100">
+      <div className="container">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 ">
+          {brands.map((brand) => (
+            <div key={brand.id} className=" flex items-center justify-center">
+              <img
+                src={brand.img}
+                loading="lazy"
+                className="max-h-10 "
+                alt=""
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

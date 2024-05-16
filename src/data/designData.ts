@@ -24,3 +24,30 @@ export const features = [
       "We stand behind the quality of our products and guarantee your satisfaction.",
   },
 ];
+
+ export const brands = [
+   {
+     id: 1,
+     img: "https://anvogue.vercel.app/_next/image?url=%2Fimages%2Fbrand%2F1.png&w=384&q=75",
+   },
+   {
+     id: 2,
+     img: "https://anvogue.vercel.app/_next/image?url=%2Fimages%2Fbrand%2F2.png&w=384&q=75",
+   },
+   {
+     id: 3,
+     img: "https://anvogue.vercel.app/_next/image?url=%2Fimages%2Fbrand%2F3.png&w=384&q=75",
+   },
+   {
+     id: 4,
+     img: "https://anvogue.vercel.app/_next/image?url=%2Fimages%2Fbrand%2F4.png&w=384&q=75",
+   },
+   {
+     id: 5,
+     img: "https://anvogue.vercel.app/_next/image?url=%2Fimages%2Fbrand%2F5.png&w=384&q=75",
+   },
+   {
+     id: 6,
+     img: "https://anvogue.vercel.app/_next/image?url=%2Fimages%2Fbrand%2F6.png&w=384&q=75",
+   },
+ ];

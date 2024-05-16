@@ -1,5 +1,4 @@
 export { default as Brand } from "./Brand";
-export { default as BrandBlock } from "./BrandBlock";
 export { default as CustomerReview } from "./CustomerReview";
 export { default as CustomerReviewsList } from "./CustomerReviewsList";
 export { default as ExploreCollections } from "./ExploreCollections";
