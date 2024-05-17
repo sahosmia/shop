@@ -10,6 +10,8 @@ import "../style.css";
 
 // import required modules
 import { Pagination } from "swiper/modules";
+// import required modules
+import { Autoplay, Navigation } from "swiper/modules";
 
 const CustomerReviewsList = ({ reviews }) => {
   return (
@@ -17,10 +19,15 @@ const CustomerReviewsList = ({ reviews }) => {
       <Swiper
         slidesPerView={3}
         spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         pagination={{
           clickable: true,
         }}
-        modules={[Pagination]}
+        modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper rounded-2xl "
       >
         {reviews.map((review, index) => (

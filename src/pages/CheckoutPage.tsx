@@ -1,8 +1,6 @@
 import { Helmet } from "react-helmet";
 
 const CheckoutPage = () => {
-
-
   return (
     <>
       <Helmet>
@@ -55,18 +53,16 @@ const CheckoutPage = () => {
                 </div>
               </div>
 
-
               <div className="mb-5">
-                <select
-                  name="country"
-                  id=""
-                  className={inputClass}
-                >
-                  {cities && cities.map((opt) => (
-                    <option key={opt.value} value={opt.value}>{opt.label}</option>
-                  ))}
+                <select name="country" id="" className={inputClass}>
+                  {cities &&
+                    cities.map((opt) => (
+                      <option key={opt.value} value={opt.value}>
+                        {opt.label}
+                      </option>
+                    ))}
                 </select>
-                {/* <p className="text-red-700 mt-1">This filed is required !!</p> */}
+                <p className="text-red-700 mt-1">This filed is required !!</p>
               </div>
 
               <div className="mb-5">
@@ -96,14 +92,11 @@ const inputClass =
   "placeholder:text-sm placeholder:text-gray-400 rounded py-3 px-4 outline-none ring-0 shadow-none border-gray-200 transition-all focus:border-red-600 focus:shadow-none focus:ring-0 w-full";
 
 const cities = [
-
   { value: "chuadanag", label: "Chuadanga" },
   { value: "chuadanag", label: "Chuadanga" },
 
   { value: "mumbai", label: "Mumbai" },
 
-
   { value: "karachi", label: "Karachi" },
   { value: "chuadanag", label: "Chuadanga" },
-
 ];

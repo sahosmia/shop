@@ -6,6 +6,7 @@ import ExploreCollections from "./ExploreCollections";
 import FeaturesPage from "./FeaturesPage";
 import ProductForHomePage from "./ProductForHomePage";
 import ShopNowForHomePage from "./ShopNowForHomePage";
+import CartPageDemo from "./CartPageDemo";
 
 const HomePage = () => {
   const features = [
@@ -50,6 +51,7 @@ const HomePage = () => {
       <FeaturesPage features={features} />
       <CustomerReview />
       <BrandBlock />
+      <CartPageDemo/>
     </>
   );
 };
