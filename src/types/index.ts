@@ -50,6 +50,11 @@ export type CartItemReduxType = {
   quantity: number;
 };
 
+export type WishListItemReduxType = {
+  id: number;
+  productId: number;
+};
+
 export type Feature = {
   id: number;
   icon: "support" | "moneyBack" | "shipping" | "guarantee";

@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Helmet } from "react-helmet";
+import FeaturesSection from "./FeaturesSection";
 
 const Layout = () => {
 
@@ -17,6 +18,7 @@ const Layout = () => {
       <main>
         <Outlet />
       </main>
+      <FeaturesSection />
       <Footer />
     </>
   );

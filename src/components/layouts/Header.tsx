@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CartItemReduxType } from "../../types";
+import { CartItemReduxType, WishListItemReduxType } from "../../types";
 import { useSelector } from "react-redux";
 import { BiUser } from "react-icons/bi";
 import { useEffect, useRef } from "react";
@@ -11,9 +11,13 @@ import {
 } from "react-icons/md";
 
 const Header = () => {
-  const carts = useSelector(
+  const carts= useSelector(
     (state: { carts: CartItemReduxType[] }) => state.carts
   );
+  const wishLists = useSelector(
+    (state: { wishLists: WishListItemReduxType[] }) => state.wishLists
+  );
+
   const menuList = [
     { label: "My Acount", url: "/", auth: true },
     { label: "Login", url: "/" },
@@ -80,9 +84,12 @@ const Header = () => {
                   ))}
                 </div>
               </div>
-              <div className="flex items-center justify-center cursor-pointer">
+              <Link to="/wish-lists" className="flex items-center justify-center cursor-pointer relative">
                 <MdOutlineFavoriteBorder className="h-6 w-6 text-ass" />
-              </div>
+                <span className="bg-primary text-white absolute -top-[9px] -right-2 w-5 h-5 text-xs font-medium rounded-full grid place-content-center">
+                  {wishLists.length}
+                </span>
+              </Link>
               <Link
                 to="/carts"
                 className="flex items-center justify-center cursor-pointer relative"

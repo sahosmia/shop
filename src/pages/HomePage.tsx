@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import {
   CustomerReview,
   ExploreCollections,
-  FeaturesPage,
+  
   ProductForHomePage,
   ShopNowForHomePage,
   HeroSlider,
@@ -28,9 +28,9 @@ const HomePage = () => {
       <ExploreCollections />
       <ProductForHomePage />
       <ShopNowForHomePage />
-      <FeaturesPage/>
       <CustomerReview />
       <Brand />
+      
       <BottomToTop/>
     </>
   );

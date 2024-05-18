@@ -11,17 +11,20 @@ const icon= {
   guarantee: <FaPaperPlane />,
 };
 
-const FeaturesPage = () => {
+const FeaturesSection = () => {
   return (
+    <div className="bg-slate-50">
+
+
     <div className="container ">
-      <div className="md:py-20 py-10">
-        <div className="grid items-start   grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  gap-8 lg:gap-2">
+      <div className="py-10 md:py-20 ">
+        <div className="grid items-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  gap-8 lg:gap-2">
           {features.map((feature) => (
             <div
               key={feature.id}
               className="flex flex-col items-center justify-center max-w-80 m-auto"
             >
-              <span className="lg:text-7xl text-5xl text-primary">
+              <span className="lg:text-5xl text-5xl text-primary">
                 {icon[feature.icon]}
               </span>
 
@@ -36,7 +39,8 @@ const FeaturesPage = () => {
         </div>
       </div>
     </div>
+    </div>
   );
 };
 
-export default FeaturesPage;
+export default FeaturesSection;

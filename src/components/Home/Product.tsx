@@ -1,13 +1,13 @@
 import { BiCartAdd } from "react-icons/bi";
-import { getDiscountPrice } from "../utils";
+import { getDiscountPrice } from "../../utils";
 import Rating from "@mui/material/Rating";
 import { useDispatch } from "react-redux";
-import { ADD_CART } from "../features/carts/cartsSlice";
+import { ADD_CART } from "../../features/carts/cartsSlice";
 import { toast } from "react-toastify";
-import { ProductPropsType } from "../types";
+import { ProductPropsType } from "../../types";
 import { Link } from "react-router-dom";
 
-const Product = ({ product } : ProductPropsType) => {
+const Product = ({ product }: ProductPropsType) => {
   const dispatch = useDispatch();
 
   const handleAddtoCart = (id: number) => {
@@ -65,9 +65,9 @@ const Product = ({ product } : ProductPropsType) => {
                   {product.discountPercentage === 0
                     ? product.price
                     : getDiscountPrice(
-                        product.price,
-                        product.discountPercentage
-                      )}
+                      product.price,
+                      product.discountPercentage
+                    )}
                 </span>
                 {product.discountPercentage !== 0 && (
                   <span className="text-sm line-through text-assLight font-medium">
@@ -77,7 +77,7 @@ const Product = ({ product } : ProductPropsType) => {
               </div>
 
               <button onClick={() => handleAddtoCart(product.id)} className="bg-primary bg-opacity-25 hover:bg-opacity-80 text-primary2 hover:text-white hover:-translate-y-1 transition-all duration-300 py-2 px-4 text-sm font-medium  flex justify-center items-center  rounded">
-                <BiCartAdd className="text-base mr-1"/>
+                <BiCartAdd className="text-base mr-1" />
                 Add
               </button>
             </div>
