@@ -29,7 +29,7 @@ const CheckoutPage = () => {
       <section>
         <div className="container py-16">
           <div className="grid">
-            <h4 className="text-2xl font-semibold capitalize mb-5">
+            <h4 className="text-2xl font-semibold capitalize mb-5 text-ass">
               Information
             </h4>
             <form onSubmit={handleSubmit(formSubmit)}>

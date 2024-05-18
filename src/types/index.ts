@@ -31,6 +31,9 @@ export type CartProductType = {
   quantity:number
 };
 
+export type ProductPropsType = {
+  product: ProductType;
+};
 export type ProductsPropsType = {
   products: ProductType[];
 };
@@ -46,6 +49,13 @@ export type CartItemReduxType = {
   productId: number;
   quantity: number;
 };
+
+export type Feature = {
+  id: number;
+  icon: "support" | "moneyBack" | "shipping" | "guarantee";
+  heading: string;
+  description: string;
+}
 
 export type CardItemPropsType = {
   cartItem: CartItemType;

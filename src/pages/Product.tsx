@@ -4,9 +4,10 @@ import Rating from "@mui/material/Rating";
 import { useDispatch } from "react-redux";
 import { ADD_CART } from "../features/carts/cartsSlice";
 import { toast } from "react-toastify";
-import { ProductType } from "../types";
+import { ProductPropsType } from "../types";
+import { Link } from "react-router-dom";
 
-const Product = ({ product } : ProductType) => {
+const Product = ({ product } : ProductPropsType) => {
   const dispatch = useDispatch();
 
   const handleAddtoCart = (id: number) => {
@@ -45,7 +46,7 @@ const Product = ({ product } : ProductType) => {
           </div>
           <div className="mt-2 p-3">
             <h6 className="text-xs text-assLight mb-3">{product.category}</h6>
-            <h3 className="font-medium text-ass mb-3">{product.title}</h3>
+            <Link to={`/products/${product.id}`} className="font-medium text-ass mb-3">{product.title}</Link>
             <div className="flex items-center mb-3">
               <Rating
                 name="half-rating-read"
