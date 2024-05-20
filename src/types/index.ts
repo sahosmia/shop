@@ -67,6 +67,10 @@ export type CardItemPropsType = {
   onStockError:(status:boolean) => void;
 };
 
+export type WishListItemPropsType = {
+  wishListItem: WishListItemReduxType;
+};
+
 export type CartReducerAction =
   | { type: "ADD_CART";  productId: number; quantity: number }
   | { type: "UPDATE_QUANTITY_CART"; id: number; quantity: number }
