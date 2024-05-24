@@ -28,16 +28,6 @@ const cartsSlice = createSlice({
       }
     },
 
-    // UPDATE_CART_QUANTITY: (state, action) => {
-    //   return state.map((item) => {
-    //     if (item.id === action.payload.id) {
-    //       return { ...item, quantity: action.payload.quantity };
-    //     }
-
-    //     return item;
-    //   });
-    // },
-
     DELETE_CART: (state, action) => {
       return state.filter(
         (item) => item.productId !== action.payload.productId

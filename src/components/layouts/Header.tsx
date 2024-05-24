@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
-import { CartItemReduxType, WishListItemReduxType } from "../../types";
-import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { BiUser } from "react-icons/bi";
 import { useEffect, useRef } from "react";
 import Logo from "../tools/Logo";
@@ -8,23 +6,26 @@ import {
   MdOutlineFavoriteBorder,
   MdOutlineSearch,
   MdOutlineShoppingCart,
+  MdOutlineLogin,
 } from "react-icons/md";
+import useAuth from "../../hooks/useAuth";
+import useCarts from "../../hooks/useCarts";
+import useWishLists from "../../hooks/useWishLists";
+import { useDispatch } from "react-redux";
+import { Logout } from "../../features/auth/authSlice";
 
 const Header = () => {
-  const carts= useSelector(
-    (state: { carts: CartItemReduxType[] }) => state.carts
-  );
-  const wishLists = useSelector(
-    (state: { wishLists: WishListItemReduxType[] }) => state.wishLists
-  );
+  const carts = useCarts();
+  const wishLists = useWishLists();
+  const auth = useAuth();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const menuList = [
-    { label: "My Acount", url: "/", auth: true },
-    { label: "Login", url: "/" },
-    { label: "Wish List", url: "/", auth: true },
-    { label: "Cart List", url: "/", auth: true },
-    { label: "Checkout", url: "/checkout", auth: true },
-    { label: "Log Out", url: "/" },
+    { label: "My Acount", url: "/" },
+    { label: "Wish List", url: "/" },
+    { label: "Cart List", url: "/" },
+    { label: "Checkout", url: "/checkout" },
   ];
 
   const headerRef = useRef<HTMLHeadingElement | null>(null);
@@ -40,6 +41,14 @@ const Header = () => {
       }
     });
   }, []);
+
+  const handleLogOut = () => {
+    // dispatch call
+    dispatch(Logout());
+    navigate("/login");
+  };
+
+  console.log(auth);
 
   return (
     <header
@@ -65,31 +74,57 @@ const Header = () => {
         </div>
         <div className="flex gap-10">
           <div className="flex  items-center divide-x divide-ass ">
+
+            {/* Search Button  */}
             <div className="flex item-center cursor-pointer relative mr-3">
               <MdOutlineSearch className="h-6 w-6 text-ass" />
             </div>
+            {/* Search Button end */}
+
             <div className="flex items-center gap-4 pl-3">
-              <div className="flex items-center justify-center  group relative">
-                <BiUser className="h-6 w-6 text-ass cursor-pointer" />
-                <div className=" absolute invisible opacity-0 translate-y-5 group-hover:translate-y-0  group-hover:opacity-100 group-hover:visible top-full -right-1/2 bg-white shadow-sm border p-5 rounded w-48 text-black z-20 transition-all duration-300">
-                  {menuList.map((menu) => (
-                    <div className="py-2" key={menu.label}>
-                      <Link
-                        className="inline text-sm text-ass hover:text-primary2 transition-all"
-                        to={menu.url}
+
+              {/* Acount List  */}
+              {auth.user !== null && (
+                <div className="flex items-center justify-center  group relative">
+                  <BiUser className="h-6 w-6 text-ass cursor-pointer" />
+                  <div className=" absolute invisible opacity-0 translate-y-5 group-hover:translate-y-0  group-hover:opacity-100 group-hover:visible top-full -right-1/2 bg-white shadow-sm border p-5 rounded w-48 text-black z-20 transition-all duration-300">
+                    {menuList.map((menu) => (
+                      <div className="py-2" key={menu.label}>
+                        <Link
+                          className="inline text-sm py-2 text-ass hover:text-primary2 transition-all"
+                          to={menu.url}
+                        >
+                          {menu.label}
+                        </Link>
+                      </div>
+                    ))}
+
+                    <div className="py-2">
+                      <button
+                        onClick={handleLogOut}
+                        className="inline text-sm py-2 text-ass hover:text-primary2 transition-all"
                       >
-                        {menu.label}
-                      </Link>
+                        Logout
+                      </button>
                     </div>
-                  ))}
+                  </div>
                 </div>
-              </div>
-              <Link to="/wish-lists" className="flex items-center justify-center cursor-pointer relative">
+              )}
+              {/* Acount List end */}
+
+              {/* wish list button  */}
+              <Link
+                to="/wish-lists"
+                className="flex items-center justify-center cursor-pointer relative"
+              >
                 <MdOutlineFavoriteBorder className="h-6 w-6 text-ass" />
                 <span className="bg-primary text-white absolute -top-[9px] -right-2 w-5 h-5 text-xs font-medium rounded-full grid place-content-center">
                   {wishLists.length}
                 </span>
               </Link>
+              {/* wish list button end */}
+
+              {/* cart button  */}
               <Link
                 to="/carts"
                 className="flex items-center justify-center cursor-pointer relative"
@@ -99,6 +134,19 @@ const Header = () => {
                   {carts.length}
                 </span>
               </Link>
+              {/* cart button end */}
+
+              {/* login button  */}
+              {auth.user === null && (
+                <Link
+                  to="/login"
+                  className="flex items-center justify-center cursor-pointer"
+                  title="Login"
+                >
+                  <MdOutlineLogin className="h-6 w-6 text-ass" />
+                </Link>
+              )}
+              {/* login button end */}
             </div>
           </div>
         </div>

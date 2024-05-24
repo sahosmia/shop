@@ -1,9 +1,19 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/layouts/Layout";
-import { CartPage, CheckoutPage, HomePage, LoginPage, ProductDetailsPage, ProductPage, ProfilePage, WishListPage } from "./pages";
+import {
+  CartPage,
+  CheckoutPage,
+  HomePage,
+  LoginPage,
+  ProductDetailsPage,
+  ProductPage,
+  ProfilePage,
+  WishListPage,
+} from "./pages";
 
 import { Provider } from "react-redux";
 import store from "./app/store.ts";
+import PrivateRoute from "./components/layouts/PrivateRoute.tsx";
 
 const App = () => {
   return (
@@ -15,11 +25,13 @@ const App = () => {
           <Route path="products/:productId" element={<ProductDetailsPage />} />
           <Route path="carts" element={<CartPage />} />
           <Route path="wish-lists" element={<WishListPage />} />
-          <Route path="checkout" element={<CheckoutPage />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="checkout" element={<CheckoutPage />} />
 
-          <Route path="login" element={<LoginPage />} />
-          <Route path="profile" element={<ProfilePage />} />
+            <Route path="profile" element={<ProfilePage />} />
+          </Route>
         </Route>
+          <Route path="login" element={<LoginPage />} />
       </Routes>
     </Provider>
   );

@@ -9,6 +9,8 @@ const WishListPage = () => {
   const wishLists = useSelector(
     (state: { wishLists: WishListItemReduxType[] }) => state.wishLists
   );
+
+  
   return (
     <>
       <Helmet>
@@ -16,6 +18,7 @@ const WishListPage = () => {
         <meta name="description" content="Anything will never seo." />
       </Helmet>
 
+{/* <h2>{data}</h2> */}
       <section className="py-20">
         <div className="container">
           {wishLists.length > 0 ? (

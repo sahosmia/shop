@@ -1,10 +1,15 @@
-import { IoClose } from "react-icons/io5";
+//third-party libary
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { ProductType, WishListItemPropsType } from "../../types";
-import { DELETE_Wish } from "../../features/wish-lists/wishListsSlice";
 import { toast } from "react-toastify";
+import { IoClose } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+// internal data
 import { productsData } from "../../data/dummy";
+// redux method
+import { DELETE_Wish } from "../../features/wish-lists/wishListsSlice";
+// types
+import { ProductType, WishListItemPropsType } from "../../types";
+// Internal Compornant
 
 const WishListItem = ({ wishListItem }: WishListItemPropsType) => {
   const dispatch = useDispatch();

@@ -3,15 +3,13 @@ import { cupons, productsData } from "../data/dummy";
 import CartItem from "../components/CartItem";
 import { useEffect, useState } from "react";
 import { BiSend } from "react-icons/bi";
-import { CartItemReduxType, CuponType } from "../types";
+import { CuponType } from "../types";
 import TotalCartCard from "../components/Cart/TotalCartCard";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import useCarts from "../hooks/useCarts";
 
 const CartPage = () => {
-  const carts = useSelector(
-    (state: { carts: CartItemReduxType[] }) => state.carts
-  );
+  const carts = useCarts()
 
   const [coupon, setCoupon] = useState("");
   const [couponError, setCouponError] = useState("");

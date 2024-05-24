@@ -39,7 +39,7 @@ const CheckoutPage = () => {
                     {...register("name", { required: "Name is required." })}
                     type="text"
                     placeholder="Your Name *"
-                    className={`${inputClass} ${
+                    className={`input-class ${
                       errors.name ? "border-red-600" : "border-gray-200"
                     }`}
                   />
@@ -55,7 +55,7 @@ const CheckoutPage = () => {
                     })}
                     type="text"
                     placeholder="Your Email *"
-                    className={`${inputClass} ${
+                    className={`input-class ${
                       errors.email ? "border-red-600" : "border-gray-200"
                     }`}
                   />
@@ -78,7 +78,7 @@ const CheckoutPage = () => {
                     })}
                     type="tel"
                     placeholder="Your Phone *"
-                    className={`${inputClass} ${
+                    className={`input-class ${
                       errors.phone ? "border-red-600" : "border-gray-200"
                     }`}
                   />
@@ -93,7 +93,7 @@ const CheckoutPage = () => {
                 <select
                   {...register("city", { required: "This filed is required"})}
                   id=""
-                  className={`${inputClass} ${
+                  className={`input-class ${
                     errors.city ? "border-red-600" : "border-gray-200"
                   }`}
                 >
@@ -116,7 +116,7 @@ const CheckoutPage = () => {
                   {...register("street", { required: "This data is need" })}
                   type="text"
                   placeholder="Your Street *"
-                  className={`${inputClass} ${
+                  className={`input-class ${
                     errors.street ? "border-red-600" : "border-gray-200"
                   }`}
                 />
@@ -128,7 +128,7 @@ const CheckoutPage = () => {
                 <textarea
                   {...register("note")}
                   placeholder="Add Note"
-                  className={`${inputClass} ${
+                  className={` input-class ${
                     errors.note ? "border-red-600" : "border-gray-200"
                   }`}
                 />
@@ -151,8 +151,6 @@ const CheckoutPage = () => {
 
 export default CheckoutPage;
 
-const inputClass =
-  "placeholder:text-sm placeholder:text-gray-400 rounded py-3 px-4 outline-none ring-0 shadow-none  transition-all focus:border-primary focus:shadow-none focus:ring-0 w-full";
 
 const cities = [
   { value: "chuadanag", label: "Chuadanga" },

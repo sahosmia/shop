@@ -12,6 +12,11 @@ body{
   position: relative;
 }
 
+@layer components {
+  .input-class {
+    @apply placeholder:text-sm placeholder:text-gray-400 rounded py-3 px-4 outline-none ring-0 shadow-none  transition-all focus:border-primary focus:shadow-none focus:ring-0 w-full;
+  }
+}
 .roboto-thin {
   font-family: "Roboto", sans-serif;
   font-weight: 100;
