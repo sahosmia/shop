@@ -9,17 +9,19 @@ import { productsData } from "../../data/dummy";
 import { DELETE_Wish } from "../../features/wish-lists/wishListsSlice";
 // types
 import { ProductType, WishListItemPropsType } from "../../types";
+import useAuth from "../../hooks/useAuth";
 // Internal Compornant
 
 const WishListItem = ({ wishListItem }: WishListItemPropsType) => {
   const dispatch = useDispatch();
+  const auth = useAuth();
 
   const product: ProductType | undefined = productsData.find(
     (item) => item.id === wishListItem.productId
   );
   // Function to handle delete
   const onDelete = () => {
-    dispatch(DELETE_Wish({ productId: wishListItem.productId }));
+    dispatch(DELETE_Wish({ productId: wishListItem.productId, userId:auth?.user?.id }));
     toast.success(`Deleted ${wishListItem.productId}`);
   };
 

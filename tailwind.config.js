@@ -9,10 +9,11 @@ export default {
       colors: {
         primary2: "#006769",
         primary: "#40A578",
-        secondary: "#E6FF94",
+        primaryLight: "#70C5B0",
         secondary2: "#9DDE8B",
         ass: "#333",
         assLight: "#7E7E7E",
+        secondary: "#FFD700",
       },
       borderColor: {
         color: "#ececec",

@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { BiUser } from "react-icons/bi";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Logo from "../tools/Logo";
 import {
   MdOutlineFavoriteBorder,
@@ -13,6 +13,7 @@ import useCarts from "../../hooks/useCarts";
 import useWishLists from "../../hooks/useWishLists";
 import { useDispatch } from "react-redux";
 import { Logout } from "../../features/auth/authSlice";
+import { WishListItemReduxType } from "../../types";
 
 const Header = () => {
   const carts = useCarts();
@@ -20,9 +21,21 @@ const Header = () => {
   const auth = useAuth();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [userWishLists, setUserWishLists] = useState<WishListItemReduxType[]>(
+    []
+  );
 
+  console.log(auth);
+  console.log(wishLists);
+  useEffect(() => {
+    if (auth.user !== null) {
+      setUserWishLists(
+        wishLists.filter((item) => item.userId === auth?.user?.id)
+      );
+    }
+  }, [auth, wishLists]);
   const menuList = [
-    { label: "My Acount", url: "/" },
+    { label: "My Acount", url: "/profile" },
     { label: "Wish List", url: "/" },
     { label: "Cart List", url: "/" },
     { label: "Checkout", url: "/checkout" },
@@ -43,12 +56,9 @@ const Header = () => {
   }, []);
 
   const handleLogOut = () => {
-    // dispatch call
     dispatch(Logout());
     navigate("/login");
   };
-
-  console.log(auth);
 
   return (
     <header
@@ -74,7 +84,6 @@ const Header = () => {
         </div>
         <div className="flex gap-10">
           <div className="flex  items-center divide-x divide-ass ">
-
             {/* Search Button  */}
             <div className="flex item-center cursor-pointer relative mr-3">
               <MdOutlineSearch className="h-6 w-6 text-ass" />
@@ -82,7 +91,6 @@ const Header = () => {
             {/* Search Button end */}
 
             <div className="flex items-center gap-4 pl-3">
-
               {/* Acount List  */}
               {auth.user !== null && (
                 <div className="flex items-center justify-center  group relative">
@@ -118,9 +126,7 @@ const Header = () => {
                 className="flex items-center justify-center cursor-pointer relative"
               >
                 <MdOutlineFavoriteBorder className="h-6 w-6 text-ass" />
-                <span className="bg-primary text-white absolute -top-[9px] -right-2 w-5 h-5 text-xs font-medium rounded-full grid place-content-center">
-                  {wishLists.length}
-                </span>
+                <span className="count-badge">{userWishLists.length}</span>
               </Link>
               {/* wish list button end */}
 
@@ -130,9 +136,7 @@ const Header = () => {
                 className="flex items-center justify-center cursor-pointer relative"
               >
                 <MdOutlineShoppingCart className="h-6 w-6 text-ass" />
-                <span className="bg-primary text-white absolute -top-[9px] -right-2 w-5 h-5 text-xs font-medium rounded-full grid place-content-center">
-                  {carts.length}
-                </span>
+                <span className="count-badge">{carts.length}</span>
               </Link>
               {/* cart button end */}
 

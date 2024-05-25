@@ -101,9 +101,9 @@ const linkSectionData = [
   {
     title: "Quick Link",
     links: [
-      { title: "contact us", url: "/" },
-      { title: "contact us 1", url: "/" },
-      { title: "contact us 2", url: "/" },
+      { title: "Profile", url: "/profile" },
+      { title: "Checkout", url: "/checkout" },
+      { title: "Cart", url: "/carts" },
     ],
   },
 ];

@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import {
   CustomerReview,
   ExploreCollections,
-  
+
   ProductForHomePage,
   ShopNowForHomePage,
   HeroSlider,
@@ -14,7 +14,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const HomePage = () => {
- 
+
 
   return (
     <>
@@ -27,11 +27,11 @@ const HomePage = () => {
       <ProductForHomePage />
       <ExploreCollections />
       <ProductForHomePage />
-      <ShopNowForHomePage />
+      {/* <ShopNowForHomePage /> */}
       <CustomerReview />
       <Brand />
-      
-      <BottomToTop/>
+
+      <BottomToTop />
     </>
   );
 };

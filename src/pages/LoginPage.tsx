@@ -18,28 +18,35 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+  } = useForm<IFromInputs>({
+    defaultValues: {
+      // add default value for unknown person to login
+      email: "admin@gmail.com",
+      password: "12345678",
+    },
+  });
+
+  // useEffect
   useEffect(() => {
     if (auth.user !== null) {
       navigate("/");
     }
   }, [auth, navigate]);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setError,
-  } = useForm<IFromInputs>();
+  // form submit
   const formSubmit = (formData: IFromInputs) => {
     // check user exist
     const userExist = users.find((user) => user.email === formData.email);
     if (userExist) {
       if (userExist.password === formData.password) {
-        console.log(userExist);
-        dispatch(Login({
-          payload:userExist
-        }))
-        navigate("/")
+        // call redux method
+        dispatch(Login(userExist));
+        navigate("/");
       } else {
         setError("email", {
           type: "custom",
@@ -49,11 +56,8 @@ const LoginPage = () => {
     } else {
       setError("email", { type: "custom", message: "This Email Not Found" });
     }
-
-    // isset true next action or make a setError
-    // call redux method
-    console.log(formData);
   };
+
   return (
     <>
       <Helmet>

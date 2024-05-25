@@ -62,6 +62,7 @@ export type CartItemReduxType = {
 export type WishListItemReduxType = {
   id: number;
   productId: number;
+  userId:number;
 };
 
 export type Feature = {
