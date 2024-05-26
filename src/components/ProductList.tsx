@@ -5,19 +5,28 @@ import { toast } from "react-toastify";
 import { ProductsPropsType } from "../types";
 import { useDispatch } from "react-redux";
 import { ADD_CART } from "../features/carts/cartsSlice";
+import useAuth from "../hooks/useAuth";
 
 
 const ProductList = ({ products }: ProductsPropsType) => {
   const dispatch = useDispatch();
+  const auth = useAuth();
 
   const handleAddtoCart = (id: number) => {
-    dispatch(
-      ADD_CART({
-        productId: id,
-        quantity: 1,
-      })
-    );
-    toast.success("add success");
+    if(auth.user !== null){
+
+      dispatch(
+        ADD_CART({
+          productId: id,
+          quantity: 1,
+          userId: auth.user.id,
+        })
+      );
+      toast.success("add success");
+    }else{
+      toast.error("Login First");
+
+    }
   };
 
   return (

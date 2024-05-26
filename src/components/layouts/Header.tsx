@@ -13,7 +13,7 @@ import useCarts from "../../hooks/useCarts";
 import useWishLists from "../../hooks/useWishLists";
 import { useDispatch } from "react-redux";
 import { Logout } from "../../features/auth/authSlice";
-import { WishListItemReduxType } from "../../types";
+import { CartItemReduxType, WishListItemReduxType } from "../../types";
 
 const Header = () => {
   const carts = useCarts();
@@ -24,9 +24,12 @@ const Header = () => {
   const [userWishLists, setUserWishLists] = useState<WishListItemReduxType[]>(
     []
   );
+  const [userCarts, setUserCarts] = useState<CartItemReduxType[]>(
+    []
+  );
 
-  console.log(auth);
-  console.log(wishLists);
+
+// wish list 
   useEffect(() => {
     if (auth.user !== null) {
       setUserWishLists(
@@ -34,6 +37,16 @@ const Header = () => {
       );
     }
   }, [auth, wishLists]);
+
+// cart 
+  useEffect(() => {
+    if (auth.user !== null) {
+      setUserCarts(
+        carts.filter((item) => item.userId === auth?.user?.id)
+      );
+    }
+  }, [auth, carts]);
+
   const menuList = [
     { label: "My Acount", url: "/profile" },
     { label: "Wish List", url: "/" },
@@ -136,7 +149,7 @@ const Header = () => {
                 className="flex items-center justify-center cursor-pointer relative"
               >
                 <MdOutlineShoppingCart className="h-6 w-6 text-ass" />
-                <span className="count-badge">{carts.length}</span>
+                <span className="count-badge">{userCarts.length}</span>
               </Link>
               {/* cart button end */}
 

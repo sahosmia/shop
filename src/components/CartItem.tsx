@@ -6,9 +6,11 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { ADD_CART, DELETE_CART } from "../features/carts/cartsSlice";
+import useAuth from "../hooks/useAuth";
 
 const CartItem = ({ cartItem, onStockError }: CardItemPropsType) => {
   const dispatch = useDispatch();
+  const auth = useAuth();
 
   const product: ProductType | undefined = productsData.find(
     (item) => item.id === cartItem.productId
@@ -27,7 +29,7 @@ const CartItem = ({ cartItem, onStockError }: CardItemPropsType) => {
     if (product && product.stock < cartItem.quantity) {
       onStockError(false);
     }
-    dispatch(DELETE_CART({ productId: cartItem.productId }));
+    dispatch(DELETE_CART({ productId: cartItem.productId, userId:auth?.user?.id }));
     toast.success(`Deleted ${cartItem.productId}`);
   };
 

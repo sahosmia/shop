@@ -54,19 +54,18 @@ const ProductItem = ({ product }: ProductPropsType) => {
 
   const handleAddToCartWithQuantity = () => {
     if (product) {
-      dispatch({
-        type: "ADD_CART",
-        productId: product.id,
-        quantity: cartQuantity,
-      });
-
-      dispatch(
-        ADD_CART({
-          productId: product.id,
-          quantity: cartQuantity,
-        })
-      );
-      toast.success("Product added to cart.");
+      if(auth.user !== null){
+        dispatch(
+          ADD_CART({
+            productId: product.id,
+            quantity: cartQuantity,
+            userId: auth.user.id,
+          })
+        );
+        toast.success("Product added to cart.");
+      }else{
+        toast.error("Login First");
+      }
     }
   };
 

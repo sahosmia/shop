@@ -2,10 +2,9 @@ import { Helmet } from "react-helmet";
 
 import {
   CustomerReview,
-  ExploreCollections,
-
+  // ExploreCollections,
   ProductForHomePage,
-  ShopNowForHomePage,
+  // ShopNowForHomePage,
   HeroSlider,
   BottomToTop,
   Brand,
@@ -14,8 +13,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const HomePage = () => {
-
-
   return (
     <>
       <Helmet>
@@ -25,7 +22,7 @@ const HomePage = () => {
       {/* <TempHeader /> */}
       <HeroSlider />
       <ProductForHomePage />
-      <ExploreCollections />
+      {/* <ExploreCollections /> */}
       <ProductForHomePage />
       {/* <ShopNowForHomePage /> */}
       <CustomerReview />
