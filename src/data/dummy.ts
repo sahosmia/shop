@@ -1,83 +1,60 @@
+import VegetableCategory from "../assets/collect/category/vegetable.png"
+import JuicesCategory from "../assets/collect/category/cate-5.jpg"
+import HealthBeautyCategory from "../assets/collect/category/650-healthy_beauty.jpg"
+import TeaCoffeeCategory from "../assets/collect/category/coffice_chocolate.jpg"
+import FruitsCategory from "../assets/collect/category/fruits.jpg"
+import BreadCategory from "../assets/collect/category/bread.png"
+import FishCategory from "../assets/collect/category/fish.png"
+
+
 export const categoriesData = [
   {
     id: 1,
-    title: "smartphones",
+    title: "Vegetable",
+    slug: "vegetable",
+    thumbnail: VegetableCategory,
   },
   {
     id: 2,
-    title: "laptops",
+    title: "Fruits",
+    slug: "fruits",
+    thumbnail: FruitsCategory,
   },
   {
     id: 3,
-    title: "fragrances",
+    title: "Juices",
+    slug: "juices",
+    thumbnail: JuicesCategory,
   },
   {
     id: 4,
-    title: "skincare",
+    title: "Tea & coffee",
+    slug: "tea_&_coffee",
+    thumbnail: TeaCoffeeCategory,
   },
   {
     id: 5,
-    title: "groceries",
+    title: "Food",
+    slug: "food",
+    thumbnail: JuicesCategory,
   },
   {
     id: 6,
-    title: "home-decoration",
+    title: "Health & Beauty",
+    slug: "health_&_beauty",
+    thumbnail: HealthBeautyCategory,
   },
   {
     id: 7,
-    title: "furniture",
+    title: "Bread",
+    slug: "bread",
+    thumbnail: BreadCategory,
   },
   {
     id: 8,
-    title: "tops",
-  },
-  {
-    id: 9,
-    title: "womens-dresses",
-  },
-  {
-    id: 10,
-    title: "womens-shoes",
-  },
-  {
-    id: 11,
-    title: "mens-shirts",
-  },
-  {
-    id: 12,
-    title: "mens-shoes",
-  },
-  {
-    id: 13,
-    title: "mens-watches",
-  },
-  {
-    id: 14,
-    title: "womens-watches",
-  },
-  {
-    id: 15,
-    title: "womens-bags",
-  },
-  {
-    id: 16,
-    title: "womens-jewellery",
-  },
-  {
-    id: 17,
-    title: "sunglasses",
-  },
-  {
-    id: 18,
-    title: "automotive",
-  },
-  {
-    id: 19,
-    title: "motorcycle",
-  },
-  {
-    id: 20,
-    title: "lighting",
+    title: "Fish & Meats",
+    slug: "fish_&_meats",
+    thumbnail: FishCategory,
   },
 ];
 
@@ -120,24 +97,27 @@ export const cartsData = [
   { id: 2, productId: 6, quantity: 3 },
 ];
 
+
+import Rebel from "../assets/collect/products/rebel-kitchen-dairy-free-organic-chocolate-mylk.jpg"
+import Rebel1 from "../assets/collect/products/rebel-kitchen-dairy-free-organic-chocolate-mylk (1).jpg"
+import Rebel2 from "../assets/collect/products/rebel-kitchen-dairy-free-organic-chocolate-mylk (2).jpg"
+import Rebel3 from "../assets/collect/products/rebel-kitchen-dairy-free-organic-chocolate-mylk (3).jpg"
+import Rebel4 from "../assets/collect/products/rebel-kitchen-dairy-free-organic-chocolate-mylk (4).jpg"
+
 export const productsData = [
   {
     id: 1,
-    title: "iPhone 9",
+    title: "Rebel kitchen dairy free organic chocolate mylk",
     description: "An apple mobile which is nothing like apple",
-    price: 20,
+    price: 99,
     discountPercentage: 0,
     rating: 4.69,
     stock: 4,
     brand: "Apple",
-    category: "smartphones",
-    thumbnail: "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+    category: "Health & Beauty",
+    thumbnail: Rebel,
     images: [
-      "https://cdn.dummyjson.com/product-images/1/1.jpg",
-      "https://cdn.dummyjson.com/product-images/1/2.jpg",
-      "https://cdn.dummyjson.com/product-images/1/3.jpg",
-      "https://cdn.dummyjson.com/product-images/1/4.jpg",
-      "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+    Rebel1, Rebel2, Rebel3, Rebel4
     ],
   },
   {

@@ -1,5 +1,5 @@
 export { default as Brand } from "./Brand";
-export { default as CustomerReview } from "./CustomerReview";
+export { default as Testimonials } from "./Testimonials";
 export { default as ExploreCollections } from "./ExploreCollections";
 export { default as HeroSlider } from "./HeroSlider";
 export { default as ProductForHomePage } from "./ProductForHomePage";

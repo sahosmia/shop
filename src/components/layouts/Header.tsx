@@ -21,53 +21,47 @@ const Header = () => {
   const auth = useAuth();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [userWishLists, setUserWishLists] = useState<WishListItemReduxType[]>(
-    []
-  );
-  const [userCarts, setUserCarts] = useState<CartItemReduxType[]>(
-    []
-  );
+  const [userWishLists, setUserWishLists] = useState<WishListItemReduxType[]>([]);
+  const [userCarts, setUserCarts] = useState<CartItemReduxType[]>([]);
 
-
-// wish list 
+  // Filter wish lists and carts based on logged-in user
   useEffect(() => {
-    if (auth.user !== null) {
-      setUserWishLists(
-        wishLists.filter((item) => item.userId === auth?.user?.id)
-      );
+    if (auth.user) {
+      setUserWishLists(wishLists.filter(item => item.userId === auth?.user?.id));
+      setUserCarts(carts.filter(item => item.userId === auth?.user?.id));
     }
-  }, [auth, wishLists]);
+  }, [auth, wishLists, carts]);
 
-// cart 
-  useEffect(() => {
-    if (auth.user !== null) {
-      setUserCarts(
-        carts.filter((item) => item.userId === auth?.user?.id)
-      );
-    }
-  }, [auth, carts]);
+  
 
+  // Menu list items
   const menuList = [
-    { label: "My Acount", url: "/profile" },
+    { label: "My Account", url: "/profile" },
     { label: "Wish List", url: "/" },
     { label: "Cart List", url: "/" },
     { label: "Checkout", url: "/checkout" },
   ];
 
+  // Reference for the header element
   const headerRef = useRef<HTMLHeadingElement | null>(null);
+
+  // Add/remove fixed class to header based on scroll position
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      const position = window.pageYOffset;
+    const handleScroll = () => {
       if (headerRef.current) {
-        if (position > 200) {
+        if (window.pageYOffset > 200) {
           headerRef.current.classList.add("fixed");
         } else {
           headerRef.current.classList.remove("fixed");
         }
       }
-    });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Handle logout and navigate to login page
   const handleLogOut = () => {
     dispatch(Logout());
     navigate("/login");
@@ -76,18 +70,17 @@ const Header = () => {
   return (
     <header
       ref={headerRef}
-      className=" border-b bg-white  py-6 min-h-14  top-0 left-0 right-0 z-10 transition-all duration-1000"
+      className="border-b bg-white py-4 sm:py-6 min-h-14 top-0 left-0 right-0 z-10 transition-all duration-1000"
     >
-      <div className="container flex justify-between items-center h-full">
-        <div className="flex items-center gap-5">
+      <div className="container flex justify-between items-center h-full px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center gap-3 sm:gap-5">
           <Logo />
-          <ul className="flex gap-5">
+          <ul className="hidden sm:flex gap-5">
             <li>
-              <Link className=" font-medium text-ass" to="/">
+              <Link className="font-medium text-ass" to="/">
                 Home
               </Link>
             </li>
-
             <li>
               <Link className="font-medium text-ass" to="/products">
                 Product
@@ -95,21 +88,21 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <div className="flex gap-10">
-          <div className="flex  items-center divide-x divide-ass ">
-            {/* Search Button  */}
-            <div className="flex item-center cursor-pointer relative mr-3">
+        <div className="flex gap-6 sm:gap-10">
+          <div className="flex items-center divide-x divide-ass">
+            {/* Search Button */}
+            <div className="flex items-center cursor-pointer relative mr-3">
               <MdOutlineSearch className="h-6 w-6 text-ass" />
             </div>
-            {/* Search Button end */}
+            {/* End Search Button */}
 
             <div className="flex items-center gap-4 pl-3">
-              {/* Acount List  */}
-              {auth.user !== null && (
-                <div className="flex items-center justify-center  group relative">
+              {/* Account Menu */}
+              {auth.user && (
+                <div className="flex items-center justify-center group relative">
                   <BiUser className="h-6 w-6 text-ass cursor-pointer" />
-                  <div className=" absolute invisible opacity-0 translate-y-5 group-hover:translate-y-0  group-hover:opacity-100 group-hover:visible top-full -right-1/2 bg-white shadow-sm border p-5 rounded w-48 text-black z-20 transition-all duration-300">
-                    {menuList.map((menu) => (
+                  <div className="absolute invisible opacity-0 translate-y-5 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible top-full -right-1/2 bg-white shadow-sm border p-5 rounded w-48 text-black z-20 transition-all duration-300">
+                    {menuList.map(menu => (
                       <div className="py-2" key={menu.label}>
                         <Link
                           className="inline text-sm py-2 text-ass hover:text-primary2 transition-all"
@@ -119,7 +112,6 @@ const Header = () => {
                         </Link>
                       </div>
                     ))}
-
                     <div className="py-2">
                       <button
                         onClick={handleLogOut}
@@ -131,9 +123,9 @@ const Header = () => {
                   </div>
                 </div>
               )}
-              {/* Acount List end */}
+              {/* End Account Menu */}
 
-              {/* wish list button  */}
+              {/* Wish List Button */}
               <Link
                 to="/wish-lists"
                 className="flex items-center justify-center cursor-pointer relative"
@@ -141,9 +133,9 @@ const Header = () => {
                 <MdOutlineFavoriteBorder className="h-6 w-6 text-ass" />
                 <span className="count-badge">{userWishLists.length}</span>
               </Link>
-              {/* wish list button end */}
+              {/* End Wish List Button */}
 
-              {/* cart button  */}
+              {/* Cart Button */}
               <Link
                 to="/carts"
                 className="flex items-center justify-center cursor-pointer relative"
@@ -151,10 +143,10 @@ const Header = () => {
                 <MdOutlineShoppingCart className="h-6 w-6 text-ass" />
                 <span className="count-badge">{userCarts.length}</span>
               </Link>
-              {/* cart button end */}
+              {/* End Cart Button */}
 
-              {/* login button  */}
-              {auth.user === null && (
+              {/* Login Button */}
+              {!auth.user && (
                 <Link
                   to="/login"
                   className="flex items-center justify-center cursor-pointer"
@@ -163,7 +155,7 @@ const Header = () => {
                   <MdOutlineLogin className="h-6 w-6 text-ass" />
                 </Link>
               )}
-              {/* login button end */}
+              {/* End Login Button */}
             </div>
           </div>
         </div>

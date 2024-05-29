@@ -106,3 +106,18 @@ body{
   font-weight: 400;
   font-style: normal;
 }
+
+.swiper-button-next,
+.swiper-button-prev {
+  @apply bg-primary text-white w-10 h-10 flex justify-center items-center rounded-full shadow-lg;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 20px; /* Adjust the size of the arrow */
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  @apply bg-secondary;
+}

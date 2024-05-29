@@ -1,12 +1,12 @@
 import { IoClose } from "react-icons/io5";
-import { CardItemPropsType, ProductType } from "../types";
-import { productsData } from "../data/dummy";
+import { CardItemPropsType, ProductType } from "../../types";
+import { productsData } from "../../data/dummy";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { ADD_CART, DELETE_CART } from "../features/carts/cartsSlice";
-import useAuth from "../hooks/useAuth";
+import { ADD_CART, DELETE_CART } from "../../features/carts/cartsSlice";
+import useAuth from "../../hooks/useAuth";
 
 const CartItem = ({ cartItem, onStockError }: CardItemPropsType) => {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const CartItem = ({ cartItem, onStockError }: CardItemPropsType) => {
     if (product && product.stock < cartItem.quantity) {
       onStockError(false);
     }
-    dispatch(DELETE_CART({ productId: cartItem.productId, userId:auth?.user?.id }));
+    dispatch(DELETE_CART({ productId: cartItem.productId, userId: auth?.user?.id }));
     toast.success(`Deleted ${cartItem.productId}`);
   };
 
@@ -50,10 +50,10 @@ const CartItem = ({ cartItem, onStockError }: CardItemPropsType) => {
     }
 
     dispatch(ADD_CART({
-       quantity: type === "plus" ? cartItem.quantity + 1 : cartItem.quantity - 1,
+      quantity: type === "plus" ? cartItem.quantity + 1 : cartItem.quantity - 1,
       productId: cartItem.productId,
     }))
-  
+
   };
 
   return (

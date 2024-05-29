@@ -1,21 +1,22 @@
-import { BiCartAdd } from "react-icons/bi";
-import { getDiscountPrice } from "../../utils";
-import Rating from "@mui/material/Rating";
-import { useDispatch } from "react-redux";
-import { ADD_CART } from "../../features/carts/cartsSlice";
-import { toast } from "react-toastify";
-import { ProductPropsType } from "../../types";
-import { Link } from "react-router-dom";
 import {
   MdOutlineFavorite,
   MdOutlineFavoriteBorder,
   MdOutlineRemoveRedEye,
 } from "react-icons/md";
-import useAuth from "../../hooks/useAuth";
 import { Tooltip } from "@mui/material";
+import Rating from "@mui/material/Rating";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { MouseEvent, useState } from "react";
-import { ADD_Wish } from "../../features/wish-lists/wishListsSlice";
+import { useDispatch } from "react-redux";
+import { BiCartAdd } from "react-icons/bi";
+import { ProductPropsType } from "../../types";
+import useAuth from "../../hooks/useAuth";
 import useWishLists from "../../hooks/useWishLists";
+import { ADD_CART } from "../../features/carts/cartsSlice";
+import { ADD_Wish } from "../../features/wish-lists/wishListsSlice";
+import { getDiscountPrice } from "../../utils";
+import ProductQuickView from "../Product/ProductQuickView";
 
 const ProductItem = ({ product }: ProductPropsType) => {
   const dispatch = useDispatch();
@@ -29,13 +30,18 @@ const ProductItem = ({ product }: ProductPropsType) => {
       (item) => item.productId === product.id && item.userId === auth?.user?.id
     );
   const handleAddtoCart = (id: number) => {
-    dispatch(
-      ADD_CART({
-        productId: id,
-        quantity: 1,
-      })
-    );
-    toast.success("add success");
+    if (auth.user !== null) {
+      dispatch(
+        ADD_CART({
+          productId: id,
+          quantity: 1,
+          userId: auth.user.id,
+        })
+      );
+      toast.success("add success");
+    } else {
+      toast.error("Login First");
+    }
   };
 
   const handleAddWishList = () => {
@@ -52,32 +58,9 @@ const ProductItem = ({ product }: ProductPropsType) => {
     }
   };
 
-  const handleAddToCartWithQuantity = () => {
-    if (product) {
-      if(auth.user !== null){
-        dispatch(
-          ADD_CART({
-            productId: product.id,
-            quantity: cartQuantity,
-            userId: auth.user.id,
-          })
-        );
-        toast.success("Product added to cart.");
-      }else{
-        toast.error("Login First");
-      }
-    }
-  };
+  
 
   // Quick view
-  const [cartQuantity, setCartQuantity] = useState<number>(1);
-
-  const handleQuantityChange = (change: number) => {
-    if (cartQuantity + change > 0) {
-      setCartQuantity((prev) => prev + change);
-    }
-  };
-
   const handleQuickViewClose = (e: MouseEvent<HTMLDivElement>) => {
     if ((e.target as HTMLElement).id === "settings-sidebar") {
       setQuickView(false);
@@ -86,8 +69,7 @@ const ProductItem = ({ product }: ProductPropsType) => {
 
   return (
     <>
-      <div className="cursor-pointer block mt-5 max-w-sm ">
-        <div className="bg-white relative overflow-hidden rounded-lg border ">
+        <div className="bg-white relative overflow-hidden rounded-lg border cursor-pointer block mt-5 max-w-sm  ">
           <div className="absolute top-3 left-3">
             <div className="uppercase bg-green-400 px-3 py-0.5 text-[10px] text-white inline-block rounded-full  z-0 mr-2">
               New
@@ -103,7 +85,7 @@ const ProductItem = ({ product }: ProductPropsType) => {
           </div>
 
           <div className="group transition-all">
-            <div className="h-[200px]   overflow-hidden relative">
+            <div className="h-[300px] overflow-hidden relative">
               <img
                 src={product.thumbnail}
                 alt={product.title}
@@ -121,7 +103,7 @@ const ProductItem = ({ product }: ProductPropsType) => {
                 <Tooltip title="Add to Wish List" placement="top" arrow>
                   <button onClick={handleAddWishList} className="relative pl-1">
                     {checkWhisLists ? (
-                      <MdOutlineFavorite className="text-primary"/>
+                      <MdOutlineFavorite className="text-primary" />
                     ) : (
                       <MdOutlineFavoriteBorder />
                     )}
@@ -130,7 +112,9 @@ const ProductItem = ({ product }: ProductPropsType) => {
               </div>
             </div>
             <div className="mt-2 p-3">
-              <h6 className=" text-assLight mb-3 text-xs">{product.category}</h6>
+              <h6 className=" text-assLight mb-3 text-xs">
+                {product.category}
+              </h6>
               <Link
                 to={`/products/${product.id}`}
                 className="font-medium text-ass mb-3"
@@ -177,74 +161,10 @@ const ProductItem = ({ product }: ProductPropsType) => {
             </div>
           </div>
         </div>
-      </div>
 
       {/* Quick view  */}
       {quickView && (
-        <div
-          id="settings-sidebar"
-          onClick={handleQuickViewClose}
-          className=" z-10 absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-black bg-opacity-40 flex-center"
-        >
-          <div className="rounded bg-white flex gap-20 p-10">
-            <div className="">
-              <img className="w-full h-full" src={product.thumbnail} alt="" />
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-ass pb-2">
-                {product.title}
-              </h2>
-              <div className="flex gap-2 items-end mb-4">
-                <span className=" font-semibold text-primary text-2xl">
-                  $
-                  {product.discountPercentage === 0
-                    ? product.price
-                    : getDiscountPrice(
-                        product.price,
-                        product.discountPercentage
-                      )}
-                </span>
-                {product.discountPercentage !== 0 && (
-                  <div>
-                    <span className=" line-through text-assLight  text-lg font-medium">
-                      ${product.price.toFixed(2)}
-                    </span>
-                    <span className=" text-primary2 text-sm  font-medium ml-3">
-                      (-{product.discountPercentage}%)
-                    </span>
-                  </div>
-                )}
-              </div>
-              <p className="text-assLight mb-2">{product.description}</p>
-              <div className="flex gap-2">
-                <div className="border-2 inline-block rounded border-primary">
-                  <button
-                    className="w-9 h-9 text-primary text-xl "
-                    onClick={() => handleQuantityChange(-1)}
-                  >
-                    -
-                  </button>
-                  <span className="px-1">{cartQuantity}</span>
-                  <button
-                    className="w-9 h-9 text-primary text-xl "
-                    onClick={() => handleQuantityChange(1)}
-                  >
-                    +
-                  </button>
-                </div>
-
-                <button
-                  onClick={handleAddToCartWithQuantity}
-                  className="bg-primary bg-opacity-80 hover:bg-opacity-100  text-white  transition-all duration-300 py-2 px-4 text-sm font-medium  flex justify-center items-center  rounded"
-                >
-                  <BiCartAdd className="text-base mr-1" />
-                  Add to cart
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ProductQuickView handleQuickViewClose={handleQuickViewClose} product={product} />
       )}
     </>
   );

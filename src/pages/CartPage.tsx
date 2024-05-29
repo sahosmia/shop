@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
 import { cupons, productsData } from "../data/dummy";
-import CartItem from "../components/CartItem";
+import CartItem from "../components/Cart/CartItem";
 import { useEffect, useState } from "react";
 import { BiSend } from "react-icons/bi";
 import { CartItemReduxType, CuponType } from "../types";

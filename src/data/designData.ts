@@ -1,4 +1,7 @@
 import { Feature } from "../types";
+import bgOne from "../assets/store_banner/one.png";
+import bgTwo from "../assets/store_banner/two.png";
+import bgThree from "../assets/store_banner/three.png";
 
 export const reviews = [
   {
@@ -89,7 +92,7 @@ export const reviews = [
     date: "2023-07-15",
   },
 ];
-export const features : Feature[]  = [
+export const features: Feature[] = [
   {
     id: 1,
     icon: "support",
@@ -120,29 +123,39 @@ export const features : Feature[]  = [
   },
 ];
 
+import Brand1 from "../assets/brands/brand1.png";
+import Brand2 from "../assets/brands/brand2.png";
+import Brand3 from "../assets/brands/brand3.png";
+import Brand4 from "../assets/brands/brand4.png";
 export const brands = [
   {
     id: 1,
-    img: "https://anvogue.vercel.app/_next/image?url=%2Fimages%2Fbrand%2F1.png&w=384&q=75",
+    img: Brand1,
   },
   {
     id: 2,
-    img: "https://anvogue.vercel.app/_next/image?url=%2Fimages%2Fbrand%2F2.png&w=384&q=75",
+    img: Brand2,
   },
   {
     id: 3,
-    img: "https://anvogue.vercel.app/_next/image?url=%2Fimages%2Fbrand%2F3.png&w=384&q=75",
+    img: Brand3,
   },
   {
     id: 4,
-    img: "https://anvogue.vercel.app/_next/image?url=%2Fimages%2Fbrand%2F4.png&w=384&q=75",
+    img: Brand4,
   },
   {
     id: 5,
-    img: "https://anvogue.vercel.app/_next/image?url=%2Fimages%2Fbrand%2F5.png&w=384&q=75",
+    img: Brand3,
   },
   {
     id: 6,
-    img: "https://anvogue.vercel.app/_next/image?url=%2Fimages%2Fbrand%2F6.png&w=384&q=75",
+    img: Brand2,
   },
+];
+
+export const storeBannerData = [
+  { id: 1, title: "Everyday Fresh & Clean with Our Products", bg: bgOne },
+  { id: 2, title: "Make your Breakfast Healthy and Easy", bg: bgTwo },
+  { id: 3, title: "The best Organic Products Online", bg: bgThree },
 ];

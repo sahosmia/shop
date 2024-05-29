@@ -1,7 +1,15 @@
+import { Helmet } from "react-helmet"
+import PageBanner from "../PageBanner"
 
 const ProductNotFound = () => {
   return (
-    <div>ProductNotFound</div>
+    <>
+    <Helmet>
+        <title>Product Category Page</title>
+        <meta name="description" content="Anything will never seo." />
+      </Helmet>
+      <PageBanner title="Not Found" />
+    </>
   )
 }
 
