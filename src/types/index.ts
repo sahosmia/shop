@@ -23,6 +23,7 @@ export type ProductType = {
   category: string;
   thumbnail: string;
   images: string[];
+  tags:string[]
 };
 
 export type CartProductType = {

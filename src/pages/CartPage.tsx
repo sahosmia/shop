@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import useCarts from "../hooks/useCarts";
 import EmptyCart from "../components/Cart/EmptyCart";
 import useAuth from "../hooks/useAuth";
+import PageBanner from "../components/PageBanner";
 
 const CartPage = () => {
   const carts = useCarts();
@@ -78,9 +79,12 @@ const CartPage = () => {
   return (
     <>
       <Helmet>
-        <title>CartPage</title>
+        <title>Cart Page</title>
         <meta name="description" content="Anything will never seo." />
       </Helmet>
+
+      <PageBanner title="Cart Page" />
+
 
       <section className="py-20">
         <div className="container">

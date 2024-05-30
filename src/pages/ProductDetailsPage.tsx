@@ -6,6 +6,7 @@ import { ProductType } from "../types";
 import ProductDescriptionReview from "../components/ProductDetails/ProductDescriptionReview";
 import ProductDetailsImage from "../components/ProductDetails/ProductDetailsImage";
 import ProductInfo from "../components/ProductDetails/ProductInfo";
+import PageBanner from "../components/PageBanner";
 
 const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -24,6 +25,8 @@ const ProductDetailsPage: React.FC = () => {
         <title>ProductDetailsPage</title>
         <meta name="description" content="Anything will never seo." />
       </Helmet>
+      <PageBanner title={product.title} />
+
       <section className="py-20">
         <div className="container flex-col lg:flex-row flex gap-20">
           <ProductDetailsImage product={product} />

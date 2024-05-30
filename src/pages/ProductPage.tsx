@@ -6,10 +6,10 @@ import { useProducts } from "../hooks/useProducts";
 import CustomPagination from "../components/Product/CustomPagination";
 import PageBanner from "../components/PageBanner";
 import ProductItem from "../components/tools/ProductItem";
-import CategoryFilter from "../components/Product/CategoryFilter";
 import PriceFilter from "../components/Product/PriceFilter";
 import Loading from "../components/tools/Loading";
 import EmptyData from "../components/tools/EmptyData";
+import CategoryFilter from "../components/Product/CategoryFilter";
 
 const ProductPage = () => {
   // State variables for filtering and pagination
@@ -97,7 +97,7 @@ const ProductPage = () => {
                       whileInView={{ opacity: 1 }}
                       viewport={{ once: true }}
                       key={product.id}
-                      
+
                     >
                       <ProductItem product={product} />
                     </motion.div>

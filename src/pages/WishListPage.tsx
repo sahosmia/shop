@@ -5,6 +5,7 @@ import useWishLists from "../hooks/useWishLists";
 import { useEffect, useState } from "react";
 import { WishListItemReduxType } from "../types";
 import EmptyWishList from "../components/WishLists/EmptyWishList";
+import PageBanner from "../components/PageBanner";
 
 
 
@@ -28,6 +29,8 @@ const WishListPage = () => {
         <title>Wish Lists Page</title>
         <meta name="description" content="Anything will never seo." />
       </Helmet>
+      <PageBanner title="Wish List" />
+
 
       {/* <h2>{data}</h2> */}
       <section className="py-20">

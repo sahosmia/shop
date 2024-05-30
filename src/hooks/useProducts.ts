@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
 import { ProductType } from "../types";
-import { categoriesData, productsData } from "../data/dummy";
+import { categoriesData, productsData, tagsData } from "../data/dummy";
 
 export const useProducts = (
   page: number,
   minPrice?: number,
   maxPrice?: number,
-  selectedCategory?: string
+  selectedCategory?: string,
+  selectedTags: string[] = []
 ) => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [categories, setCategories] = useState<
-    { id: number; title: string; quantity: number }[]
+    { id: number; slug: string; title: string; quantity: number }[]
+  >([]);
+  const [tags, setTags] = useState<
+    { id: number; slug: string; title: string; quantity: number }[]
   >([]);
   const [loading, setLoading] = useState(false);
   const [totalItems, setTotalItems] = useState<number>(0);
@@ -20,15 +24,21 @@ export const useProducts = (
     setLoading(true);
     const timeoutId = setTimeout(() => {
       const filteredProducts = productsData.filter((product) => {
-        return (
+        const matchesPrice =
           (!minPrice || product.price >= minPrice) &&
-          (!maxPrice || product.price <= maxPrice) &&
-          (!selectedCategory || product.category === selectedCategory)
-        );
+          (!maxPrice || product.price <= maxPrice);
+        const matchesCategory =
+          !selectedCategory || product.category === selectedCategory;
+        const matchesTags =
+          selectedTags.length === 0 ||
+          selectedTags.every((tag) => product.tags.includes(tag));
+
+        return matchesPrice && matchesCategory && matchesTags;
       });
 
       setProducts(filteredProducts.slice((page - 1) * perPage, page * perPage));
       setTotalItems(filteredProducts.length);
+
       setCategories(
         categoriesData.map((item) => {
           const total = filteredProducts.filter(
@@ -37,11 +47,21 @@ export const useProducts = (
           return { ...item, quantity: total };
         })
       );
+
+      setTags(
+        tagsData.map((item) => {
+          const total = filteredProducts.filter((product) =>
+            product.tags.includes(item.title)
+          ).length;
+          return { ...item, quantity: total };
+        })
+      );
+
       setLoading(false);
     }, 1000);
 
     return () => clearTimeout(timeoutId);
-  }, [page, minPrice, maxPrice, selectedCategory]);
+  }, [page, minPrice, maxPrice, selectedCategory, selectedTags]);
 
-  return { products, categories, loading, totalItems };
+  return { products, categories, tags, loading, totalItems };
 };

@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { getDiscountPrice } from "../../utils";
 import { BiCartAdd } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useCarts from "../../hooks/useCarts";
 import useCartsActions from "../../hooks/useCartsActions";
 import useCartsItem from "../../hooks/useCartsItem";
 import { ProductType } from "../../types";
+import useCategoryByTitle from "../../hooks/useCategoryByTitle";
 
 const ProductInfo = ({ product }: { product: ProductType }) => {
   const cartItem = useCartsItem(product.id);
+  const categoryItem = useCategoryByTitle(product.category);
 
   const [cartQuantity, setCartQuantity] = useState<number>(
     (cartItem !== null && cartItem?.quantity) || 1
@@ -59,7 +61,7 @@ const ProductInfo = ({ product }: { product: ProductType }) => {
         )}
       </div>
       <p className="text-assLight mb-2">{product.description}</p>
-      <p>Category: {product.category}</p>
+      <p><span className="">Category:</span> <Link to={`/products/category/${categoryItem?.slug}`}>{product.category}</Link></p>
       <p>Brand: {product.brand}</p>
       <p>tag: {product.brand}</p>
       <div className="flex gap-2 flex-wrap">

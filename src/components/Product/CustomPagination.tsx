@@ -23,11 +23,8 @@ const CustomPagination = ({
     .fill("*")
     .map((_, index) => index + 1);
 
-  console.log(currentPage);
-  console.log("a");
-
   return (
-    <div className="pagination">
+    <div className="pagination pt-4">
       <ul className="pagination-list flex gap-2">
         <li
           key="prev"

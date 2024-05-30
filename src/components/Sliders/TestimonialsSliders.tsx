@@ -1,7 +1,7 @@
 import "swiper/css";
 import "../../style.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import { reviews } from "../../data/designData";
 
 const TestimonialsSliders = () => {
@@ -10,7 +10,7 @@ const TestimonialsSliders = () => {
       spaceBetween={20}
       loop={true}
       slidesPerView={1}
-      modules={[Autoplay, Pagination]}
+      modules={[Autoplay]}
       autoplay={{ delay: 5000 }}
       breakpoints={{
         768: {

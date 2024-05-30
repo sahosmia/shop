@@ -70,7 +70,7 @@ const ProductItem = ({ product }: ProductPropsType) => {
   return (
     <>
         <div className="bg-white relative overflow-hidden rounded-lg border cursor-pointer block mt-5 max-w-sm  ">
-          <div className="absolute top-3 left-3">
+          <div className="absolute top-3 left-3 z-10">
             <div className="uppercase bg-green-400 px-3 py-0.5 text-[10px] text-white inline-block rounded-full  z-0 mr-2">
               New
             </div>
@@ -79,9 +79,9 @@ const ProductItem = ({ product }: ProductPropsType) => {
               12.36%
             </div>
           )} */}
-            <div className="uppercase bg-orange-400 px-3 py-0.5 text-[10px] text-white inline-block rounded-full  z-0 mr-2">
+            {/* <div className="uppercase bg-orange-400 px-3 py-0.5 text-[10px] text-white inline-block rounded-full  z-0 mr-2">
               Sale
-            </div>
+            </div> */}
           </div>
 
           <div className="group transition-all">

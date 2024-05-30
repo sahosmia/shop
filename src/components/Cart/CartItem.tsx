@@ -52,6 +52,7 @@ const CartItem = ({ cartItem, onStockError }: CardItemPropsType) => {
     dispatch(ADD_CART({
       quantity: type === "plus" ? cartItem.quantity + 1 : cartItem.quantity - 1,
       productId: cartItem.productId,
+      userId: auth?.user?.id,
     }))
 
   };

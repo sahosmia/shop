@@ -15,7 +15,7 @@ const ProductQuickView: React.FC<ProductQuickViewProps> = ({
     <div
       id="settings-sidebar"
       onClick={handleQuickViewClose}
-      className=" z-10 fixed top-0 left-0 right-0 bottom-0 w-full h-full bg-black bg-opacity-40 flex-center"
+      className=" z-20 fixed top-0 left-0 right-0 bottom-0 w-full h-full bg-black bg-opacity-40 flex-center"
     >
       <div className="rounded bg-white flex gap-20 p-10">
         <ProductDetailsImage product={product} />
