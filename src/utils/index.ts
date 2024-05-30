@@ -1,3 +1,4 @@
+import { brandsData, categoriesData, tagsData } from "../data/dummy";
 import { CartItemType, WishListItemReduxType } from "../types";
 
 export const getDiscountPrice = (price: number, discountRate: number) => {
@@ -21,3 +22,24 @@ export const getWishListID = (arr: WishListItemReduxType[]) => {
   const maxID = Math.max(...arr.map((item) => item.id));
   return maxID + 1;
 };
+
+
+
+
+const getCategoryByTitle = (title: string) => {
+  const categoryItem = categoriesData.find((item) => item.title === title);
+  return categoryItem;
+};
+
+const getBrandByTitle = (title:string) => {
+  const brandItem = brandsData.find((item) => item.title === title);
+  return brandItem;
+};
+
+const getTagByTitle = (title:string) => {
+  const tagItem = tagsData.find((item) => item.title === title);  return tagItem;
+};
+
+
+
+export { getCategoryByTitle, getBrandByTitle, getTagByTitle };

@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
-import { getDiscountPrice } from "../../utils";
+import {
+  getBrandByTitle,
+  getCategoryByTitle,
+  getDiscountPrice,
+  getTagByTitle,
+} from "../../utils";
 import { BiCartAdd } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import useCarts from "../../hooks/useCarts";
 import useCartsActions from "../../hooks/useCartsActions";
 import useCartsItem from "../../hooks/useCartsItem";
 import { ProductType } from "../../types";
-import useCategoryByTitle from "../../hooks/useCategoryByTitle";
 
 const ProductInfo = ({ product }: { product: ProductType }) => {
   const cartItem = useCartsItem(product.id);
-  const categoryItem = useCategoryByTitle(product.category);
+  const categoryItem = getCategoryByTitle(product.category);
+  const brandItem = getBrandByTitle(product.brand);
 
   const [cartQuantity, setCartQuantity] = useState<number>(
     (cartItem !== null && cartItem?.quantity) || 1
@@ -61,9 +66,23 @@ const ProductInfo = ({ product }: { product: ProductType }) => {
         )}
       </div>
       <p className="text-assLight mb-2">{product.description}</p>
-      <p><span className="">Category:</span> <Link to={`/products/category/${categoryItem?.slug}`}>{product.category}</Link></p>
-      <p>Brand: {product.brand}</p>
-      <p>tag: {product.brand}</p>
+      <p>
+        <span className="">Category:</span>{" "}
+        <Link to={`/products/category/${categoryItem?.slug}`}>
+          {product.category}
+        </Link>
+      </p>
+      <p>
+        <span className="">Brand:</span>{" "}
+        <Link to={`/products/brand/${brandItem?.slug}`}>{product.brand}</Link>
+      </p>
+
+      <p>
+        <span className="">Tag:</span>{" "}
+        {product.tags.map((tag) => (
+          <Link key={tag} to={`/products/tag/${getTagByTitle(tag)?.slug}`}>{tag}, </Link>
+        ))}
+      </p>
       <div className="flex gap-2 flex-wrap">
         <div className="border-2 inline-block rounded border-primary">
           <button

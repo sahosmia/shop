@@ -13,6 +13,8 @@ import {
 import PrivateRoute from "../components/layouts/PrivateRoute";
 import ProductCategoryPage from "../pages/ProductCategoryPage";
 import NotFoundPage from "../pages/NotFoundPage";
+import ProductBrandPage from "../pages/ProductBrandPage";
+import ProductTagPage from "../pages/ProductTagPage";
 
 const Router = () => {
   return (
@@ -25,6 +27,11 @@ const Router = () => {
           path="products/category/:category_slug"
           element={<ProductCategoryPage />}
         />
+        <Route
+          path="products/brand/:brand_slug"
+          element={<ProductBrandPage />}
+        />
+        <Route path="products/tag/:tag_slug" element={<ProductTagPage />} />
         <Route path="carts" element={<CartPage />} />
         <Route path="wish-lists" element={<WishListPage />} />
         <Route element={<PrivateRoute />}>

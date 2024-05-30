@@ -21,7 +21,7 @@ const TagFilter: React.FC<TagsFilterProps> = ({
 
   
   return (
-    <div className="mb-20 bg-gray-100 rounded-lg p-8">
+    <div className=" bg-gray-100 rounded-lg p-8">
       <h6 className="text-2xl font-semibold text-primary2 pb-5">Tags</h6>
       <ul>
         {tags.map((tag) => (

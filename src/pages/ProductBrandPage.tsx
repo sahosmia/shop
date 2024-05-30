@@ -1,34 +1,31 @@
 import { useParams } from "react-router-dom";
 import PageBanner from "../components/PageBanner";
 import { Helmet } from "react-helmet";
-import { categoriesData } from "../data/dummy";
+import { brandsData } from "../data/dummy";
 import ProductNotFound from "../components/Error/ProductNotFound";
 import { useMemo, useState } from "react";
 import { useProducts } from "../hooks/useProducts";
 import PriceFilter from "../components/Product/PriceFilter";
 import { MdFilterAlt } from "react-icons/md";
 import TagFilter from "../components/Product/TagFilter";
-import BrandFilter from "../components/Product/BrandFilter";
+import CategoryFilter from "../components/Product/CategoryFilter";
 import ProductListContent from "../components/Product/ProductListContent";
 
-const ProductCategoryPage = () => {
-  const { category_slug } = useParams<{ category_slug: string }>();
-  const category = categoriesData.find((item) => item.slug === category_slug);
+const ProductBrandPage = () => {
+  const { brand_slug } = useParams<{ brand_slug: string }>();
+  const brand = brandsData.find((item) => item.slug === brand_slug);
 
   const [minPrice, setMinPrice] = useState<number | undefined>(undefined);
   const [maxPrice, setMaxPrice] = useState<number | undefined>(undefined);
 
-  const selectedCategory = useMemo(
-    () => (category && [category.title]) || [],
-    [category]
-  );
+  const selectedBrand = useMemo(() => (brand && [brand.title]) || [], [brand]);
 
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [selectedBrand, setSelectedBrand] = useState<string[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
   const [page, setPage] = useState<number>(1);
   const [filterShow, setFilterShow] = useState<boolean>(false);
 
-  const { products, tags, brands, loading, totalItems } = useProducts(
+  const { products, tags, categories, loading, totalItems } = useProducts(
     page,
     minPrice,
     maxPrice,
@@ -37,7 +34,7 @@ const ProductCategoryPage = () => {
     selectedBrand
   );
 
-  if (!category) {
+  if (!brand) {
     return <ProductNotFound />;
   }
 
@@ -46,19 +43,20 @@ const ProductCategoryPage = () => {
   const handleFilterReset = () => {
     setMinPrice(0);
     setMaxPrice(1000);
-    setSelectedBrand([]);
+    setSelectedCategory([]);
     setSelectedTags([]);
   };
+
   return (
     <>
       <Helmet>
-        <title>{category.title} - Product Category Page</title>
+        <title>{brand.title} - Product Brand Page</title>
         <meta
           name="description"
-          content={`Find the best products in the ${category.title} category.`}
+          content={`Find the best products in the ${brand.title} category.`}
         />
       </Helmet>
-      <PageBanner title={`Category : ${category.title}`} />
+      <PageBanner title={`Brand : ${brand.title}`} />
 
       <section>
         <div className="container py-20 gap-5">
@@ -81,15 +79,17 @@ const ProductCategoryPage = () => {
                 />
                 <button onClick={handleFilterReset}>Reset Filter</button>
               </div>
+
+              <CategoryFilter
+                categories={categories}
+                selectedCategory={selectedCategory}
+                onSelectCategory={setSelectedCategory}
+              />
+
               <TagFilter
                 tags={tags}
                 selectedTags={selectedTags}
                 onSelectTags={setSelectedTags}
-              />
-              <BrandFilter
-                brands={brands}
-                selectedBrand={selectedBrand}
-                onSelectBrand={setSelectedBrand}
               />
             </div>
           )}
@@ -107,4 +107,4 @@ const ProductCategoryPage = () => {
   );
 };
 
-export default ProductCategoryPage;
+export default ProductBrandPage;
