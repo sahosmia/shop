@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
 
 const BottomToTop = () => {
+  
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {

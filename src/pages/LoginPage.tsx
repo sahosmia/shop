@@ -7,7 +7,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { users } from "../data/users";
 import { useDispatch } from "react-redux";
 import { Login } from "../features/auth/authSlice";
-interface IFromInputs {
+interface FromInputs {
   email: string;
   password: string;
 }
@@ -23,7 +23,7 @@ const LoginPage = () => {
     handleSubmit,
     formState: { errors },
     setError,
-  } = useForm<IFromInputs>({
+  } = useForm<FromInputs>({
     defaultValues: {
       // add default value for unknown person to login
       email: "admin@gmail.com",
@@ -36,25 +36,28 @@ const LoginPage = () => {
     if (auth.user !== null) {
       navigate("/");
     }
-  }, [auth, navigate]);
+  }, [auth.user, navigate]);
 
-  // form submit
-  const formSubmit = (formData: IFromInputs) => {
-    // check user exist
+  const formSubmit = (formData: FromInputs) => {
+    // Check if user exists
     const userExist = users.find((user) => user.email === formData.email);
     if (userExist) {
       if (userExist.password === formData.password) {
-        // call redux method
+        // Call redux method
         dispatch(Login(userExist));
         navigate("/");
       } else {
-        setError("email", {
+        setError("password", {
           type: "custom",
-          message: "Your crediantial is wrong",
+          message: "The password you entered is incorrect. Please try again.",
         });
       }
     } else {
-      setError("email", { type: "custom", message: "This Email Not Found" });
+      setError("email", {
+        type: "custom",
+        message:
+          "No account found with this email. Please check the email and try again.",
+      });
     }
   };
 

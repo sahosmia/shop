@@ -9,20 +9,19 @@ const EmptyWishList = () => {
         variants={downFadeVariants}
         initial="initial"
         whileInView="whileInView"
-        className="text-2xl font-bold text-primary mb-4"
+        className="text-3xl font-bold text-primary"
       >
-        Your wish-list is empty.
+        Your Wish List is Empty
       </motion.h4>
       <motion.p
         variants={rightFadeVariants}
         initial="initial"
         whileInView="whileInView"
-        className="text-assLight mb-5 max-w-2xl"
+        className="text-assLight my-5 max-w-2xl"
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-        beatae officia sapiente tenetur perferendis nisi doloremque, a laborum
-        alias, excepturi inventore, soluta eius nam nihil temporibus officiis
-        quae voluptate porro?
+        It seems like your wish list is empty. You haven't added any products
+        yet. Explore our wide range of products and add them to your wish list
+        for easy access later.
       </motion.p>
       <motion.div
         variants={upFadeVariants}
@@ -30,7 +29,7 @@ const EmptyWishList = () => {
         whileInView="whileInView"
       >
         <Link className="primary-btn" to="/products">
-          Continue Shoping
+          Explore Products
         </Link>
       </motion.div>
     </div>

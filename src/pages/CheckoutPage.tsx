@@ -17,6 +17,7 @@ const CheckoutPage = () => {
     control,
     formState: { errors },
   } = useForm<IFromInputs>();
+  
   const formSubmit = (data: IFromInputs) => {
     console.log(data);
   };

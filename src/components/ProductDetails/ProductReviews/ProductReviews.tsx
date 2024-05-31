@@ -9,7 +9,7 @@ const ProductReviews = ({ product }: ProductPropsType) => {
   return (
     <div>
       <ProductReviewsContent product={product} />
-      {auth.user === null ? <LoginMessage /> : <ProductReviewsForm />}
+      {auth.user === null ? <LoginMessage /> : <ProductReviewsForm product={product}/>}
     </div>
   );
 };

@@ -21,7 +21,9 @@ const WishListItem = ({ wishListItem }: WishListItemPropsType) => {
   );
   // Function to handle delete
   const onDelete = () => {
-    dispatch(DELETE_Wish({ productId: wishListItem.productId, userId:auth?.user?.id }));
+    dispatch(
+      DELETE_Wish({ productId: wishListItem.productId, userId: auth?.user?.id })
+    );
     toast.success(`Deleted ${wishListItem.productId}`);
   };
 
@@ -31,7 +33,7 @@ const WishListItem = ({ wishListItem }: WishListItemPropsType) => {
         <Link to={`/products/${product?.id}`}>{product?.title}</Link>
       </div>
       <div className="flex-1 p-2">{product?.price}</div>
-     
+
       <div className="flex-1 p-2">{product?.discountPercentage}</div>
       <div className="flex-1 p-2">
         {product && product.stock === 0 ? (

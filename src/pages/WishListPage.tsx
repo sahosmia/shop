@@ -6,8 +6,7 @@ import { useEffect, useState } from "react";
 import { WishListItemReduxType } from "../types";
 import EmptyWishList from "../components/WishLists/EmptyWishList";
 import PageBanner from "../components/PageBanner";
-
-
+import LoginMessage from "../components/tools/LoginMessage";
 
 const WishListPage = () => {
   const wishLists = useWishLists();
@@ -30,7 +29,6 @@ const WishListPage = () => {
         <meta name="description" content="Anything will never seo." />
       </Helmet>
       <PageBanner title="Wish List" />
-
 
       {/* <h2>{data}</h2> */}
       <section className="py-20">
@@ -62,7 +60,7 @@ const WishListPage = () => {
               <EmptyWishList />
             )
           ) : (
-            <h1>Login First</h1>
+            <LoginMessage />
           )}
         </div>
       </section>

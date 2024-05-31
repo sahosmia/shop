@@ -10,6 +10,7 @@ import useCarts from "../hooks/useCarts";
 import EmptyCart from "../components/Cart/EmptyCart";
 import useAuth from "../hooks/useAuth";
 import PageBanner from "../components/PageBanner";
+import LoginMessage from "../components/tools/LoginMessage";
 
 const CartPage = () => {
   const carts = useCarts();
@@ -163,7 +164,7 @@ const CartPage = () => {
               <EmptyCart />
             )
           ) : (
-            <h1>Login First</h1>
+            <LoginMessage/>
           )}
         </div>
       </section>

@@ -13,7 +13,6 @@ const wishListsSlice = createSlice({
   reducers: {
     // Add or remove a wish list item
     ADD_Wish: (state, action) => {
-      // Check if item exists
       const existingItemIndex = state.findIndex(
         (item) =>
           item.productId === action.payload.productId &&
@@ -21,12 +20,8 @@ const wishListsSlice = createSlice({
       );
 
       if (existingItemIndex !== -1) {
-        // Remove existing item
-        return state.filter(
-          (item) =>
-            item.productId !== action.payload.productId &&
-            item.userId !== action.payload.userId
-        );
+        // If item already exists, remove it
+        state.splice(existingItemIndex, 1);
       } else {
         // Otherwise, add the new item
         const nextId = getWishListID(state);
@@ -38,12 +33,14 @@ const wishListsSlice = createSlice({
       }
     },
 
-    // Delete a wish list item 
+    // Delete a wish list item
     DELETE_Wish: (state, action) => {
       return state.filter(
         (item) =>
-          item.productId !== action.payload.productId &&
-          item.userId !== action.payload.userId
+          !(
+            item.productId === action.payload.productId &&
+            item.userId === action.payload.userId
+          )
       );
     },
   },
