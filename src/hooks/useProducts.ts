@@ -27,7 +27,7 @@ export const useProducts = (
   >([]);
   const [loading, setLoading] = useState(false);
   const [totalItems, setTotalItems] = useState<number>(0);
-  const perPage = 6;
+  const perPage = 10;
   useEffect(() => {
     setTags(tagsData);
     setBrands(brandsData);

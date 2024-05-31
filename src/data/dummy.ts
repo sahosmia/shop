@@ -141,6 +141,101 @@ export const cartsData = [
   { id: 3, productId: 1, quantity: 8 },
   { id: 2, productId: 6, quantity: 3 },
 ];
+// reviewsData.js
+export const reviewsData = [
+  {
+    id: 1,
+    userId: 4,
+    productId: 5,
+    reviews:
+      "Absolutely love this organic face cream! It leaves my skin feeling soft and hydrated all day. Highly recommend!",
+    rating: 5,
+    createdAt: "2024-05-01T10:15:30Z"
+  },
+  {
+    id: 2,
+    userId: 7,
+    productId: 6,
+    reviews:
+      "The organic shampoo has a lovely scent and makes my hair feel so clean and smooth. Will definitely buy again.",
+    rating: 4,
+    createdAt: "2024-05-02T12:20:45Z"
+  },
+  {
+    id: 3,
+    userId: 3,
+    productId: 7,
+    reviews:
+      "Not very impressed with the organic toothpaste. It doesn’t foam well and leaves a strange aftertaste.",
+    rating: 2,
+    createdAt: "2024-05-03T14:25:50Z"
+  },
+  {
+    id: 4,
+    userId: 2,
+    productId: 8,
+    reviews:
+      "This organic body lotion is a game changer! It absorbs quickly and my skin feels amazing.",
+    rating: 4,
+    createdAt: "2024-05-04T16:30:55Z"
+  },
+  {
+    id: 5,
+    userId: 5,
+    productId: 9,
+    reviews:
+      "Great quality organic tea. The flavor is rich and soothing. Perfect for a relaxing evening.",
+    rating: 4,
+    createdAt: "2024-05-05T18:35:00Z"
+  },
+  {
+    id: 6,
+    userId: 8,
+    productId: 10,
+    reviews:
+      "The organic honey is fantastic! It tastes pure and natural, and I love using it in my tea and baking.",
+    rating: 4,
+    createdAt: "2024-05-06T20:40:15Z"
+  },
+  {
+    id: 7,
+    userId: 6,
+    productId: 11,
+    reviews:
+      "I’m not a fan of the organic deodorant. It doesn’t seem to last very long and I need to reapply often.",
+    rating: 2,
+    createdAt: "2024-05-07T22:45:20Z"
+  },
+  {
+    id: 8,
+    userId: 9,
+    productId: 12,
+    reviews:
+      "This organic face wash is wonderful! It’s gentle on my skin and has helped clear up my acne.",
+    rating: 5,
+    createdAt: "2024-05-08T08:50:25Z"
+  },
+  {
+    id: 9,
+    userId: 1,
+    productId: 13,
+    reviews:
+      "The organic hand soap smells delightful and doesn’t dry out my hands. Perfect for frequent use.",
+    rating: 4,
+    createdAt: "2024-05-09T10:55:30Z"
+  },
+  {
+    id: 10,
+    userId: 10,
+    productId: 14,
+    reviews:
+      "Love the organic baby lotion. It’s gentle and perfect for my baby’s sensitive skin.",
+    rating: 5,
+    createdAt: "2024-05-10T12:00:35Z"
+  }
+];
+
+
 
 import Rebel from "../assets/collect/products/rebel-kitchen-dairy-free-organic-chocolate-mylk.jpg";
 import Rebel1 from "../assets/collect/products/rebel-kitchen-dairy-free-organic-chocolate-mylk (1).jpg";
@@ -253,7 +348,7 @@ export const productsData = [
     discountPercentage: 0,
     rating: 4.7,
     stock: 20,
-    brand: "Tom's of Maine",
+    brand: "Nature's Path",
     category: "Health & Beauty",
     thumbnail: "TomsOfMaineThumbnail.jpg",
     images: [

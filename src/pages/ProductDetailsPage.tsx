@@ -3,12 +3,13 @@ import { useParams } from "react-router-dom";
 import { productsData } from "../data/dummy";
 import ProductNotFound from "../components/Error/ProductNotFound";
 import { ProductType } from "../types";
-import ProductDescriptionReview from "../components/ProductDetails/ProductDescriptionReview";
+import ProductDescriptionReviews from "../components/ProductDetails/ProductDescriptionReviews";
 import ProductDetailsImage from "../components/ProductDetails/ProductDetailsImage";
 import ProductInfo from "../components/ProductDetails/ProductInfo";
 import PageBanner from "../components/PageBanner";
+import RelatedProducts from "../components/ProductDetails/RelatedProducts";
 
-const ProductDetailsPage: React.FC = () => {
+const ProductDetailsPage = () => {
   const { productId } = useParams<{ productId: string }>();
 
   const product: ProductType | undefined = productsData.find(
@@ -19,22 +20,26 @@ const ProductDetailsPage: React.FC = () => {
     return <ProductNotFound />;
   }
 
+
   return (
     <>
       <Helmet>
-        <title>ProductDetailsPage</title>
-        <meta name="description" content="Anything will never seo." />
+        <title>{product.title} - Product Details</title>
+        <meta
+          name="description"
+          content={`Discover details about ${product.title}. ${product.description}`}
+        />
       </Helmet>
       <PageBanner title={product.title} />
 
       <section className="py-20">
-        <div className="container flex-col lg:flex-row flex gap-20">
+        <div className="container mx-auto flex flex-col lg:flex-row gap-20">
           <ProductDetailsImage product={product} />
-
           <ProductInfo product={product} />
         </div>
+        <ProductDescriptionReviews product={product} />
 
-        <ProductDescriptionReview />
+       <RelatedProducts product={product}/>
       </section>
     </>
   );

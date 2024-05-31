@@ -5,8 +5,6 @@ const useCarts = () => {
   const carts = useSelector(
     (state: { carts: CartItemReduxType[] }) => state.carts
   );
-
-
   return carts;
 }
 

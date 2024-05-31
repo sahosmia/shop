@@ -1,4 +1,5 @@
 import { brandsData, categoriesData, tagsData } from "../data/dummy";
+import { users } from "../data/users";
 import { CartItemType, WishListItemReduxType } from "../types";
 
 export const getDiscountPrice = (price: number, discountRate: number) => {
@@ -41,5 +42,10 @@ const getTagByTitle = (title:string) => {
 };
 
 
+const getUser = (useId:number) => {
+  const data = users.find((item) => item.id === useId);  return data;
+};
 
-export { getCategoryByTitle, getBrandByTitle, getTagByTitle };
+
+
+export { getCategoryByTitle, getBrandByTitle, getTagByTitle, getUser };

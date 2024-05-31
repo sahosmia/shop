@@ -11,6 +11,8 @@ import useCarts from "../../hooks/useCarts";
 import useCartsActions from "../../hooks/useCartsActions";
 import useCartsItem from "../../hooks/useCartsItem";
 import { ProductType } from "../../types";
+import { reviewsData } from "../../data/dummy";
+import { Rating } from "@mui/material";
 
 const ProductInfo = ({ product }: { product: ProductType }) => {
   const cartItem = useCartsItem(product.id);
@@ -44,11 +46,21 @@ const ProductInfo = ({ product }: { product: ProductType }) => {
       return navigate("/checkout");
     }, 1000);
   };
+
+  // Calculate average rating
+  const productReviews = reviewsData.filter(
+    (item) => item.productId === product.id
+  );
+  const averageRating = productReviews.length
+    ? productReviews.reduce((acc, review) => acc + review.rating, 0) /
+      productReviews.length
+    : 0;
+
   return (
-    <div>
-      <h2 className="text-2xl font-bold text-ass pb-2">{product.title}</h2>
-      <div className="flex gap-2 items-end mb-4 ">
-        <span className=" font-semibold text-primary text-2xl">
+    <div className="p-6 bg-white rounded-lg">
+      <h2 className="text-3xl font-bold text-gray-900 pb-4">{product.title}</h2>
+      <div className="flex gap-2 items-end mb-4">
+        <span className="font-semibold text-primary text-2xl">
           $
           {product.discountPercentage === 0
             ? product.price
@@ -56,53 +68,91 @@ const ProductInfo = ({ product }: { product: ProductType }) => {
         </span>
         {product.discountPercentage !== 0 && (
           <div>
-            <span className=" line-through text-assLight  text-lg font-medium">
+            <span className="line-through text-gray-500 text-lg font-medium">
               ${product.price.toFixed(2)}
             </span>
-            <span className=" text-primary2 text-sm  font-medium ml-3">
+            <span className="text-green-500 text-sm font-medium ml-3">
               (-{product.discountPercentage}%)
             </span>
           </div>
         )}
       </div>
-      <p className="text-assLight mb-2">{product.description}</p>
-      <p>
-        <span className="">Category:</span>{" "}
-        <Link to={`/products/category/${categoryItem?.slug}`}>
-          {product.category}
-        </Link>
-      </p>
-      <p>
-        <span className="">Brand:</span>{" "}
-        <Link to={`/products/brand/${brandItem?.slug}`}>{product.brand}</Link>
-      </p>
+      {/* Display average rating */}
+      <div className="flex items-center mb-3">
+        <Rating
+          name="half-rating-read"
+          defaultValue={averageRating}
+          precision={0.5}
+          readOnly
+          size="small"
+        />
+        <span className="text-assLight text-sm ml-1">
+          ({productReviews.length} reviews)
+        </span>
+      </div>
 
-      <p>
-        <span className="">Tag:</span>{" "}
-        {product.tags.map((tag) => (
-          <Link key={tag} to={`/products/tag/${getTagByTitle(tag)?.slug}`}>{tag}, </Link>
-        ))}
+      <p className="text-gray-700 mb-4">{product.description}</p>
+      <p className="mb-2">
+        <span className="font-semibold">Category:</span>{" "}
+        {categoryItem ? (
+          <Link
+            to={`/products/category/${categoryItem.slug}`}
+            className="text-ass hover:text-primary transition-all"
+          >
+            {product.category}
+          </Link>
+        ) : (
+          product.category
+        )}
       </p>
-      <div className="flex gap-2 flex-wrap">
-        <div className="border-2 inline-block rounded border-primary">
+      <p className="mb-2">
+        <span className="font-semibold">Brand:</span>{" "}
+        {brandItem ? (
+          <Link
+            to={`/products/brand/${brandItem.slug}`}
+            className="text-ass hover:text-primary transition-all"
+          >
+            {product.brand}
+          </Link>
+        ) : (
+          product.brand
+        )}
+      </p>
+      <p className="mb-4">
+        <span className="font-semibold">Tag:</span>{" "}
+        {product.tags.length > 0
+          ? product.tags.map((tag, index) => (
+              <span key={tag}>
+                <Link
+                  to={`/products/tag/${getTagByTitle(tag)?.slug}`}
+                  className="text-ass hover:text-primary transition-all"
+                >
+                  {tag}
+                </Link>
+                {index < product.tags.length - 1 && ", "}
+              </span>
+            ))
+          : "No tags"}
+      </p>
+      <div className="flex items-center mb-4 flex-wrap gap-2">
+        <div className="border-2 rounded border-primary flex items-center">
           <button
-            className="w-9 h-9 text-primary text-xl inline-block"
+            className="w-9 h-9 text-primary text-xl inline-flex items-center justify-center"
             onClick={() => handleQuantityChange(-1)}
           >
             -
           </button>
-          <span className="px-1">{cartQuantity}</span>
+          <span className="px-3">{cartQuantity}</span>
           <button
-            className="w-9 h-9 text-primary text-xl "
+            className="w-9 h-9 text-primary text-xl inline-flex items-center justify-center"
             onClick={() => handleQuantityChange(1)}
           >
             +
           </button>
         </div>
-
         <button
           onClick={handleAddToCart}
-          className="bg-primary bg-opacity-80 hover:bg-opacity-100  text-white  transition-all duration-300 py-2 px-4 text-sm font-medium  flex justify-center items-center  rounded"
+          className=" bg-primary bg-opacity-80 hover:bg-opacity-100 text-white transition-all duration-300 py-2 px-4 text-sm font-medium flex justify-center items-center rounded"
         >
           <BiCartAdd className="text-base mr-1" />
           Add to cart
@@ -110,7 +160,7 @@ const ProductInfo = ({ product }: { product: ProductType }) => {
         <button
           type="button"
           onClick={handleBuyNow}
-          className="bg-primary2 bg-opacity-80 hover:bg-opacity-100  text-white  transition-all duration-300 py-2 px-4 text-sm font-medium  flex justify-center items-center  rounded"
+          className=" bg-green-500 bg-opacity-80 hover:bg-opacity-100 text-white transition-all duration-300 py-2 px-4 text-sm font-medium flex justify-center items-center rounded"
         >
           Buy Now
         </button>
