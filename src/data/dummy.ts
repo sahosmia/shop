@@ -141,7 +141,7 @@ export const cartsData = [
   { id: 3, productId: 1, quantity: 8 },
   { id: 2, productId: 6, quantity: 3 },
 ];
-// reviewsData.js
+// reviewsData
 export const reviewsData = [
   {
     id: 1,
@@ -237,11 +237,20 @@ export const reviewsData = [
 
 
 
-import Rebel from "../assets/collect/products/rebel-kitchen-dairy-free-organic-chocolate-mylk.jpg";
-import Rebel1 from "../assets/collect/products/rebel-kitchen-dairy-free-organic-chocolate-mylk (1).jpg";
-import Rebel2 from "../assets/collect/products/rebel-kitchen-dairy-free-organic-chocolate-mylk (2).jpg";
-import Rebel3 from "../assets/collect/products/rebel-kitchen-dairy-free-organic-chocolate-mylk (3).jpg";
-import Rebel4 from "../assets/collect/products/rebel-kitchen-dairy-free-organic-chocolate-mylk (4).jpg";
+import Rebel from "../assets/collect/products/rebel (1).jpg";
+import Rebel1 from "../assets/collect/products/rebel (2).jpg";
+import Rebel2 from "../assets/collect/products/rebel (3).jpg";
+import Rebel3 from "../assets/collect/products/rebel (4).jpg";
+import Rebel4 from "../assets/collect/products/rebel (5).jpg";
+
+import Banana from "../assets/collect/products/banana (1).jpg";
+import Banana1 from "../assets/collect/products/banana (2).jpg";
+import Banana2 from "../assets/collect/products/banana (3).jpg";
+import Cucumber from "../assets/collect/products/cucumber.jpg";
+import Cucumber2 from "../assets/collect/products/cucumber2.jpg";
+import Cucumber3 from "../assets/collect/products/cucumber3.jpg";
+import Cheese from "../assets/collect/products/Cheese.jpg";
+
 
 export const productsData = [
   {
@@ -250,7 +259,6 @@ export const productsData = [
     description: "An apple mobile which is nothing like apple",
     price: 99,
     discountPercentage: 0,
-    rating: 4.69,
     stock: 4,
     brand: "Yogi Tea",
     category: "Health & Beauty",
@@ -260,22 +268,16 @@ export const productsData = [
   },
   {
     id: 2,
-    title: "Nature's Path Organic Granola Bars",
+    title: "Nature's Path Organic Fresh Banana",
     description:
       "Indulge in the creamy richness of Rebel Kitchen's dairy-free organic chocolate mylk. Made with the finest organic ingredients, this delicious beverage is perfect for satisfying your sweet cravings without compromising on taste or nutrition.",
-    price: 1553.49,
-    discountPercentage: 0,
-    rating: 4.8,
+    price: 3.49,
+    discountPercentage: 6,
     stock: 15,
     brand: "Nature's Path",
-    category: "Food",
-    thumbnail: "NaturesPathThumbnail.jpg",
-    images: [
-      "NaturesPathImage1.jpg",
-      "NaturesPathImage2.jpg",
-      "NaturesPathImage3.jpg",
-      "NaturesPathImage4.jpg",
-    ],
+    category: "Fruits",
+    thumbnail: Banana,
+    images: [Banana1, Banana2, Rebel3, Rebel4],
     tags: ["Organic", "Granola Bars", "Snack", "Healthy"],
   },
   {
@@ -285,7 +287,6 @@ export const productsData = [
       "Keep your hands clean and refreshed with Dr. Bronner's organic lavender hand sanitizer. Formulated with organic ethyl alcohol and soothing lavender oil, this sanitizer effectively kills germs while leaving your skin feeling soft and moisturized.",
     price: 5.99,
     discountPercentage: 0,
-    rating: 4.7,
     stock: 20,
     brand: "Dr. Bronner's",
     category: "Health & Beauty",
@@ -305,7 +306,6 @@ export const productsData = [
       "Keep your lips hydrated and nourished with Burt's Bees Lip Balm. Made with natural ingredients like beeswax and coconut oil, this lip balm provides long-lasting moisture and protection for soft, smooth lips.",
     price: 2.99,
     discountPercentage: 0,
-    rating: 4.6,
     stock: 25,
     brand: "Burt's Bees",
     category: "Health & Beauty",
@@ -325,7 +325,6 @@ export const productsData = [
       "Enjoy the rich, flavorful taste of Organic Valley organic eggs. Sourced from free-range hens raised on organic farms, these eggs are packed with protein and essential nutrients for a wholesome breakfast or meal.",
     price: 4.49,
     discountPercentage: 0,
-    rating: 4.9,
     stock: 30,
     brand: "Organic Valley",
     category: "Food",
@@ -341,22 +340,16 @@ export const productsData = [
 
   {
     id: 6,
-    title: "Tom's of Maine Natural Deodorant",
+    title: "Tom's of Maine Natural Cucumber",
     description:
       "Stay fresh all day with Tom's of Maine natural deodorant. Made with aluminum-free ingredients and infused with natural fragrances, this deodorant provides effective odor protection without harsh chemicals.",
     price: 6.99,
     discountPercentage: 0,
-    rating: 4.7,
     stock: 20,
     brand: "Nature's Path",
-    category: "Health & Beauty",
-    thumbnail: "TomsOfMaineThumbnail.jpg",
-    images: [
-      "TomsOfMaineImage1.jpg",
-      "TomsOfMaineImage2.jpg",
-      "TomsOfMaineImage3.jpg",
-      "TomsOfMaineImage4.jpg",
-    ],
+    category: "Vegetable",
+    thumbnail: Cucumber,
+    images: [Cucumber2, Cucumber3, Cucumber, Banana1],
     tags: ["Natural", "Deodorant", "Aluminum-Free", "Freshness"],
   },
   {
@@ -366,16 +359,12 @@ export const productsData = [
       "Indulge in the cheesy goodness of Annie's Homegrown organic macaroni & cheese. Made with organic pasta and real cheese, this classic comfort food is easy to prepare and perfect for the whole family to enjoy.",
     price: 2.79,
     discountPercentage: 0,
-    rating: 4.8,
     stock: 15,
     brand: "Annie's Homegrown",
     category: "Food",
-    thumbnail: "AnniesHomegrownThumbnail.jpg",
+    thumbnail: Cheese,
     images: [
-      "AnniesHomegrownImage1.jpg",
-      "AnniesHomegrownImage2.jpg",
-      "AnniesHomegrownImage3.jpg",
-      "AnniesHomegrownImage4.jpg",
+      Cucumber, Cucumber3, Rebel1, Banana1
     ],
     tags: ["Organic", "Macaroni & Cheese", "Comfort Food", "Family"],
   },
@@ -387,7 +376,6 @@ export const productsData = [
       "Protect your skin from harmful UV rays with Green People Organic Sun Lotion SPF 30. Made with natural and organic ingredients, this non-greasy formula provides broad-spectrum sun protection while nourishing and moisturizing your skin.",
     price: 14.99,
     discountPercentage: 0,
-    rating: 4.5,
     stock: 18,
     brand: "Green People",
     category: "Health & Beauty",
@@ -407,7 +395,6 @@ export const productsData = [
       "Experience the versatility of Nutiva Organic Virgin Coconut Oil. Cold-pressed from fresh coconuts, this pure and unrefined oil is perfect for cooking, baking, skincare, and haircare, offering a range of health benefits.",
     price: 8.49,
     discountPercentage: 0,
-    rating: 4.7,
     stock: 22,
     brand: "Nutiva",
     category: "Food",
@@ -427,7 +414,6 @@ export const productsData = [
       "Clean your dishes effectively and responsibly with Seventh Generation Natural Dish Liquid. Formulated with plant-based ingredients, this biodegradable and non-toxic dish soap cuts through grease and grime without harsh chemicals.",
     price: 3.99,
     discountPercentage: 0,
-    rating: 4.6,
     stock: 30,
     brand: "Seventh Generation",
     category: "Household",
@@ -447,7 +433,6 @@ export const productsData = [
       "Start your day with a nutritious breakfast using Bob's Red Mill Organic Rolled Oats. Made from whole grain oats, these organic oats are perfect for making oatmeal, granola, or adding to baked goods for added fiber and protein.",
     price: 5.29,
     discountPercentage: 0,
-    rating: 4.8,
     stock: 25,
     brand: "Bob's Red Mill",
     category: "Food",
@@ -467,7 +452,6 @@ export const productsData = [
       "Fuel your adventures with Clif Bar Organic Energy Bar. Made with wholesome ingredients like oats, nuts, and fruits, this energy bar provides sustained energy for your active lifestyle, whether hiking, biking, or on-the-go.",
     price: 1.79,
     discountPercentage: 0,
-    rating: 4.7,
     stock: 35,
     brand: "Clif Bar",
     category: "Food",
@@ -488,7 +472,6 @@ export const productsData = [
       "Keep your clothes clean and fresh with Ecover Zero Laundry Detergent. This fragrance-free detergent is specially formulated for sensitive skin and contains no harsh chemicals or dyes, making it gentle on both your skin and the environment.",
     price: 9.99,
     discountPercentage: 0,
-    rating: 4.6,
     stock: 15,
     brand: "Ecover",
     category: "Household",
@@ -513,7 +496,6 @@ export const productsData = [
       "Savor the refreshing taste of Yogi Tea Organic Green Tea. This invigorating blend of green tea leaves and herbs is naturally caffeinated and packed with antioxidants, making it the perfect choice for a healthy and revitalizing beverage.",
     price: 3.99,
     discountPercentage: 0,
-    rating: 4.8,
     stock: 20,
     brand: "Yogi Tea",
     category: "Tea & Coffee",
@@ -533,7 +515,6 @@ export const productsData = [
       "Nourish your little one with Earth's Best Organic Baby Food. Made from pureed organic fruits and vegetables, this baby food is rich in vitamins and minerals, perfect for supporting healthy growth and development.",
     price: 1.49,
     discountPercentage: 0,
-    rating: 4.7,
     stock: 30,
     brand: "Earth's Best",
     category: "Baby & Kids",
@@ -553,7 +534,6 @@ export const productsData = [
       "Revitalize your hair with Avalon Organics Biotin B-Complex Therapy Shampoo. Formulated with nourishing botanicals and essential vitamins, this shampoo strengthens and volumizes hair for a healthy, vibrant look.",
     price: 7.99,
     discountPercentage: 0,
-    rating: 4.5,
     stock: 25,
     brand: "Avalon Organics",
     category: "Health & Beauty",
@@ -573,7 +553,6 @@ export const productsData = [
       "Protect your child's delicate skin from the sun with Green People Organic Children Sun Lotion SPF 25. Specifically formulated for children, this gentle and non-toxic sun lotion provides effective protection against UVA and UVB rays while moisturizing and soothing the skin.",
     price: 12.99,
     discountPercentage: 0,
-    rating: 4.6,
     stock: 18,
     brand: "Green People",
     category: "Baby & Kids",
@@ -594,7 +573,6 @@ export const productsData = [
       "Start your day with the delicious taste of Kashi Organic Blueberry Clusters Cereal. Made with whole grain oats and real blueberries, this cereal is packed with fiber and antioxidants for a nutritious breakfast.",
     price: 4.79,
     discountPercentage: 0,
-    rating: 4.7,
     stock: 20,
     brand: "Kashi",
     category: "Food",
@@ -614,7 +592,6 @@ export const productsData = [
       "Experience the rich and creamy taste of Organic Valley Grassmilk Organic Whole Milk. Sourced from 100% grass-fed cows, this milk is naturally high in omega-3s and CLA, providing a nutritious option for your family.",
     price: 5.99,
     discountPercentage: 0,
-    rating: 4.8,
     stock: 15,
     brand: "Organic Valley",
     category: "Food",
@@ -634,7 +611,6 @@ export const productsData = [
       "Keep your hands clean and moisturized with Method Foaming Hand Soap. Formulated with naturally derived ingredients and a delightful scent, this gentle foaming soap effectively cleanses without drying out your skin.",
     price: 3.49,
     discountPercentage: 0,
-    rating: 4.6,
     stock: 25,
     brand: "Method",
     category: "Health & Beauty",
@@ -654,7 +630,6 @@ export const productsData = [
       "Nourish and hydrate your skin with Weleda Skin Food Original Ultra-Rich Cream. Formulated with organic plant extracts, this deeply moisturizing cream soothes dry and rough skin, leaving it soft, smooth, and rejuvenated.",
     price: 18.99,
     discountPercentage: 0,
-    rating: 4.7,
     stock: 20,
     brand: "Weleda",
     category: "Health & Beauty",
@@ -674,7 +649,6 @@ export const productsData = [
       "Fuel your body with Garden of Life Organic Protein Powder. Made from a blend of organic plant proteins, this protein powder provides a complete amino acid profile and essential nutrients for muscle recovery and overall health.",
     price: 29.99,
     discountPercentage: 0,
-    rating: 4.8,
     stock: 30,
     brand: "Garden of Life",
     category: "Health & Fitness",
@@ -694,7 +668,6 @@ export const productsData = [
       "Keep your smile bright and fresh with Dr. Bronner's Organic Peppermint Toothpaste. Formulated with organic ingredients and natural peppermint oil, this fluoride-free toothpaste effectively cleans and protects your teeth and gums.",
     price: 7.49,
     discountPercentage: 0,
-    rating: 4.6,
     stock: 20,
     brand: "Dr. Bronner's",
     category: "Health & Beauty",
@@ -714,7 +687,6 @@ export const productsData = [
       "Experience the nutritional benefits of Nutiva Organic Hemp Seed Oil. Cold-pressed from raw hemp seeds, this organic oil is rich in omega-3 fatty acids and antioxidants, making it a versatile and healthy addition to your diet.",
     price: 12.99,
     discountPercentage: 0,
-    rating: 4.8,
     stock: 15,
     brand: "Nutiva",
     category: "Food",
@@ -734,7 +706,6 @@ export const productsData = [
       "Keep your baby clean and comfortable with Seventh Generation Free & Clear Baby Wipes. Made with plant-based materials and free from fragrances and alcohol, these gentle wipes are safe for sensitive skin and environmentally friendly.",
     price: 4.99,
     discountPercentage: 0,
-    rating: 4.7,
     stock: 25,
     brand: "Seventh Generation",
     category: "Baby & Kids",
@@ -754,7 +725,6 @@ export const productsData = [
       "Add a nutritious staple to your pantry with Bob's Red Mill Organic Quinoa. Packed with protein, fiber, and essential nutrients, this versatile grain is perfect for salads, soups, stir-fries, and more.",
     price: 6.99,
     discountPercentage: 0,
-    rating: 4.9,
     stock: 20,
     brand: "Bob's Red Mill",
     category: "Food",
@@ -774,7 +744,6 @@ export const productsData = [
       "Satisfy your cravings and fuel your adventures with Clif Bar Organic Nut Butter Filled Energy Bar. Made with creamy nut butter and organic ingredients, this energy bar provides sustained energy and delicious flavor for your active lifestyle.",
     price: 1.99,
     discountPercentage: 0,
-    rating: 4.8,
     stock: 30,
     brand: "Clif Bar",
     category: "Food",
@@ -794,7 +763,6 @@ export const productsData = [
       "Treat yourself to the fruity goodness of Annie's Homegrown Organic Bunny Fruit Snacks. Made with real fruit juice and no artificial flavors or colors, these bunny-shaped snacks are perfect for kids and adults alike.",
     price: 3.49,
     discountPercentage: 0,
-    rating: 4.7,
     stock: 25,
     brand: "Annie's Homegrown",
     category: "Food",
@@ -814,7 +782,6 @@ export const productsData = [
       "Treat yourself to the fruity goodness of Annie's Homegrown Organic Bunny Fruit Snacks. Made with real fruit juice and no artificial flavors or colors, these bunny-shaped snacks are perfect for kids and adults alike.",
     price: 3.49,
     discountPercentage: 0,
-    rating: 4.7,
     stock: 25,
     brand: "Annie's Homegrown",
     category: "Food",
@@ -834,7 +801,6 @@ export const productsData = [
       "Experience the refreshing clean of Dr. Bronner's Organic Peppermint Toothpaste. Made with organic and fair trade ingredients, this fluoride-free toothpaste leaves your mouth feeling fresh and your teeth sparkling clean.",
     price: 7.49,
     discountPercentage: 0,
-    rating: 4.6,
     stock: 20,
     brand: "Dr. Bronner's",
     category: "Health & Beauty",
@@ -854,7 +820,6 @@ export const productsData = [
       "Pamper your hair and senses with Avalon Organics Lavender Nourishing Shampoo. Enriched with organic lavender essential oil and botanicals, this gentle shampoo cleanses and hydrates hair for a healthy, vibrant look and a calming aromatic experience.",
     price: 9.99,
     discountPercentage: 0,
-    rating: 4.7,
     stock: 18,
     brand: "Avalon Organics",
     category: "Health & Beauty",
@@ -874,7 +839,6 @@ export const productsData = [
       "Warm up with Traditional Medicinals Organic Ginger Tea. Made from certified organic ginger root, this invigorating herbal tea is known for its soothing and digestive properties, making it an ideal choice after meals or anytime you need a comforting cup.",
     price: 3.99,
     discountPercentage: 0,
-    rating: 4.8,
     stock: 22,
     brand: "Traditional Medicinals",
     category: "Tea & Coffee",
@@ -894,7 +858,6 @@ export const productsData = [
       "Indulge in the rich, intense flavor of Green & Black's Organic Dark Chocolate. Made with ethically sourced cocoa beans and organic ingredients, this premium chocolate bar is perfect for satisfying your sweet cravings while supporting sustainable cocoa farming.",
     price: 3.99,
     discountPercentage: 0,
-    rating: 4.7,
     stock: 25,
     brand: "Green & Black's",
     category: "Food",
@@ -914,7 +877,6 @@ export const productsData = [
       "Protect your skin from the sun's harmful rays with Alba Botanica Hawaiian Sunscreen SPF 45. Infused with botanical extracts and nourishing oils, this reef-friendly sunscreen provides broad-spectrum UVA/UVB protection while hydrating and soothing your skin.",
     price: 10.99,
     discountPercentage: 0,
-    rating: 4.6,
     stock: 30,
     brand: "Alba Botanica",
     category: "Health & Beauty",
