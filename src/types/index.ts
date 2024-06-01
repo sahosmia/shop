@@ -17,7 +17,6 @@ export type ProductType = {
   description: string;
   price: number;
   discountPercentage: number;
-  rating: number;
   stock: number;
   brand: string;
   category: string;
@@ -32,7 +31,6 @@ export type CartProductType = {
   description: string;
   price: number;
   discountPercentage: number;
-  rating: number;
   stock: number;
   brand: string;
   category: string;
