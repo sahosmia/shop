@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
 import useAuth from "../hooks/useAuth";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
@@ -16,7 +16,10 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   const auth = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
+
+  const from = location.state?.from?.pathname || "/";
 
   const {
     register,
@@ -45,7 +48,7 @@ const LoginPage = () => {
       if (userExist.password === formData.password) {
         // Call redux method
         dispatch(Login(userExist));
-        navigate("/");
+        navigate(from, { replace: true });
       } else {
         setError("password", {
           type: "custom",

@@ -77,6 +77,10 @@ export type CardItemPropsType = {
   cartItem: CartItemType;
   onStockError: (status: boolean) => void;
 };
+export type CardTablePropsType = {
+  data: CartItemType[];
+  onStockError: (status: boolean) => void;
+};
 
 export type WishListItemPropsType = {
   wishListItem: WishListItemReduxType;

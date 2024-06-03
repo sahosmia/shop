@@ -1,12 +1,14 @@
 import { IoClose } from "react-icons/io5";
 import { CardItemPropsType, ProductType } from "../../types";
 import { productsData } from "../../data/dummy";
-import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { ADD_CART, DELETE_CART } from "../../features/carts/cartsSlice";
 import useAuth from "../../hooks/useAuth";
+import { TableCell, TableRow } from "@mui/material";
+import { getDiscountPrice } from "../../utils";
+import { Link } from "react-router-dom";
 
 const CartItem = ({ cartItem, onStockError }: CardItemPropsType) => {
   const dispatch = useDispatch();
@@ -29,10 +31,13 @@ const CartItem = ({ cartItem, onStockError }: CardItemPropsType) => {
     if (product && product.stock < cartItem.quantity) {
       onStockError(false);
     }
-    dispatch(DELETE_CART({ productId: cartItem.productId, userId: auth?.user?.id }));
+    dispatch(
+      DELETE_CART({ productId: cartItem.productId, userId: auth?.user?.id })
+    );
     toast.success(`Deleted ${cartItem.productId}`);
   };
 
+  
   // Function to handle updating quantity
   const handleUpdateQuantity = (type: "plus" | "minus") => {
     if (type === "minus") {
@@ -49,22 +54,43 @@ const CartItem = ({ cartItem, onStockError }: CardItemPropsType) => {
       toast.error(`Only ${product.stock} left in stock`);
     }
 
-    dispatch(ADD_CART({
-      quantity: type === "plus" ? cartItem.quantity + 1 : cartItem.quantity - 1,
-      productId: cartItem.productId,
-      userId: auth?.user?.id,
-    }))
-
+    dispatch(
+      ADD_CART({
+        quantity:
+          type === "plus" ? cartItem.quantity + 1 : cartItem.quantity - 1,
+        productId: cartItem.productId,
+        userId: auth?.user?.id,
+      })
+    );
   };
 
   return (
-    <div className="flex divide-x">
-      <div className="flex-1 p-2">
-        <Link to={`/products/${product?.id}`}>{product?.title}</Link>
-      </div>
-      <div className="flex-1 p-2">{product?.price}</div>
-      <div className="flex-1 p-2 flex gap-3 place-content-center">
-        <div className="rounded border">
+
+    <TableRow key={cartItem.id}>
+      <TableCell>
+        <Link to={`/products/${product?.id}`}>
+          <div className="flex gap-2 group">
+            <img
+              className="w-12 h-12 object-contain border rounded "
+              src={product?.thumbnail}
+              alt=""
+            />
+            <h6 className="max-w-56 text-ass group-hover:text-primary  transition-all duration-300">
+              {" "}
+              {product?.title}
+            </h6>
+          </div>
+        </Link>
+      </TableCell>
+      <TableCell align="right">
+        $
+        {getDiscountPrice(
+          product?.price || 0,
+          product?.discountPercentage || 0
+        )}
+      </TableCell>
+      <TableCell align="right">
+        <div className="rounded border inline-block">
           <button
             className="bg-slate-200 w-7"
             onClick={() => handleUpdateQuantity("minus")}
@@ -81,21 +107,20 @@ const CartItem = ({ cartItem, onStockError }: CardItemPropsType) => {
             +
           </button>
         </div>
-      </div>
-      <div className="flex-1 p-2">{product?.discountPercentage}</div>
-      <div className="flex-1 p-2">
+      </TableCell>
+      <TableCell align="right">
         {product && cartItem.quantity > product.stock ? (
           <span className="text-sm text-red-800 font-semibold">Stock Out</span>
         ) : (
           <span className="text-sm text-green-800 font-semibold">Stock In</span>
         )}
-      </div>
-      <div className="flex-1 p-2 flex justify-center">
+      </TableCell>
+      <TableCell align="right">
         <button onClick={onDelete} className="border-none">
           <IoClose />
         </button>
-      </div>
-    </div>
+      </TableCell>
+    </TableRow>
   );
 };
 

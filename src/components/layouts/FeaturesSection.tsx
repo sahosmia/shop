@@ -17,7 +17,7 @@ const FeaturesSection = () => {
     <div className="bg-slate-50">
       <div className="container ">
         <div className="py-10 md:py-20 ">
-          <div className="grid items-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  gap-8 lg:gap-2">
+          <div className="grid items-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  gap-8 lg:gap-7">
             {features.map((feature) => (
               <motion.div
                 initial={{ opacity: 0, y: 100 }}

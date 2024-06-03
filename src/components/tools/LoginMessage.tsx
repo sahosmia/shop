@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { downFadeVariants } from "../../motions";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const LoginMessage = () => {
+  const location = useLocation();
   return (
     <motion.div
       variants={downFadeVariants}
@@ -16,6 +17,7 @@ const LoginMessage = () => {
       </p>
       <Link
         to="/login"
+        state={{ from: location }}
         className="inline-block mt-4 bg-primary text-white px-4 py-2 rounded hover:underline"
       >
         Go to Login

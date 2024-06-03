@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
+import PageBanner from "../components/PageBanner";
 interface IFromInputs {
   name: string;
   email: string;
@@ -27,6 +28,8 @@ const CheckoutPage = () => {
         <title>CheckoutPage</title>
         <meta name="description" content="Anything will never seo." />
       </Helmet>
+      <PageBanner title="Checkout Page" />
+
       <section>
         <div className="container py-16">
           <div className="grid">
@@ -89,18 +92,15 @@ const CheckoutPage = () => {
                 </div>
               </div>
 
-
               <div className="mb-5">
                 <select
-                  {...register("city", { required: "This filed is required"})}
+                  {...register("city", { required: "This filed is required" })}
                   id=""
                   className={`input-class ${
                     errors.city ? "border-red-600" : "border-gray-200"
                   }`}
                 >
-                  <option value="">
-                    Select A options
-                  </option>
+                  <option value="">Select A options</option>
                   {cities &&
                     cities.map((opt) => (
                       <option key={opt.value} value={opt.value}>
@@ -110,7 +110,8 @@ const CheckoutPage = () => {
                 </select>
                 {errors.city && (
                   <p className="text-red-700 mt-1">{errors.city?.message}</p>
-                )}{" "}              </div>
+                )}{" "}
+              </div>
 
               <div className="mb-5">
                 <input

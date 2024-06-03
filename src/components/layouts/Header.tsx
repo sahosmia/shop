@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BiUser } from "react-icons/bi";
 import { useEffect, useRef, useState } from "react";
 import Logo from "../tools/Logo";
@@ -21,6 +21,7 @@ const Header = () => {
   const auth = useAuth();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const [userWishLists, setUserWishLists] = useState<WishListItemReduxType[]>([]);
   const [userCarts, setUserCarts] = useState<CartItemReduxType[]>([]);
 
@@ -150,6 +151,7 @@ const Header = () => {
                 <Link
                   to="/login"
                   className="flex items-center justify-center cursor-pointer"
+                  state={{from:location}}
                   title="Login"
                 >
                   <MdOutlineLogin className="h-6 w-6 text-ass" />
