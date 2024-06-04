@@ -30,7 +30,6 @@ const WishListPage = () => {
       </Helmet>
       <PageBanner title="Wish List" />
 
-      {/* <h2>{data}</h2> */}
       <section className="py-20">
         <div className="container">
           {auth.user !== null ? (
@@ -41,7 +40,6 @@ const WishListPage = () => {
                     <div className="flex divide-x">
                       <div className="flex-1 p-2">Name</div>
                       <div className="flex-1 p-2">Price</div>
-                      <div className="flex-1 p-2">Discount</div>
                       <div className="flex-1 p-2">Stock</div>
                       <div className="flex-1 p-2 flex justify-center">
                         Action

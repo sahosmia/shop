@@ -8,18 +8,32 @@ import ProductDetailsImage from "../components/ProductDetails/ProductDetailsImag
 import ProductInfo from "../components/ProductDetails/ProductInfo";
 import PageBanner from "../components/PageBanner";
 import RelatedProducts from "../components/ProductDetails/RelatedProducts";
+import { useEffect, useState } from "react";
 
 const ProductDetailsPage = () => {
   const { productId } = useParams<{ productId: string }>();
+  const [product, setProduct] = useState<ProductType | undefined>(undefined);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const product: ProductType | undefined = productsData.find(
-    (item) => productId && item.id === parseInt(productId)
-  );
+  useEffect(() => {
+    // Example side effect: logging the productId change
+    const data = productsData.find(
+      (item) => productId && item.id === parseInt(productId)
+    );
+    if (data) {
+      setProduct(data);
+    }
+
+    setLoading(false);
+  }, [productId]);
+
+  if (loading) {
+    return <h1>loading</h1>;
+  }
 
   if (!product) {
     return <ProductNotFound />;
   }
-
 
   return (
     <>
@@ -39,7 +53,7 @@ const ProductDetailsPage = () => {
         </div>
         <ProductDescriptionReviews product={product} />
 
-       <RelatedProducts product={product}/>
+        <RelatedProducts product={product} />
       </section>
     </>
   );

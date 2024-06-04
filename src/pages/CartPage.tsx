@@ -40,6 +40,7 @@ const CartPage = () => {
       setCoupon("");
       localStorage.setItem("coupon", "");
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onStockOut = (status: boolean) => setStockError(status);

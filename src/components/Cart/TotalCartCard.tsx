@@ -25,15 +25,15 @@ const TotalCartCard = ({ cartProducts, cuponAvailable }: PropsType) => {
     <div className="divide-y border">
       <div className="flex divide-x">
         <div className="flex-1 p-2">Total</div>
-        <div className="flex-1 p-2 text-end">{totalAmount.toFixed(2)}</div>
+        <div className="flex-1 p-2 text-end">${totalAmount.toFixed(2)}</div>
       </div>
       <div className="flex divide-x">
         <div className="flex-1 p-2">Discount</div>
-        <div className="flex-1 p-2 text-end">{cuponDiscount().toFixed(2)}</div>
+        <div className="flex-1 p-2 text-end">${cuponDiscount().toFixed(2)}</div>
       </div>
       <div className="flex divide-x">
         <div className="flex-1 p-2">Sub Total</div>
-        <div className="flex-1 p-2 text-end">{subtotal.toFixed(2)}</div>
+        <div className="flex-1 p-2 text-end">${subtotal.toFixed(2)}</div>
       </div>
     </div>
   );

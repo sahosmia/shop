@@ -6,6 +6,7 @@ import ProductReviews from "./ProductReviews/ProductReviews";
 
 const ProductDescriptionReviews = ({ product }: ProductPropsType) => {
   const [activeTab, setActiveTab] = useState("Reviews");
+  
 
   const tabs = ["Reviews", "Description", "Return Policy"];
 

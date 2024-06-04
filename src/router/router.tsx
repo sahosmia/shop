@@ -1,20 +1,25 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "../components/layouts/Layout";
-import {
-  CartPage,
-  CheckoutPage,
-  HomePage,
-  LoginPage,
-  ProductDetailsPage,
-  ProductPage,
-  ProfilePage,
-  WishListPage,
-} from "../pages";
+import loadable from "@loadable/component";
 import PrivateRoute from "../components/layouts/PrivateRoute";
-import ProductCategoryPage from "../pages/ProductCategoryPage";
-import NotFoundPage from "../pages/NotFoundPage";
-import ProductBrandPage from "../pages/ProductBrandPage";
-import ProductTagPage from "../pages/ProductTagPage";
+
+const HomePage = loadable(() => import("../pages/HomePage"));
+const ProductPage = loadable(() => import("../pages/ProductPage"));
+const ProductDetailsPage = loadable(
+  () => import("../pages/ProductDetailsPage")
+);
+const ProductCategoryPage = loadable(
+  () => import("../pages/ProductCategoryPage")
+);
+const ProductBrandPage = loadable(() => import("../pages/ProductBrandPage"));
+const ProductTagPage = loadable(() => import("../pages/ProductTagPage"));
+const CheckoutPage = loadable(() => import("../pages/CheckoutPage"));
+const WishListPage = loadable(() => import("../pages/WishListPage"));
+const CartPage = loadable(() => import("../pages/CartPage"));
+const LoginPage = loadable(() => import("../pages/LoginPage"));
+const ProfilePage = loadable(() => import("../pages/ProfilePage"));
+const NotFoundPage = loadable(() => import("../pages/NotFoundPage"));
+
 
 const Router = () => {
   return (
