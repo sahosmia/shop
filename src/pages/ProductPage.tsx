@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useProducts } from "../hooks/useProducts";
 import PageBanner from "../components/PageBanner";
 import PriceFilter from "../components/Product/PriceFilter";
@@ -33,17 +33,18 @@ const ProductPage = () => {
   // Handle page change for pagination
   const handlePageChange = (value: number) => setPage(value);
 
-  const handleFilterToggle = () => setFilterShow(!filterShow);
-  const handleFilterReset = () => {
+  const handleFilterToggle = () =>
+    setFilterShow((prevFilterShow) => !prevFilterShow);
+
+  const handleFilterReset = useCallback(() => {
     setMinPrice(0);
     setMaxPrice(1000);
     setSelectedCategory([]);
     setSelectedBrand([]);
     setSelectedTags([]);
-  };
+  }, []);
   return (
     <>
-      {/* Helmet for setting page title and meta description */}
       <Helmet>
         <title>Product Page</title>
         <meta
@@ -95,7 +96,6 @@ const ProductPage = () => {
             </div>
           )}
 
-          {/* Sidebar for filters */}
 
           {/* Main content area */}
           <ProductListContent

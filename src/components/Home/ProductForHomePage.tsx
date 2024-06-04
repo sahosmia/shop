@@ -3,7 +3,6 @@ import ProductItem from "../tools/ProductItem";
 const ProductForHomePage = () => {
 
   const product4 = productsData.slice(0, 4);
-
   return (
     <div>
       <div className="container">

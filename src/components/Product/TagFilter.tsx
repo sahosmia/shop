@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 type TagsFilterProps = {
   tags: { id: number; title: string; slug: string }[];
@@ -43,17 +43,11 @@ const TagFilter: React.FC<TagsFilterProps> = ({
             >
               {tag.title}
             </label>
-            {/* <button
-              className="capitalize text-sm font-medium text-assLight leading-8 flex justify-between gap-5"
-              type="button"
-              onClick={() => handleTagClick(tag.title)}
-            >
-              <div className="inline-block">{tag.title}</div>{" "}
-            </button> */}
+            
           </li>
         ))}
       </ul>
     </div>
   );
 };
-export default TagFilter;
+export default memo(TagFilter);

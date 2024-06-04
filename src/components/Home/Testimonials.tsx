@@ -3,7 +3,6 @@ import TestimonialsSliders from "../Sliders/TestimonialsSliders";
 
 
 const Testimonials = () => {
- 
   return (
     <div className="py-10 md:py-20  bg-slate-50">
       <div className="container">

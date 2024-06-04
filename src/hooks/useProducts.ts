@@ -16,18 +16,23 @@ export const useProducts = (
   selectedBrand: string[] = []
 ) => {
   const [products, setProducts] = useState<ProductType[]>([]);
+
   const [categories, setCategories] = useState<
     { id: number; slug: string; title: string; quantity: number }[]
   >([]);
+
   const [tags, setTags] = useState<
     { id: number; slug: string; title: string }[]
   >([]);
+
   const [brands, setBrands] = useState<
     { id: number; slug: string; title: string }[]
   >([]);
+
   const [loading, setLoading] = useState(false);
   const [totalItems, setTotalItems] = useState<number>(0);
   const perPage = 10;
+  
   useEffect(() => {
     setTags(tagsData);
     setBrands(brandsData);

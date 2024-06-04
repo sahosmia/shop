@@ -6,7 +6,7 @@ import "swiper/css";
 
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-const CategoryList = () => {
+const CategoryList = () => {  
   return (
     <div className="pt-16 pb-6">
       <div className="container flex flex-wrap gap-2 relative">

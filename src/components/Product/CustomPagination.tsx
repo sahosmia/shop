@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
 const CustomPagination = ({
@@ -5,7 +6,6 @@ const CustomPagination = ({
   itemsPerPage,
   currentPage,
   onPageChange,
-
 }: {
   totalItems: number;
   itemsPerPage: number;
@@ -63,4 +63,4 @@ const CustomPagination = ({
   );
 };
 
-export default CustomPagination;
+export default memo(CustomPagination);

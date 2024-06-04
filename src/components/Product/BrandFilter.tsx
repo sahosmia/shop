@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 type BrandFilterProps = {
   brands: { id: number; title: string; slug: string }[];
@@ -42,17 +42,10 @@ const BrandFilter: React.FC<BrandFilterProps> = ({
             >
               {item.title}
             </label>
-            {/* <button
-              className="capitalize text-sm font-medium text-assLight leading-8 flex justify-between gap-5"
-              type="button"
-              onClick={() => handleBrandClick(brand.title)}
-            >
-              <div className="inline-block">{brand.title}</div>{" "}
-            </button> */}
           </li>
         ))}
       </ul>
     </div>
   );
 };
-export default BrandFilter;
+export default memo(BrandFilter);

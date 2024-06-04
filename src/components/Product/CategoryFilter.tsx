@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 type CategoryFilterProps = {
   categories: { id: number; title: string; quantity: number }[];
@@ -44,4 +44,4 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({ categories, selectedCat
     </div>
   );
 }
-export default CategoryFilter;
+export default memo(CategoryFilter);

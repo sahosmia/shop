@@ -1,5 +1,5 @@
 import { Box, Slider } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 
 type PriceFilterProps = {
@@ -72,4 +72,4 @@ const PriceFilter: React.FC<PriceFilterProps> = ({
   );
 };
 
-export default PriceFilter;
+export default memo(PriceFilter);
