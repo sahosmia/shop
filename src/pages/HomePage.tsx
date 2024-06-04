@@ -21,18 +21,13 @@ const HomePage = () => {
         <title>HomePage</title>
         <meta name="description" content="Anything will never seo." />
       </Helmet>
-      {/* <TempHeader /> */}
       <HeroSlider />
       <CategoryList/>
       <ProductForHomePage />
       <StoreBanner/>
-
-      {/* <ExploreCollections /> */}
       <ProductForHomePage />
-      {/* <ShopNowForHomePage /> */}
       <Testimonials />
       <Brand />
-
       <BottomToTop />
     </>
   );

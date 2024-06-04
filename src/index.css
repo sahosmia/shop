@@ -109,12 +109,16 @@ body{
 
 .swiper-button-next,
 .swiper-button-prev {
-  @apply bg-primary text-white w-10 h-10 flex justify-center items-center rounded-full shadow-lg;
+  @apply bg-primary flex justify-center items-center rounded-full shadow-lg;
+  color: white !important;
+  width: 30px !important;
+  height: 30px !important;
+  top: 50% !important;
+  transform: translateY(50%);
 }
 
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  font-size: 20px; /* Adjust the size of the arrow */
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 15px !important;
 }
 
 .swiper-button-next:hover,
