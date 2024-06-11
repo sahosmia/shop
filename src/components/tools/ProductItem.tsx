@@ -18,6 +18,7 @@ import { ADD_CART } from "../../features/carts/cartsSlice";
 import { ADD_Wish } from "../../features/wish-lists/wishListsSlice";
 import { getDiscountPrice } from "../../utils";
 import ProductQuickView from "../Product/ProductQuickView";
+import Portal from "./Prortal";
 
 const ProductItem = ({ product }: ProductPropsType) => {
   const dispatch = useDispatch();
@@ -68,12 +69,13 @@ const ProductItem = ({ product }: ProductPropsType) => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      className="bg-white relative overflow-hidden rounded-lg border cursor-pointer block mt-5 w-80 min-w-72"
-    >
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="bg-white relative overflow-hidden rounded-lg border cursor-pointer block mt-5 w-80 min-w-72"
+      >
         <div className="absolute top-3 left-3 z-10">
           <div className="uppercase bg-green-400 px-3 py-0.5 text-[10px] text-white inline-block rounded-full z-0 mr-2">
             New
@@ -157,13 +159,16 @@ const ProductItem = ({ product }: ProductPropsType) => {
             </div>
           </div>
         </div>
-        {quickView && (
+      </motion.div>
+      {quickView && (
+        <Portal>
           <ProductQuickView
             handleQuickViewClose={handleQuickViewClose}
             product={product}
           />
-        )}
-    </motion.div>
+        </Portal>
+      )}
+    </>
   );
 };
 

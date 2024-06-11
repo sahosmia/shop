@@ -16,9 +16,9 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({ categories, selectedCat
    };
 
   return (
-    <div className=" bg-gray-100 rounded-lg p-8">
-      <h6 className="text-2xl font-semibold text-primary2 pb-5">Category</h6>
-      <ul>
+    <div className=" bg-gray-100 rounded-lg p-4">
+      <h6 className="text-xl font-semibold text-primary2 pb-5">Category</h6>
+      <ul className='h-56 overflow-auto border p-2 rounded'>
         {categories.map((item) => (
           <li
             className={`${

@@ -21,8 +21,8 @@ const BrandFilter: React.FC<BrandFilterProps> = ({
 
   return (
     <div className=" bg-gray-100 rounded-lg p-4">
-      <h6 className="text-2xl font-semibold text-primary2 pb-5">Brands</h6>
-      <ul>
+      <h6 className="text-xl font-semibold text-primary2 pb-5">Brands</h6>
+      <ul className="h-56 overflow-auto border p-2 rounded">
         {brands.map((item) => (
           <li
             className={`${

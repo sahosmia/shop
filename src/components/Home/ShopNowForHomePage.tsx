@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 const ShopNowForHomePage = () => {
   return (
     <div className="grid grid-cols-2 gap-4 ">
-      <a className="relative block  duration-500 ease-in-out " href="">
+      <Link className="relative block  duration-500 ease-in-out " to="">
         <div>
           <img
             className="duration-1000"
@@ -15,8 +17,8 @@ const ShopNowForHomePage = () => {
             Shop Now
           </div>
         </div>
-      </a>
-      <a className="relative block  duration-500 ease-in-out " href="">
+      </Link>
+      <Link className="relative block  duration-500 ease-in-out " to="">
         <div>
           <img
             className="duration-1000"
@@ -30,7 +32,7 @@ const ShopNowForHomePage = () => {
             Shop Now
           </div>
         </div>
-      </a>
+      </Link>
       
     </div>
   );

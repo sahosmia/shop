@@ -4,13 +4,14 @@ import {
   MdOutlineSearch,
   MdOutlineShoppingCart,
 } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const TempHeader = () => {
   return (
     <div className="container h-[74px] flex items-center justify-between py-5 ">
       <div className="flex item-center  justify-evenly">
         <div className="text-3xl font-bold  ">
-          <a href="">Logo </a>
+          <Link to="">Logo </Link>
         </div>
 
         <div className="flex items-center ml-20 text-2xl">Product</div>

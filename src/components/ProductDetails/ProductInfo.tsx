@@ -13,6 +13,9 @@ import useCartsItem from "../../hooks/useCartsItem";
 import { ProductType } from "../../types";
 import { reviewsData } from "../../data/dummy";
 import { Rating } from "@mui/material";
+import ShareButtons from "./ShareButtons";
+
+
 
 const ProductInfo = ({ product }: { product: ProductType }) => {
   const cartItem = useCartsItem(product.id);
@@ -165,6 +168,8 @@ const ProductInfo = ({ product }: { product: ProductType }) => {
           Buy Now
         </button>
       </div>
+
+      <ShareButtons productId={product.id}/>
     </div>
   );
 };
