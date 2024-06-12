@@ -7,32 +7,41 @@ import {
   tagsData,
 } from "../data/dummy";
 
+type CategoryType = {
+  id: number;
+  slug: string;
+  title: string;
+  quantity: number;
+};
+
+type TagType = {
+  id: number;
+  slug: string;
+  title: string;
+};
+
+type BrandType = {
+  id: number;
+  slug: string;
+  title: string;
+};
+
 export const useProducts = (
   page: number,
-  minPrice?: number,
-  maxPrice?: number,
+  minPrice?: number | undefined,
+  maxPrice?: number | undefined,
   selectedCategory: string[] = [],
   selectedTags: string[] = [],
   selectedBrand: string[] = []
 ) => {
   const [products, setProducts] = useState<ProductType[]>([]);
-
-  const [categories, setCategories] = useState<
-    { id: number; slug: string; title: string; quantity: number }[]
-  >([]);
-
-  const [tags, setTags] = useState<
-    { id: number; slug: string; title: string }[]
-  >([]);
-
-  const [brands, setBrands] = useState<
-    { id: number; slug: string; title: string }[]
-  >([]);
-
+  const [categories, setCategories] = useState<CategoryType[]>([]);
+  const [tags, setTags] = useState<TagType[]>([]);
+  const [brands, setBrands] = useState<BrandType[]>([]);
   const [loading, setLoading] = useState(false);
   const [totalItems, setTotalItems] = useState<number>(0);
   const perPage = 10;
-  
+
   useEffect(() => {
     setTags(tagsData);
     setBrands(brandsData);
@@ -50,7 +59,6 @@ export const useProducts = (
           selectedCategory.includes(product.category);
         const matchesTags =
           selectedTags.length === 0 ||
-          // selectedTags.every((tag) => product.tags.includes(tag));
           selectedTags.some((tag) => product.tags.includes(tag));
         const matchesBrand =
           selectedBrand.length === 0 || selectedBrand.includes(product.brand);

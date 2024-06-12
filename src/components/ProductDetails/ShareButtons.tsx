@@ -15,7 +15,6 @@ const ShareButtons = ({ productId }: { productId: number }) => {
   const siteUrl = window.location.origin; 
 
   const url = `${siteUrl}/products/${productId}`;
-  console.log(url);
 
   return (
     <div className="flex gap-1 items-center pt-2">
