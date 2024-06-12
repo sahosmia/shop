@@ -7,9 +7,8 @@ import { useMemo, useState } from "react";
 import { useProducts } from "../hooks/useProducts";
 import PriceFilter from "../components/Product/PriceFilter";
 import { MdFilterAlt } from "react-icons/md";
-import TagFilter from "../components/Product/TagFilter";
-import BrandFilter from "../components/Product/BrandFilter";
 import ProductListContent from "../components/Product/ProductListContent";
+import FilterItem from "../components/Product/FilterItem";
 
 const ProductCategoryPage = () => {
   const { category_slug } = useParams<{ category_slug: string }>();
@@ -81,16 +80,20 @@ const ProductCategoryPage = () => {
                 />
                 <button onClick={handleFilterReset}>Reset Filter</button>
               </div>
-              <TagFilter
-                tags={tags}
-                selectedTags={selectedTags}
-                onSelectTags={setSelectedTags}
+              <FilterItem
+                items={tags}
+                selectedItems={selectedTags}
+                onSelectItem={setSelectedTags}
+                title="Tags"
               />
-              <BrandFilter
-                brands={brands}
-                selectedBrand={selectedBrand}
-                onSelectBrand={setSelectedBrand}
+
+              <FilterItem
+                items={brands}
+                selectedItems={selectedBrand}
+                onSelectItem={setSelectedBrand}
+                title="Brands"
               />
+              
             </div>
           )}
 

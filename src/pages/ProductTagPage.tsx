@@ -7,15 +7,12 @@ import { useMemo, useState } from "react";
 import { useProducts } from "../hooks/useProducts";
 import PriceFilter from "../components/Product/PriceFilter";
 import { MdFilterAlt } from "react-icons/md";
-import CategoryFilter from "../components/Product/CategoryFilter";
-import BrandFilter from "../components/Product/BrandFilter";
 import ProductListContent from "../components/Product/ProductListContent";
+import FilterItem from "../components/Product/FilterItem";
 
 const ProductTagPage = () => {
   const { tag_slug } = useParams<{ tag_slug: string }>();
   const tag = tagsData.find((item) => item.slug === tag_slug);
-
-  
 
   const [minPrice, setMinPrice] = useState<number | undefined>(undefined);
   const [maxPrice, setMaxPrice] = useState<number | undefined>(undefined);
@@ -82,16 +79,17 @@ const ProductTagPage = () => {
                 <button onClick={handleFilterReset}>Reset Filter</button>
               </div>
 
-              <CategoryFilter
-                categories={categories}
-                selectedCategory={selectedCategory}
-                onSelectCategory={setSelectedCategory}
+              <FilterItem
+                items={categories}
+                selectedItems={selectedCategory}
+                onSelectItem={setSelectedCategory}
+                title="Category"
               />
-
-              <BrandFilter
-                brands={brands}
-                selectedBrand={selectedBrand}
-                onSelectBrand={setSelectedBrand}
+              <FilterItem
+                items={brands}
+                selectedItems={selectedBrand}
+                onSelectItem={setSelectedBrand}
+                title="Tags"
               />
             </div>
           )}
