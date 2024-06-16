@@ -11,3 +11,8 @@
 - Share button 
 
 
+## Third Party Library 
+- Redux
+- React Share
+- React Icon
+- React Router Dom
