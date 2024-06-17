@@ -16,3 +16,11 @@
 - React Share
 - React Icon
 - React Router Dom
+- date-fns
+- framer-motion
+- react-helmet
+- react-hook-form
+- react-slick
+- react-toastify
+- slick-carousel
+- swiper
