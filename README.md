@@ -1,6 +1,6 @@
 # Shop E-commerce
 
-## Features List
+### Features List
 
 - Scroll top
 - Coupon code
@@ -8,10 +8,11 @@
 - Wish list
 - Checkout
 - Review section
-- Share button 
+- Share button
+- Filter Option
 
 
-## Third Party Library 
+### Third Party Library 
 - Redux
 - React Share
 - React Icon
@@ -24,3 +25,14 @@
 - react-toastify
 - slick-carousel
 - swiper
+
+### Page List
+- Home Page
+- Product Page
+- Product Details Page
+- Category Page
+- Tag Page
+- Brand Page
+- Cart Page
+- Whis List Page
+- Checkout Page
