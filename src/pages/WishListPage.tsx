@@ -17,9 +17,10 @@ const WishListPage = () => {
 
   useEffect(() => {
     if (auth.user !== null) {
-      setUserWishLists(
-        wishLists.filter((item) => item.userId === auth?.user?.id)
+      const filteredUserWishList = wishLists.filter(
+        (item) => item.userId === auth?.user?.id
       );
+      setUserWishLists(filteredUserWishList);
     }
   }, [auth, wishLists]);
   return (
@@ -35,13 +36,20 @@ const WishListPage = () => {
           {auth.user !== null ? (
             userWishLists.length > 0 ? (
               <div className=" grid grid-cols-12 gap-5">
-                <div className="col-span-9">
+                <div className="col-span-12">
                   <div className="divide-y border">
                     <div className="flex divide-x">
-                      <div className="flex-1 p-2">Name</div>
-                      <div className="flex-1 p-2">Price</div>
-                      <div className="flex-1 p-2">Stock</div>
-                      <div className="flex-1 p-2 flex justify-center">
+                      <div className="flex-1 p-2 text-sm font-semibold text-primary2">
+                        Name
+                      </div>
+                      <div className="flex-1 p-2 text-sm font-semibold text-primary2 flex justify-center">
+                        Price
+                      </div>
+                      <div className="flex-1 p-2 text-sm font-semibold text-primary2 flex justify-center">
+                        Stock
+                      </div>
+
+                      <div className="flex-1 p-2 text-sm font-semibold text-primary2 flex justify-center">
                         Action
                       </div>
                     </div>

@@ -1,12 +1,25 @@
 import { Link } from "react-router-dom";
 import { storeBannerData } from "../../data/designData";
+import { motion } from "framer-motion";
 
 const StoreBanner = () => {
   return (
     <div className="my-16">
       <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center gap-6">
-        {storeBannerData.map((item) => (
-          <div
+        {storeBannerData.map((item, index) => (
+          <motion.div
+            initial={{ opacity: 0, y: "50px" }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: {
+                type: "spring",
+                bounce: 0.3,
+                duration: 0.4,
+                delay: index/10,
+              },
+            }}
+            viewport={{once:true}}
             key={item.id}
             className={`p-10 rounded-lg bg-cover bg-center bg-no-repeat`}
             style={{ backgroundImage: `url(${item.bg})` }}
@@ -20,7 +33,7 @@ const StoreBanner = () => {
             >
               Shop now
             </Link>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

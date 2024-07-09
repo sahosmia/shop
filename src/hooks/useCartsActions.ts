@@ -3,13 +3,13 @@ import useAuth from "./useAuth";
 import { useDispatch } from "react-redux";
 import { ADD_CART } from "../features/carts/cartsSlice";
 
-const useCartsActions = (productId:number, cartQuantity=1) => {
+const useCartsActions = () => {
   const auth = useAuth();
   const dispatch = useDispatch();
   //product
   // cartQuantity
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (productId: number, cartQuantity = 1) => {
     if (productId) {
       if (auth.user !== null) {
         dispatch(

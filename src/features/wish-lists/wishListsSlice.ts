@@ -5,6 +5,8 @@ import { getWishListID } from "../../utils";
 // Define the initial state for the wish list
 const initialState: WishListItemReduxType[] = [
   { id: 1, productId: 1, userId: 1 },
+  { id: 2, productId: 6, userId: 2 },
+  { id: 3, productId: 7, userId: 2 },
 ];
 
 const wishListsSlice = createSlice({

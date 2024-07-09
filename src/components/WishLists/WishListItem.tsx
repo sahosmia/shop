@@ -1,31 +1,29 @@
-//third-party libary
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 import { IoClose } from "react-icons/io5";
 import { useDispatch } from "react-redux";
-// internal data
 import { productsData } from "../../data/dummy";
-// redux method
 import { DELETE_Wish } from "../../features/wish-lists/wishListsSlice";
-// types
 import { ProductType, WishListItemPropsType } from "../../types";
 import useAuth from "../../hooks/useAuth";
-import { getDiscountPrice } from "../../utils";
-// Internal Compornant
+import { getDiscountPrice, showNotification } from "../../utils";
+import { MdOutlineShoppingCart } from "react-icons/md";
+import useCartsActions from "../../hooks/useCartsActions";
 
 const WishListItem = ({ wishListItem }: WishListItemPropsType) => {
   const dispatch = useDispatch();
   const auth = useAuth();
+  const { handleAddToCart } = useCartsActions();
 
   const product: ProductType | undefined = productsData.find(
     (item) => item.id === wishListItem.productId
   );
+
   // Function to handle delete
   const onDelete = () => {
     dispatch(
       DELETE_Wish({ productId: wishListItem.productId, userId: auth?.user?.id })
     );
-    toast.success(`Deleted ${wishListItem.productId}`);
+    showNotification("success", `Deleted ${wishListItem.productId}`);
   };
 
   return (
@@ -45,7 +43,7 @@ const WishListItem = ({ wishListItem }: WishListItemPropsType) => {
           </div>
         </Link>
       </div>
-      <div className="flex-1 p-2">
+      <div className="flex-1 p-2 flex justify-center items-center">
         $
         {getDiscountPrice(
           product?.price || 0,
@@ -53,15 +51,29 @@ const WishListItem = ({ wishListItem }: WishListItemPropsType) => {
         )}
       </div>
 
-      <div className="flex-1 p-2">
+      <div className="flex-1 p-2 flex justify-center items-center">
         {product && product.stock === 0 ? (
-          <span className="text-sm text-red-800 font-semibold">Stock Out</span>
+          <span className="text-sm text-red-800 font-semibold ">Stock Out</span>
         ) : (
-          <span className="text-sm text-green-800 font-semibold">Stock In</span>
+          <span className="text-sm text-green-800 font-semibold ">
+            Stock In
+          </span>
         )}
       </div>
-      <div className="flex-1 p-2 flex justify-center">
-        <button onClick={onDelete} className="border-none">
+
+      <div className="flex-1 p-2 flex justify-center items-center gap-2">
+        <button
+          title="Add to Cart"
+          onClick={() => handleAddToCart(product?.id || 0)}
+          className="border-none bg-primary2 bg-opacity-80 text-white rounded p-2"
+        >
+          <MdOutlineShoppingCart />
+        </button>
+        <button
+          title="Delete"
+          onClick={onDelete}
+          className=" border bg-transparent bg-opacity-80  rounded p-2"
+        >
           <IoClose />
         </button>
       </div>

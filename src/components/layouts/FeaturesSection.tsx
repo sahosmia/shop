@@ -27,9 +27,10 @@ const FeaturesSection = () => {
                   transition: {
                     type: "tween",
                     duration: 0.2,
-                    delay:0.1*feature.id
+                    delay: 0.1 * feature.id,
                   },
                 }}
+                viewport={{ once: true }}
                 key={feature.id}
                 className="flex flex-col items-center justify-center max-w-80 m-auto"
               >

@@ -1,4 +1,4 @@
-import ProductItem from "../tools/ProductItem";
+import ProductItem from "./ProductItem";
 import Loading from "../tools/Loading";
 import EmptyData from "../tools/EmptyData";
 import CustomPagination from "./CustomPagination";

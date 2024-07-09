@@ -14,18 +14,22 @@ const ProductDetailsPage = () => {
   const { productId } = useParams<{ productId: string }>();
   const [product, setProduct] = useState<ProductType | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(true);
+  // Example side effect: logging the productId change
+  const data = productsData.find(
+    (item) => productId && item.id === parseInt(productId)
+  );
 
   useEffect(() => {
-    // Example side effect: logging the productId change
-    const data = productsData.find(
-      (item) => productId && item.id === parseInt(productId)
-    );
-    if (data) {
-      setProduct(data);
-    }
+    const timeIntervel = setTimeout(() => {
+      if (data) {
+        setProduct(data);
+      }
+      window.scrollTo(0, 0);
 
-    setLoading(false);
-  }, [productId]);
+      setLoading(false);
+    }, 300);
+    
+  }, [data]);
 
   if (loading) {
     return <h1>loading</h1>;

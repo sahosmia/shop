@@ -1,8 +1,6 @@
 import { productsData } from "../../data/dummy";
 import { ProductPropsType, ProductType } from "../../types";
-import ProductItem from "../tools/ProductItem";
-
-
+import ProductItem from "../Product/ProductItem";
 
 const RelatedProducts = ({ product }: ProductPropsType) => {
   // Dummy logic to fetch related products (e.g., products from the same category)

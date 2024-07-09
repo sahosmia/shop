@@ -14,38 +14,24 @@ import { Tooltip } from "@mui/material";
 import { ProductPropsType } from "../../types";
 import useAuth from "../../hooks/useAuth";
 import useWishLists from "../../hooks/useWishLists";
-import { ADD_CART } from "../../features/carts/cartsSlice";
 import { ADD_Wish } from "../../features/wish-lists/wishListsSlice";
 import { getDiscountPrice } from "../../utils";
-import ProductQuickView from "../Product/ProductQuickView";
-import Portal from "./Prortal";
+import ProductQuickView from "./ProductQuickView";
+import Portal from "../tools/Prortal";
+import useCartsActions from "../../hooks/useCartsActions";
 
 const ProductItem = ({ product }: ProductPropsType) => {
   const dispatch = useDispatch();
   const auth = useAuth();
   const wishLists = useWishLists();
   const [quickView, setQuickView] = useState(false);
+  const { handleAddToCart } = useCartsActions();
 
   const checkWishLists =
     auth.user !== null &&
     wishLists.find(
       (item) => item.productId === product.id && item.userId === auth?.user?.id
     );
-
-  const handleAddtoCart = (id: number) => {
-    if (auth.user !== null) {
-      dispatch(
-        ADD_CART({
-          productId: id,
-          quantity: 1,
-          userId: auth.user.id,
-        })
-      );
-      toast.success("Item added to cart successfully");
-    } else {
-      toast.error("Please log in first");
-    }
-  };
 
   const handleAddWishList = () => {
     if (auth.user !== null) {
@@ -125,10 +111,10 @@ const ProductItem = ({ product }: ProductPropsType) => {
             </div>
           </div>
           <div className="mt-2 p-3">
-            <h6 className="text-assLight mb-3 text-xs">{product.category}</h6>
+            <h6 className="text-assLight mb-3 text-xs hover:text-secondary2 transition-all">{product.category}</h6>
             <Link
               to={`/products/${product.id}`}
-              className="font-medium text-ass mb-3 block hover:underline"
+              className="font-medium text-ass mb-3  hover:underline line-clamp-1 transition-all"
             >
               {product.title}
             </Link>
@@ -150,8 +136,8 @@ const ProductItem = ({ product }: ProductPropsType) => {
                 )}
               </div>
               <button
-                onClick={() => handleAddtoCart(product.id)}
-                className="bg-primary bg-opacity-25 hover:bg-opacity-80 text-primary2 hover:text-white hover:-translate-y-1 transition-all duration-300 py-2 px-4 text-sm font-medium flex justify-center items-center rounded focus:outline-none"
+                onClick={() => handleAddToCart(product.id)}
+                className="border border-primary2 border-opacity-50 hover:bg-opacity-80 hover:bg-primary2 text-primary2 hover:text-white hover:-translate-y-1 transition-all duration-300 py-2 px-4 text-sm font-medium flex justify-center items-center rounded focus:outline-none"
               >
                 <BiCartAdd className="text-base mr-1" />
                 Add

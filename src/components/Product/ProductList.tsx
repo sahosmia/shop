@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ProductsPropsType } from "../../types";
-import ProductItem from "../tools/ProductItem";
+import ProductItem from "./ProductItem";
 
 const ProductList = ({ products }: ProductsPropsType) => {
   return (

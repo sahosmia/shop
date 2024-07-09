@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { brandsData, categoriesData, tagsData } from "../data/dummy";
 import { users } from "../data/users";
 import { CartItemType, WishListItemReduxType } from "../types";
@@ -48,4 +49,25 @@ const getUser = (useId: number) => {
   return data;
 };
 
-export { getCategoryByTitle, getBrandByTitle, getTagByTitle, getUser };
+const showNotification = (status: string, message: string) => {
+  switch (status) {
+    case "success":
+      return toast.success(message);
+    case "error":
+      return toast.error(message);
+    case "warn":
+      return toast.warn(message);
+    case "info":
+      return toast.info(message);
+    default:
+      return toast(message);
+  }
+};
+
+export {
+  getCategoryByTitle,
+  getBrandByTitle,
+  getTagByTitle,
+  getUser,
+  showNotification,
+};

@@ -150,7 +150,7 @@ export const reviewsData = [
     reviews:
       "Absolutely love this organic face cream! It leaves my skin feeling soft and hydrated all day. Highly recommend!",
     rating: 5,
-    createdAt: "2024-05-01T10:15:30Z"
+    createdAt: "2024-05-01T10:15:30Z",
   },
   {
     id: 2,
@@ -159,7 +159,7 @@ export const reviewsData = [
     reviews:
       "The organic shampoo has a lovely scent and makes my hair feel so clean and smooth. Will definitely buy again.",
     rating: 4,
-    createdAt: "2024-05-02T12:20:45Z"
+    createdAt: "2024-05-02T12:20:45Z",
   },
   {
     id: 3,
@@ -168,7 +168,7 @@ export const reviewsData = [
     reviews:
       "Not very impressed with the organic toothpaste. It doesn’t foam well and leaves a strange aftertaste.",
     rating: 2,
-    createdAt: "2024-05-03T14:25:50Z"
+    createdAt: "2024-05-03T14:25:50Z",
   },
   {
     id: 4,
@@ -177,7 +177,7 @@ export const reviewsData = [
     reviews:
       "This organic body lotion is a game changer! It absorbs quickly and my skin feels amazing.",
     rating: 4,
-    createdAt: "2024-05-04T16:30:55Z"
+    createdAt: "2024-05-04T16:30:55Z",
   },
   {
     id: 5,
@@ -186,7 +186,7 @@ export const reviewsData = [
     reviews:
       "Great quality organic tea. The flavor is rich and soothing. Perfect for a relaxing evening.",
     rating: 4,
-    createdAt: "2024-05-05T18:35:00Z"
+    createdAt: "2024-05-05T18:35:00Z",
   },
   {
     id: 6,
@@ -195,7 +195,7 @@ export const reviewsData = [
     reviews:
       "The organic honey is fantastic! It tastes pure and natural, and I love using it in my tea and baking.",
     rating: 4,
-    createdAt: "2024-05-06T20:40:15Z"
+    createdAt: "2024-05-06T20:40:15Z",
   },
   {
     id: 7,
@@ -204,7 +204,7 @@ export const reviewsData = [
     reviews:
       "I’m not a fan of the organic deodorant. It doesn’t seem to last very long and I need to reapply often.",
     rating: 2,
-    createdAt: "2024-05-07T22:45:20Z"
+    createdAt: "2024-05-07T22:45:20Z",
   },
   {
     id: 8,
@@ -213,7 +213,7 @@ export const reviewsData = [
     reviews:
       "This organic face wash is wonderful! It’s gentle on my skin and has helped clear up my acne.",
     rating: 5,
-    createdAt: "2024-05-08T08:50:25Z"
+    createdAt: "2024-05-08T08:50:25Z",
   },
   {
     id: 9,
@@ -222,7 +222,7 @@ export const reviewsData = [
     reviews:
       "The organic hand soap smells delightful and doesn’t dry out my hands. Perfect for frequent use.",
     rating: 4,
-    createdAt: "2024-05-09T10:55:30Z"
+    createdAt: "2024-05-09T10:55:30Z",
   },
   {
     id: 10,
@@ -231,11 +231,9 @@ export const reviewsData = [
     reviews:
       "Love the organic baby lotion. It’s gentle and perfect for my baby’s sensitive skin.",
     rating: 5,
-    createdAt: "2024-05-10T12:00:35Z"
-  }
+    createdAt: "2024-05-10T12:00:35Z",
+  },
 ];
-
-
 
 import Rebel from "../assets/collect/products/rebel (1).jpg";
 import Rebel1 from "../assets/collect/products/rebel (2).jpg";
@@ -250,7 +248,45 @@ import Cucumber from "../assets/collect/products/cucumber.jpg";
 import Cucumber2 from "../assets/collect/products/cucumber2.jpg";
 import Cucumber3 from "../assets/collect/products/cucumber3.jpg";
 import Cheese from "../assets/collect/products/Cheese.jpg";
-
+import DrBronnersImage from "../assets/collect/products/12.png";
+import DrBronnersImage1 from "../assets/collect/products/16.jpg";
+import DrBronnersImage2 from "../assets/collect/products/13.png";
+import DrBronnersImage3 from "../assets/collect/products/14.png";
+import DrBronnersImage4 from "../assets/collect/products/15.png";
+import BurtsBeesImage1 from "../assets/collect/products/1.png";
+import BurtsBeesImage2 from "../assets/collect/products/10.png";
+import BurtsBeesImage3 from "../assets/collect/products/product24-350x350.jpg";
+import BurtsBeesImage4 from "../assets/collect/products/7.png";
+import OrganicValleyImage from "../assets/collect/products/2.jpg";
+import OrganicValleyImage1 from "../assets/collect/products/2.png";
+import OrganicValleyImage2 from "../assets/collect/products/3.png";
+import OrganicValleyImage3 from "../assets/collect/products/33.jpg";
+import OrganicValleyImage4 from "../assets/collect/products/34.jpg";
+import GreenPeopleImage from "../assets/collect/products/36_1.jpg";
+import GreenPeopleImage1 from "../assets/collect/products/22.jpg";
+import GreenPeopleImage2 from "../assets/collect/products/4.png";
+import GreenPeopleImage3 from "../assets/collect/products/44.jpg";
+import GreenPeopleImage4 from "../assets/collect/products/45.jpg";
+import NutivaImage from "../assets/collect/products/11.png";
+import NutivaImage1 from "../assets/collect/products/16.jpg";
+import NutivaImage2 from "../assets/collect/products/16.png";
+import NutivaImage3 from "../assets/collect/products/18.jpg";
+import NutivaImage4 from "../assets/collect/products/19.jpg";
+import YogiTeaImage from "../assets/collect/products/19.jpg";
+import YogiTeaImage1 from "../assets/collect/products/p16-450x450.jpg";
+import YogiTeaImage2 from "../assets/collect/products/p11-450x450.jpg";
+import YogiTeaImage3 from "../assets/collect/products/p10-450x450.jpg";
+import YogiTeaImage4 from "../assets/collect/products/p2-450x450.jpg";
+import EarthsBestImage from "../assets/collect/products/p3-450x450.jpg";
+import EarthsBestImage1 from "../assets/collect/products/p5-450x450.jpg";
+import EarthsBestImage2 from "../assets/collect/products/p7-450x450.jpg";
+import EarthsBestImage3 from "../assets/collect/products/p8-450x450.jpg";
+import EarthsBestImage4 from "../assets/collect/products/p9-450x450.jpg";
+import SeventhGenerationImage from "../assets/collect/products/7.png";
+import SeventhGenerationImage1 from "../assets/collect/products/8.png";
+import SeventhGenerationImage2 from "../assets/collect/products/9.png";
+import SeventhGenerationImage3 from "../assets/collect/products/5_5ab7d51a-067a-4c36-9aea-fd18aacd6b92.jpg";
+import SeventhGenerationImage4 from "../assets/collect/products/cat1_210X210_crop_center.jpg";
 
 export const productsData = [
   {
@@ -290,12 +326,12 @@ export const productsData = [
     stock: 20,
     brand: "Dr. Bronner's",
     category: "Health & Beauty",
-    thumbnail: "DrBronnersThumbnail.jpg",
+    thumbnail: DrBronnersImage,
     images: [
-      "DrBronnersImage1.jpg",
-      "DrBronnersImage2.jpg",
-      "DrBronnersImage3.jpg",
-      "DrBronnersImage4.jpg",
+      DrBronnersImage1,
+      DrBronnersImage2,
+      DrBronnersImage3,
+      DrBronnersImage4,
     ],
     tags: ["Organic", "Hand Sanitizer", "Lavender", "Hygiene"],
   },
@@ -309,12 +345,12 @@ export const productsData = [
     stock: 25,
     brand: "Burt's Bees",
     category: "Health & Beauty",
-    thumbnail: "BurtsBeesThumbnail.jpg",
+    thumbnail: DrBronnersImage2,
     images: [
-      "BurtsBeesImage1.jpg",
-      "BurtsBeesImage2.jpg",
-      "BurtsBeesImage3.jpg",
-      "BurtsBeesImage4.jpg",
+      BurtsBeesImage1,
+      BurtsBeesImage2,
+      BurtsBeesImage3,
+      BurtsBeesImage4,
     ],
     tags: ["Natural", "Lip Balm", "Hydration", "Beeswax"],
   },
@@ -328,16 +364,15 @@ export const productsData = [
     stock: 30,
     brand: "Organic Valley",
     category: "Food",
-    thumbnail: "OrganicValleyThumbnail.jpg",
+    thumbnail: OrganicValleyImage,
     images: [
-      "OrganicValleyImage1.jpg",
-      "OrganicValleyImage2.jpg",
-      "OrganicValleyImage3.jpg",
-      "OrganicValleyImage4.jpg",
+      OrganicValleyImage1,
+      OrganicValleyImage2,
+      OrganicValleyImage3,
+      OrganicValleyImage4,
     ],
     tags: ["Organic", "Eggs", "Breakfast", "Protein", "Eco-Friendly"],
   },
-
   {
     id: 6,
     title: "Tom's of Maine Natural Cucumber",
@@ -363,9 +398,7 @@ export const productsData = [
     brand: "Annie's Homegrown",
     category: "Food",
     thumbnail: Cheese,
-    images: [
-      Cucumber, Cucumber3, Rebel1, Banana1
-    ],
+    images: [Cucumber, Cucumber3, Rebel1, Banana1],
     tags: ["Organic", "Macaroni & Cheese", "Comfort Food", "Family"],
   },
 
@@ -379,12 +412,12 @@ export const productsData = [
     stock: 18,
     brand: "Green People",
     category: "Health & Beauty",
-    thumbnail: "GreenPeopleThumbnail.jpg",
+    thumbnail: GreenPeopleImage,
     images: [
-      "GreenPeopleImage1.jpg",
-      "GreenPeopleImage2.jpg",
-      "GreenPeopleImage3.jpg",
-      "GreenPeopleImage4.jpg",
+      GreenPeopleImage1,
+      GreenPeopleImage2,
+      GreenPeopleImage3,
+      GreenPeopleImage4,
     ],
     tags: ["Organic", "Sun Lotion", "SPF 30", "Sun Protection"],
   },
@@ -398,13 +431,8 @@ export const productsData = [
     stock: 22,
     brand: "Nutiva",
     category: "Food",
-    thumbnail: "NutivaThumbnail.jpg",
-    images: [
-      "NutivaImage1.jpg",
-      "NutivaImage2.jpg",
-      "NutivaImage3.jpg",
-      "NutivaImage4.jpg",
-    ],
+    thumbnail: NutivaImage,
+    images: [NutivaImage1, NutivaImage2, NutivaImage3, NutivaImage4],
     tags: ["Organic", "Coconut Oil", "Virgin", "Versatile"],
   },
   {
@@ -417,12 +445,12 @@ export const productsData = [
     stock: 30,
     brand: "Seventh Generation",
     category: "Household",
-    thumbnail: "SeventhGenerationThumbnail.jpg",
+    thumbnail: SeventhGenerationImage,
     images: [
-      "SeventhGenerationImage1.jpg",
-      "SeventhGenerationImage2.jpg",
-      "SeventhGenerationImage3.jpg",
-      "SeventhGenerationImage4.jpg",
+      SeventhGenerationImage1,
+      SeventhGenerationImage2,
+      SeventhGenerationImage3,
+      SeventhGenerationImage4,
     ],
     tags: ["Natural", "Dish Liquid", "Biodegradable", "Non-Toxic"],
   },
@@ -436,12 +464,12 @@ export const productsData = [
     stock: 25,
     brand: "Bob's Red Mill",
     category: "Food",
-    thumbnail: "BobsRedMillThumbnail.jpg",
+    thumbnail: NutivaImage1,
     images: [
-      "BobsRedMillImage1.jpg",
-      "BobsRedMillImage2.jpg",
-      "BobsRedMillImage3.jpg",
-      "BobsRedMillImage4.jpg",
+      SeventhGenerationImage,
+      SeventhGenerationImage1,
+      SeventhGenerationImage2,
+      SeventhGenerationImage3,
     ],
     tags: ["Organic", "Rolled Oats", "Breakfast", "Fiber"],
   },
@@ -455,12 +483,12 @@ export const productsData = [
     stock: 35,
     brand: "Clif Bar",
     category: "Food",
-    thumbnail: "ClifBarThumbnail.jpg",
+    thumbnail: GreenPeopleImage2,
     images: [
-      "ClifBarImage1.jpg",
-      "ClifBarImage2.jpg",
-      "ClifBarImage3.jpg",
-      "ClifBarImage4.jpg",
+      GreenPeopleImage2,
+      GreenPeopleImage3,
+      GreenPeopleImage4,
+      NutivaImage,
     ],
     tags: ["Organic", "Energy Bar", "Snack", "On-the-Go"],
   },
@@ -475,12 +503,12 @@ export const productsData = [
     stock: 15,
     brand: "Ecover",
     category: "Household",
-    thumbnail: "EcoverThumbnail.jpg",
+    thumbnail: DrBronnersImage3,
     images: [
-      "EcoverImage1.jpg",
-      "EcoverImage2.jpg",
-      "EcoverImage3.jpg",
-      "EcoverImage4.jpg",
+      BurtsBeesImage2,
+      BurtsBeesImage3,
+      BurtsBeesImage4,
+      OrganicValleyImage,
     ],
     tags: [
       "Fragrance-Free",
@@ -499,13 +527,8 @@ export const productsData = [
     stock: 20,
     brand: "Yogi Tea",
     category: "Tea & Coffee",
-    thumbnail: "YogiTeaThumbnail.jpg",
-    images: [
-      "YogiTeaImage1.jpg",
-      "YogiTeaImage2.jpg",
-      "YogiTeaImage3.jpg",
-      "YogiTeaImage4.jpg",
-    ],
+    thumbnail: YogiTeaImage,
+    images: [YogiTeaImage1, YogiTeaImage2, YogiTeaImage3, YogiTeaImage4],
     tags: ["Organic", "Green Tea", "Antioxidants", "Refreshing"],
   },
   {
@@ -518,12 +541,12 @@ export const productsData = [
     stock: 30,
     brand: "Earth's Best",
     category: "Baby & Kids",
-    thumbnail: "EarthsBestThumbnail.jpg",
+    thumbnail: EarthsBestImage,
     images: [
-      "EarthsBestImage1.jpg",
-      "EarthsBestImage2.jpg",
-      "EarthsBestImage3.jpg",
-      "EarthsBestImage4.jpg",
+      EarthsBestImage1,
+      EarthsBestImage2,
+      EarthsBestImage3,
+      EarthsBestImage4,
     ],
     tags: ["Organic", "Baby Food", "Fruits & Vegetables", "Nutritious"],
   },
@@ -537,13 +560,8 @@ export const productsData = [
     stock: 25,
     brand: "Avalon Organics",
     category: "Health & Beauty",
-    thumbnail: "AvalonOrganicsThumbnail.jpg",
-    images: [
-      "AvalonOrganicsImage1.jpg",
-      "AvalonOrganicsImage2.jpg",
-      "AvalonOrganicsImage3.jpg",
-      "AvalonOrganicsImage4.jpg",
-    ],
+    thumbnail: SeventhGenerationImage3,
+    images: [GreenPeopleImage4, NutivaImage, NutivaImage1, NutivaImage2],
     tags: ["Organic", "Shampoo", "Biotin", "Hair Care"],
   },
   {
@@ -556,12 +574,12 @@ export const productsData = [
     stock: 18,
     brand: "Green People",
     category: "Baby & Kids",
-    thumbnail: "GreenPeopleChildrenThumbnail.jpg",
+    thumbnail: YogiTeaImage2,
     images: [
-      "GreenPeopleChildrenImage1.jpg",
-      "GreenPeopleChildrenImage2.jpg",
-      "GreenPeopleChildrenImage3.jpg",
-      "GreenPeopleChildrenImage4.jpg",
+      BurtsBeesImage4,
+      OrganicValleyImage,
+      OrganicValleyImage1,
+      OrganicValleyImage2,
     ],
     tags: ["Organic", "Children", "Sun Lotion", "SPF 25"],
   },
@@ -576,12 +594,12 @@ export const productsData = [
     stock: 20,
     brand: "Kashi",
     category: "Food",
-    thumbnail: "KashiThumbnail.jpg",
+    thumbnail: DrBronnersImage2,
     images: [
-      "KashiImage1.jpg",
-      "KashiImage2.jpg",
-      "KashiImage3.jpg",
-      "KashiImage4.jpg",
+      EarthsBestImage4,
+      SeventhGenerationImage,
+      SeventhGenerationImage1,
+      SeventhGenerationImage2,
     ],
     tags: ["Organic", "Cereal", "Blueberry", "Breakfast"],
   },
@@ -595,13 +613,8 @@ export const productsData = [
     stock: 15,
     brand: "Organic Valley",
     category: "Food",
-    thumbnail: "OrganicValleyMilkThumbnail.jpg",
-    images: [
-      "OrganicValleyMilkImage1.jpg",
-      "OrganicValleyMilkImage2.jpg",
-      "OrganicValleyMilkImage3.jpg",
-      "OrganicValleyMilkImage4.jpg",
-    ],
+    thumbnail: GreenPeopleImage3,
+    images: [GreenPeopleImage2, GreenPeopleImage4, NutivaImage, NutivaImage1],
     tags: ["Organic", "Grassmilk", "Whole Milk", "Nutritious"],
   },
   {
@@ -614,13 +627,8 @@ export const productsData = [
     stock: 25,
     brand: "Method",
     category: "Health & Beauty",
-    thumbnail: "MethodThumbnail.jpg",
-    images: [
-      "MethodImage1.jpg",
-      "MethodImage2.jpg",
-      "MethodImage3.jpg",
-      "MethodImage4.jpg",
-    ],
+    thumbnail: SeventhGenerationImage3,
+    images: [YogiTeaImage3, YogiTeaImage4, EarthsBestImage, EarthsBestImage1],
     tags: ["Foaming Hand Soap", "Gentle", "Naturally Derived", "Moisturizing"],
   },
   {
@@ -633,12 +641,12 @@ export const productsData = [
     stock: 20,
     brand: "Weleda",
     category: "Health & Beauty",
-    thumbnail: "WeledaThumbnail.jpg",
+    thumbnail: NutivaImage2,
     images: [
-      "WeledaImage1.jpg",
-      "WeledaImage2.jpg",
-      "WeledaImage3.jpg",
-      "WeledaImage4.jpg",
+      EarthsBestImage2,
+      OrganicValleyImage3,
+      DrBronnersImage4,
+      GreenPeopleImage3,
     ],
     tags: ["Skin Care", "Ultra-Rich Cream", "Moisturizing", "Organic"],
   },
@@ -652,12 +660,12 @@ export const productsData = [
     stock: 30,
     brand: "Garden of Life",
     category: "Health & Fitness",
-    thumbnail: "GardenOfLifeThumbnail.jpg",
+    thumbnail: GreenPeopleImage1,
     images: [
-      "GardenOfLifeImage1.jpg",
-      "GardenOfLifeImage2.jpg",
-      "GardenOfLifeImage3.jpg",
-      "GardenOfLifeImage4.jpg",
+      SeventhGenerationImage1,
+      SeventhGenerationImage2,
+      SeventhGenerationImage3,
+      SeventhGenerationImage4,
     ],
     tags: ["Organic", "Protein Powder", "Muscle Recovery", "Plant-Based"],
   },
@@ -671,12 +679,12 @@ export const productsData = [
     stock: 20,
     brand: "Dr. Bronner's",
     category: "Health & Beauty",
-    thumbnail: "DrBronnersToothpasteThumbnail.jpg",
+    thumbnail: OrganicValleyImage4,
     images: [
-      "DrBronnersToothpasteImage1.jpg",
-      "DrBronnersToothpasteImage2.jpg",
-      "DrBronnersToothpasteImage3.jpg",
-      "DrBronnersToothpasteImage4.jpg",
+      EarthsBestImage2,
+      OrganicValleyImage3,
+      DrBronnersImage4,
+      GreenPeopleImage3,
     ],
     tags: ["Organic", "Toothpaste", "Peppermint", "Oral Care"],
   },
@@ -690,13 +698,8 @@ export const productsData = [
     stock: 15,
     brand: "Nutiva",
     category: "Food",
-    thumbnail: "NutivaHempOilThumbnail.jpg",
-    images: [
-      "NutivaHempOilImage1.jpg",
-      "NutivaHempOilImage2.jpg",
-      "NutivaHempOilImage3.jpg",
-      "NutivaHempOilImage4.jpg",
-    ],
+    thumbnail: NutivaImage4,
+    images: [GreenPeopleImage2, GreenPeopleImage4, NutivaImage, NutivaImage1],
     tags: ["Organic", "Hemp Seed Oil", "Omega-3", "Antioxidants"],
   },
   {
@@ -709,12 +712,12 @@ export const productsData = [
     stock: 25,
     brand: "Seventh Generation",
     category: "Baby & Kids",
-    thumbnail: "SeventhGenerationBabyWipesThumbnail.jpg",
+    thumbnail: DrBronnersImage3,
     images: [
-      "SeventhGenerationBabyWipesImage1.jpg",
-      "SeventhGenerationBabyWipesImage2.jpg",
-      "SeventhGenerationBabyWipesImage3.jpg",
-      "SeventhGenerationBabyWipesImage4.jpg",
+      SeventhGenerationImage1,
+      SeventhGenerationImage2,
+      SeventhGenerationImage3,
+      SeventhGenerationImage4,
     ],
     tags: ["Baby Wipes", "Free & Clear", "Gentle", "Sensitive Skin"],
   },
@@ -728,12 +731,12 @@ export const productsData = [
     stock: 20,
     brand: "Bob's Red Mill",
     category: "Food",
-    thumbnail: "BobsRedMillQuinoaThumbnail.jpg",
+    thumbnail: YogiTeaImage4,
     images: [
-      "BobsRedMillQuinoaImage1.jpg",
-      "BobsRedMillQuinoaImage2.jpg",
-      "BobsRedMillQuinoaImage3.jpg",
-      "BobsRedMillQuinoaImage4.jpg",
+      BurtsBeesImage3,
+      DrBronnersImage,
+      YogiTeaImage,
+      SeventhGenerationImage,
     ],
     tags: ["Organic", "Quinoa", "Superfood", "Versatile"],
   },
@@ -747,13 +750,8 @@ export const productsData = [
     stock: 30,
     brand: "Clif Bar",
     category: "Food",
-    thumbnail: "ClifBarNutButterThumbnail.jpg",
-    images: [
-      "ClifBarNutButterImage1.jpg",
-      "ClifBarNutButterImage2.jpg",
-      "ClifBarNutButterImage3.jpg",
-      "ClifBarNutButterImage4.jpg",
-    ],
+    thumbnail: BurtsBeesImage4,
+    images: [GreenPeopleImage2, GreenPeopleImage4, NutivaImage, NutivaImage1],
     tags: ["Organic", "Nut Butter", "Energy Bar", "Snack"],
   },
   {
@@ -766,12 +764,12 @@ export const productsData = [
     stock: 25,
     brand: "Annie's Homegrown",
     category: "Food",
-    thumbnail: "AnniesHomegrownFruitSnacksThumbnail.jpg",
+    thumbnail: EarthsBestImage4,
     images: [
-      "AnniesHomegrownFruitSnacksImage1.jpg",
-      "AnniesHomegrownFruitSnacksImage2.jpg",
-      "AnniesHomegrownFruitSnacksImage3.jpg",
-      "AnniesHomegrownFruitSnacksImage4.jpg",
+      EarthsBestImage2,
+      OrganicValleyImage3,
+      DrBronnersImage4,
+      GreenPeopleImage3,
     ],
     tags: ["Organic", "Fruit Snacks", "Kids", "Healthy"],
   },
@@ -785,13 +783,8 @@ export const productsData = [
     stock: 25,
     brand: "Annie's Homegrown",
     category: "Food",
-    thumbnail: "AnniesHomegrownFruitSnacksThumbnail.jpg",
-    images: [
-      "AnniesHomegrownFruitSnacksImage1.jpg",
-      "AnniesHomegrownFruitSnacksImage2.jpg",
-      "AnniesHomegrownFruitSnacksImage3.jpg",
-      "AnniesHomegrownFruitSnacksImage4.jpg",
-    ],
+    thumbnail: BurtsBeesImage2,
+    images: [BurtsBeesImage3, DrBronnersImage, YogiTeaImage, YogiTeaImage],
     tags: ["Organic", "Fruit Snacks", "Kids", "Healthy"],
   },
   {
@@ -804,12 +797,12 @@ export const productsData = [
     stock: 20,
     brand: "Dr. Bronner's",
     category: "Health & Beauty",
-    thumbnail: "DrBronnersToothpasteThumbnail.jpg",
+    thumbnail: NutivaImage2,
     images: [
-      "DrBronnersToothpasteImage1.jpg",
-      "DrBronnersToothpasteImage2.jpg",
-      "DrBronnersToothpasteImage3.jpg",
-      "DrBronnersToothpasteImage4.jpg",
+      EarthsBestImage2,
+      OrganicValleyImage3,
+      DrBronnersImage4,
+      GreenPeopleImage3,
     ],
     tags: ["Organic", "Toothpaste", "Peppermint", "Fluoride-Free"],
   },
@@ -823,13 +816,8 @@ export const productsData = [
     stock: 18,
     brand: "Avalon Organics",
     category: "Health & Beauty",
-    thumbnail: "AvalonOrganicsShampooThumbnail.jpg",
-    images: [
-      "AvalonOrganicsShampooImage1.jpg",
-      "AvalonOrganicsShampooImage2.jpg",
-      "AvalonOrganicsShampooImage3.jpg",
-      "AvalonOrganicsShampooImage4.jpg",
-    ],
+    thumbnail: NutivaImage4,
+    images: [GreenPeopleImage2, GreenPeopleImage4, NutivaImage, NutivaImage1],
     tags: ["Organic", "Shampoo", "Lavender", "Nourishing"],
   },
   {
@@ -842,13 +830,8 @@ export const productsData = [
     stock: 22,
     brand: "Traditional Medicinals",
     category: "Tea & Coffee",
-    thumbnail: "TraditionalMedicinalsGingerTeaThumbnail.jpg",
-    images: [
-      "TraditionalMedicinalsGingerTeaImage1.jpg",
-      "TraditionalMedicinalsGingerTeaImage2.jpg",
-      "TraditionalMedicinalsGingerTeaImage3.jpg",
-      "TraditionalMedicinalsGingerTeaImage4.jpg",
-    ],
+    thumbnail: Cucumber3,
+    images: [DrBronnersImage2, DrBronnersImage, YogiTeaImage, YogiTeaImage],
     tags: ["Organic", "Ginger Tea", "Herbal Tea", "Digestive"],
   },
   {
@@ -861,12 +844,12 @@ export const productsData = [
     stock: 25,
     brand: "Green & Black's",
     category: "Food",
-    thumbnail: "GreenAndBlacksDarkChocolateThumbnail.jpg",
+    thumbnail: GreenPeopleImage3,
     images: [
-      "GreenAndBlacksDarkChocolateImage1.jpg",
-      "GreenAndBlacksDarkChocolateImage2.jpg",
-      "GreenAndBlacksDarkChocolateImage3.jpg",
-      "GreenAndBlacksDarkChocolateImage4.jpg",
+      SeventhGenerationImage1,
+      SeventhGenerationImage2,
+      SeventhGenerationImage3,
+      SeventhGenerationImage4,
     ],
     tags: ["Organic", "Dark Chocolate", "Ethically Sourced", "Premium"],
   },
@@ -880,13 +863,8 @@ export const productsData = [
     stock: 30,
     brand: "Alba Botanica",
     category: "Health & Beauty",
-    thumbnail: "AlbaBotanicaSunscreenThumbnail.jpg",
-    images: [
-      "AlbaBotanicaSunscreenImage1.jpg",
-      "AlbaBotanicaSunscreenImage2.jpg",
-      "AlbaBotanicaSunscreenImage3.jpg",
-      "AlbaBotanicaSunscreenImage4.jpg",
-    ],
+    thumbnail: DrBronnersImage4,
+    images: [DrBronnersImage2, DrBronnersImage, YogiTeaImage, YogiTeaImage],
     tags: ["Sunscreen", "SPF 45", "Reef-Friendly", "Botanical"],
   },
 ];

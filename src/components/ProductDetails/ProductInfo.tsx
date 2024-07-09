@@ -15,8 +15,6 @@ import { reviewsData } from "../../data/dummy";
 import { Rating } from "@mui/material";
 import ShareButtons from "./ShareButtons";
 
-
-
 const ProductInfo = ({ product }: { product: ProductType }) => {
   const cartItem = useCartsItem(product.id);
   const categoryItem = getCategoryByTitle(product.category);
@@ -27,7 +25,7 @@ const ProductInfo = ({ product }: { product: ProductType }) => {
   );
   const navigate = useNavigate();
   const carts = useCarts();
-  const { handleAddToCart } = useCartsActions(product.id, cartQuantity);
+  const { handleAddToCart } = useCartsActions();
 
   // Product cart quantity
   useEffect(() => {
@@ -44,7 +42,7 @@ const ProductInfo = ({ product }: { product: ProductType }) => {
   };
 
   const handleBuyNow = () => {
-    handleAddToCart();
+    handleAddToCart(product.id, cartQuantity);
     setTimeout(() => {
       return navigate("/checkout");
     }, 1000);
@@ -154,7 +152,7 @@ const ProductInfo = ({ product }: { product: ProductType }) => {
           </button>
         </div>
         <button
-          onClick={handleAddToCart}
+          onClick={() => handleAddToCart(product.id, cartQuantity)}
           className=" bg-primary bg-opacity-80 hover:bg-opacity-100 text-white transition-all duration-300 py-2 px-4 text-sm font-medium flex justify-center items-center rounded"
         >
           <BiCartAdd className="text-base mr-1" />
@@ -169,7 +167,7 @@ const ProductInfo = ({ product }: { product: ProductType }) => {
         </button>
       </div>
 
-      <ShareButtons productId={product.id}/>
+      <ShareButtons productId={product.id} />
     </div>
   );
 };
