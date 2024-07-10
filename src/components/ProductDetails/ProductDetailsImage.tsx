@@ -4,7 +4,13 @@ import { ProductType } from "../../types";
 const ProductDetailsImage = ({ product }: { product: ProductType }) => {
   const [thumbnail, setThunbnail] = useState<string>(product?.thumbnail);
   useEffect(() => {
-    setThunbnail(product?.thumbnail);
+    let ignore = false;
+    if (!ignore) {
+      setThunbnail(product?.thumbnail);
+    }
+    return () => {
+      ignore = true;
+    };
   }, [product]);
   return (
     <div>

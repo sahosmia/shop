@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import { productsData } from "../data/dummy";
@@ -8,7 +9,6 @@ import ProductDetailsImage from "../components/ProductDetails/ProductDetailsImag
 import ProductInfo from "../components/ProductDetails/ProductInfo";
 import PageBanner from "../components/PageBanner";
 import RelatedProducts from "../components/ProductDetails/RelatedProducts";
-import { useEffect, useState } from "react";
 
 const ProductDetailsPage = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -28,7 +28,9 @@ const ProductDetailsPage = () => {
 
       setLoading(false);
     }, 300);
-    
+    return () => {
+      clearTimeout(timeIntervel);
+    };
   }, [data]);
 
   if (loading) {

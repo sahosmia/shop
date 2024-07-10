@@ -20,7 +20,13 @@ const PriceFilter: React.FC<PriceFilterProps> = ({
 
   // Sync the local state with props
   useEffect(() => {
-    setValue([minPrice, maxPrice]);
+    let ignore = false;
+    if (!ignore) {
+      setValue([minPrice, maxPrice]);
+    }
+    return () => {
+      ignore = true;
+    };
   }, [minPrice, maxPrice]);
 
   const handleChange = (

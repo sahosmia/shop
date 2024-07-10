@@ -25,23 +25,33 @@ const CartPage = () => {
   const [stockError, setStockError] = useState(false);
 
   useEffect(() => {
+    let ignore = false;
     if (auth.user) {
-      setUserCarts(carts.filter((item) => item.userId === auth?.user?.id));
+      if (!ignore) {
+        setUserCarts(carts.filter((item) => item.userId === auth?.user?.id));
+      }
     }
+    return () => {
+      ignore = true;
+    };
   }, [auth, carts]);
 
   useEffect(() => {
     const validCoupon = cupons.find((item) => item.code === coupon);
     if (validCoupon) {
       setCouponAvailable(validCoupon);
-      setCouponError("")
-    } 
-    else {
+      setCouponError("");
+    } else {
       setCoupon("");
       localStorage.setItem("coupon", "");
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
+    // Optional cleanup function
+    return () => {
+      setCouponAvailable(null);
+      setCouponError("");
+    };
+  }, [coupon]);
 
   const onStockOut = (status: boolean) => setStockError(status);
 

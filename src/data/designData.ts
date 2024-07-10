@@ -159,3 +159,10 @@ export const storeBannerData = [
   { id: 2, title: "Make your Breakfast Healthy and Easy", bg: bgTwo },
   { id: 3, title: "The best Organic Products Online", bg: bgThree },
 ];
+// Menu list items
+export const menuList = [
+  { label: "My Account", url: "/profile" },
+  { label: "Wish List", url: "/" },
+  { label: "Cart List", url: "/" },
+  { label: "Checkout", url: "/checkout" },
+];

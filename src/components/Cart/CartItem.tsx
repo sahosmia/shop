@@ -2,12 +2,11 @@ import { IoClose } from "react-icons/io5";
 import { CardItemPropsType, ProductType } from "../../types";
 import { productsData } from "../../data/dummy";
 import { useEffect } from "react";
-import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { ADD_CART, DELETE_CART } from "../../features/carts/cartsSlice";
 import useAuth from "../../hooks/useAuth";
 import { TableCell, TableRow } from "@mui/material";
-import { getDiscountPrice } from "../../utils";
+import { getDiscountPrice, showNotification } from "../../utils";
 import { Link } from "react-router-dom";
 
 const CartItem = ({ cartItem, onStockError }: CardItemPropsType) => {
@@ -22,8 +21,14 @@ const CartItem = ({ cartItem, onStockError }: CardItemPropsType) => {
   useEffect(() => {
     if (product && product.stock < cartItem.quantity) {
       onStockError(true);
+    } else {
+      onStockError(false);
     }
-    return;
+
+    // Cleanup function
+    return () => {
+      onStockError(false);
+    };
   }, [product, cartItem.quantity, onStockError]);
 
   // Function to handle delete
@@ -34,15 +39,14 @@ const CartItem = ({ cartItem, onStockError }: CardItemPropsType) => {
     dispatch(
       DELETE_CART({ productId: cartItem.productId, userId: auth?.user?.id })
     );
-    toast.success(`Deleted ${cartItem.productId}`);
+    showNotification("success", `Deleted ${cartItem.productId}`);
   };
 
-  
   // Function to handle updating quantity
   const handleUpdateQuantity = (type: "plus" | "minus") => {
     if (type === "minus") {
       if (cartItem.quantity === 1) {
-        toast.error("Invalid input");
+        showNotification("error", "Invalid input");
         return;
       }
       if (product && product.stock <= cartItem.quantity) {
@@ -51,7 +55,7 @@ const CartItem = ({ cartItem, onStockError }: CardItemPropsType) => {
     }
     if (type === "plus" && product && product.stock <= cartItem.quantity) {
       onStockError(true);
-      toast.error(`Only ${product.stock} left in stock`);
+      showNotification("error", `Only ${product.stock} left in stock`);
     }
 
     dispatch(
@@ -65,7 +69,6 @@ const CartItem = ({ cartItem, onStockError }: CardItemPropsType) => {
   };
 
   return (
-
     <TableRow key={cartItem.id}>
       <TableCell>
         <Link to={`/products/${product?.id}`}>

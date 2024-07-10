@@ -43,8 +43,14 @@ export const useProducts = (
   const perPage = 10;
 
   useEffect(() => {
-    setTags(tagsData);
-    setBrands(brandsData);
+    let ignore = false;
+    if (!ignore) {
+      setBrands(brandsData);
+      setTags(tagsData);
+    }
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   useEffect(() => {

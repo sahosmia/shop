@@ -29,10 +29,16 @@ const ProductInfo = ({ product }: { product: ProductType }) => {
 
   // Product cart quantity
   useEffect(() => {
+    let ignore = false;
     const checkExists = carts.find((item) => item.productId === product.id);
     if (checkExists) {
-      setCartQuantity(checkExists.quantity);
+      if (!ignore) {
+        setCartQuantity(checkExists.quantity);
+      }
     }
+    return () => {
+      ignore = true;
+    };
   }, [carts, product]);
 
   const handleQuantityChange = (change: number) => {

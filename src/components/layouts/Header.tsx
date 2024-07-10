@@ -14,6 +14,7 @@ import useWishLists from "../../hooks/useWishLists";
 import { useDispatch } from "react-redux";
 import { Logout } from "../../features/auth/authSlice";
 import { CartItemReduxType, WishListItemReduxType } from "../../types";
+import { menuList } from "../../data/designData";
 
 const Header = () => {
   const carts = useCarts();
@@ -22,26 +23,32 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const [userWishLists, setUserWishLists] = useState<WishListItemReduxType[]>([]);
+  const [userWishLists, setUserWishLists] = useState<WishListItemReduxType[]>(
+    []
+  );
   const [userCarts, setUserCarts] = useState<CartItemReduxType[]>([]);
 
   // Filter wish lists and carts based on logged-in user
   useEffect(() => {
-    if (auth.user) {
-      setUserWishLists(wishLists.filter(item => item.userId === auth?.user?.id));
-      setUserCarts(carts.filter(item => item.userId === auth?.user?.id));
+    if (auth?.user?.id) {
+      const filteredWishLists = wishLists.filter(
+        (item) => item.userId === auth?.user?.id
+      );
+      const filteredCarts = carts.filter(
+        (item) => item.userId === auth?.user?.id
+      );
+      let ignore = false;
+
+      if (!ignore) {
+        setUserWishLists(filteredWishLists);
+        setUserCarts(filteredCarts);
+      }
+
+      return () => {
+        ignore = true;
+      };
     }
-  }, [auth, wishLists, carts]);
-
-  
-
-  // Menu list items
-  const menuList = [
-    { label: "My Account", url: "/profile" },
-    { label: "Wish List", url: "/" },
-    { label: "Cart List", url: "/" },
-    { label: "Checkout", url: "/checkout" },
-  ];
+  }, [auth?.user?.id, wishLists, carts]);
 
   // Reference for the header element
   const headerRef = useRef<HTMLHeadingElement | null>(null);
@@ -57,9 +64,12 @@ const Header = () => {
         }
       }
     };
-
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // Cleanup function to remove event listener
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   // Handle logout and navigate to login page
@@ -103,7 +113,7 @@ const Header = () => {
                 <div className="flex items-center justify-center group relative">
                   <BiUser className="h-6 w-6 text-ass cursor-pointer" />
                   <div className="absolute invisible opacity-0 translate-y-5 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible top-full -right-1/2 bg-white shadow-sm border p-5 rounded w-48 text-black z-20 transition-all duration-300">
-                    {menuList.map(menu => (
+                    {menuList.map((menu) => (
                       <div className="py-2" key={menu.label}>
                         <Link
                           className="inline text-sm py-2 text-ass hover:text-primary2 transition-all"
@@ -151,7 +161,7 @@ const Header = () => {
                 <Link
                   to="/login"
                   className="flex items-center justify-center cursor-pointer"
-                  state={{from:location}}
+                  state={{ from: location }}
                   title="Login"
                 >
                   <MdOutlineLogin className="h-6 w-6 text-ass" />

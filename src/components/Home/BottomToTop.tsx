@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
 
 const BottomToTop = () => {
- 
   const [isOpen, setIsOpen] = useState(false);
-
+  
+  // useEffect
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -13,13 +13,14 @@ const BottomToTop = () => {
         setIsOpen(false);
       }
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
+  // Handle Click Bottom to top button
   const handleClick = () => {
     window.scrollTo({
       top: 0,

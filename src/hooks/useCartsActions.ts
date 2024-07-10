@@ -1,7 +1,7 @@
-import { toast } from "react-toastify";
 import useAuth from "./useAuth";
 import { useDispatch } from "react-redux";
 import { ADD_CART } from "../features/carts/cartsSlice";
+import { showNotification } from "../utils";
 
 const useCartsActions = () => {
   const auth = useAuth();
@@ -19,9 +19,9 @@ const useCartsActions = () => {
             userId: auth.user.id,
           })
         );
-        toast.success("Product added to cart.");
+        showNotification("success", "Product added to cart.");
       } else {
-        toast.error("Login First");
+        showNotification("error", "Login First");
       }
     }
   };

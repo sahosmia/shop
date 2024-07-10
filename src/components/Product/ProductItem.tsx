@@ -1,7 +1,6 @@
 import { memo, MouseEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 
 import {
@@ -15,7 +14,7 @@ import { ProductPropsType } from "../../types";
 import useAuth from "../../hooks/useAuth";
 import useWishLists from "../../hooks/useWishLists";
 import { ADD_Wish } from "../../features/wish-lists/wishListsSlice";
-import { getDiscountPrice } from "../../utils";
+import { getDiscountPrice, showNotification } from "../../utils";
 import ProductQuickView from "./ProductQuickView";
 import Portal from "../tools/Prortal";
 import useCartsActions from "../../hooks/useCartsActions";
@@ -41,9 +40,9 @@ const ProductItem = ({ product }: ProductPropsType) => {
           userId: auth.user.id,
         })
       );
-      toast.success("Item added to wishlist successfully");
+      showNotification("success", "Item added to wishlist successfully");
     } else {
-      toast.error("Please log in first");
+      showNotification("error", "Please log in first");
     }
   };
 
@@ -111,7 +110,9 @@ const ProductItem = ({ product }: ProductPropsType) => {
             </div>
           </div>
           <div className="mt-2 p-3">
-            <h6 className="text-assLight mb-3 text-xs hover:text-secondary2 transition-all">{product.category}</h6>
+            <h6 className="text-assLight mb-3 text-xs hover:text-secondary2 transition-all">
+              {product.category}
+            </h6>
             <Link
               to={`/products/${product.id}`}
               className="font-medium text-ass mb-3  hover:underline line-clamp-1 transition-all"
