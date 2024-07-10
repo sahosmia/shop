@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom";
 import PageBanner from "../components/PageBanner";
-import { Helmet } from "react-helmet";
 import { categoriesData } from "../data/dummy";
 import ProductNotFound from "../components/Error/ProductNotFound";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useProducts } from "../hooks/useProducts";
 import PriceFilter from "../components/Product/PriceFilter";
 import { MdFilterAlt } from "react-icons/md";
 import ProductListContent from "../components/Product/ProductListContent";
 import FilterItem from "../components/Product/FilterItem";
+import CustomHelmet from "../components/tools/CustomHelmet";
 
 const ProductCategoryPage = () => {
   const { category_slug } = useParams<{ category_slug: string }>();
@@ -36,27 +36,24 @@ const ProductCategoryPage = () => {
     selectedBrand
   );
 
-  if (!category) {
-    return <ProductNotFound />;
-  }
-
   const handlePageChange = (value: number) => setPage(value);
   const handleFilterToggle = () => setFilterShow(!filterShow);
-  const handleFilterReset = () => {
+  const handleFilterReset = useCallback(() => {
     setMinPrice(0);
     setMaxPrice(1000);
     setSelectedBrand([]);
     setSelectedTags([]);
-  };
+  }, []);
+  
+  if (!category) {
+    return <ProductNotFound />;
+  }
   return (
     <>
-      <Helmet>
-        <title>{category.title} - Product Category Page</title>
-        <meta
-          name="description"
-          content={`Find the best products in the ${category.title} category.`}
-        />
-      </Helmet>
+      <CustomHelmet
+        title={`${category.title} - Product Category Page`}
+        description={`Find the best products in the ${category.title} category.`}
+      />
       <PageBanner title={`Category : ${category.title}`} />
 
       <section>
@@ -93,7 +90,6 @@ const ProductCategoryPage = () => {
                 onSelectItem={setSelectedBrand}
                 title="Brands"
               />
-              
             </div>
           )}
 

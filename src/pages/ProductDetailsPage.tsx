@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import { productsData } from "../data/dummy";
 import ProductNotFound from "../components/Error/ProductNotFound";
@@ -9,6 +8,7 @@ import ProductDetailsImage from "../components/ProductDetails/ProductDetailsImag
 import ProductInfo from "../components/ProductDetails/ProductInfo";
 import PageBanner from "../components/PageBanner";
 import RelatedProducts from "../components/ProductDetails/RelatedProducts";
+import CustomHelmet from "../components/tools/CustomHelmet";
 
 const ProductDetailsPage = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -43,13 +43,10 @@ const ProductDetailsPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{product.title} - Product Details</title>
-        <meta
-          name="description"
-          content={`Discover details about ${product.title}. ${product.description}`}
-        />
-      </Helmet>
+      <CustomHelmet
+        title={`${product.title} - Product Details`}
+        description={`Discover details about ${product.title}. ${product.description}`}
+      />
       <PageBanner title={product.title} />
 
       <section className="py-20">

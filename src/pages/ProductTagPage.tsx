@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom";
 import PageBanner from "../components/PageBanner";
-import { Helmet } from "react-helmet";
 import { tagsData } from "../data/dummy";
 import ProductNotFound from "../components/Error/ProductNotFound";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useProducts } from "../hooks/useProducts";
 import PriceFilter from "../components/Product/PriceFilter";
 import { MdFilterAlt } from "react-icons/md";
 import ProductListContent from "../components/Product/ProductListContent";
 import FilterItem from "../components/Product/FilterItem";
+import CustomHelmet from "../components/tools/CustomHelmet";
 
 const ProductTagPage = () => {
   const { tag_slug } = useParams<{ tag_slug: string }>();
@@ -33,28 +33,25 @@ const ProductTagPage = () => {
     selectedBrand
   );
 
-  if (!tag) {
-    return <ProductNotFound />;
-  }
-
   const handlePageChange = (value: number) => setPage(value);
   const handleFilterToggle = () => setFilterShow(!filterShow);
-  const handleFilterReset = () => {
+  const handleFilterReset = useCallback(() => {
     setMinPrice(undefined);
     setMaxPrice(undefined);
     setSelectedCategory([]);
     setSelectedBrand([]);
-  };
+  }, []);
+
+  if (!tag) {
+    return <ProductNotFound />;
+  }
 
   return (
     <>
-      <Helmet>
-        <title>{tag.title} - Product Tag Page</title>
-        <meta
-          name="description"
-          content={`Find the best products in the ${tag.title} category.`}
-        />
-      </Helmet>
+      <CustomHelmet
+        title={`${tag.title} - Product Tag Page`}
+        description={`Find the best products in the ${tag.title} tag.`}
+      />
       <PageBanner title={`Tag : ${tag.title}`} />
 
       <section>

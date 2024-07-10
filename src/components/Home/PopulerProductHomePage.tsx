@@ -6,8 +6,8 @@ const PopulerProductHomePage = () => {
   return (
     <ProductSlider
       products={product4}
-      prevClass="a"
-      nextClass="b"
+      prevClass="populer-prev"
+      nextClass="populer-next"
       title="Populer Product"
     />
   );

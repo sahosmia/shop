@@ -1,7 +1,7 @@
-import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import PageBanner from "../components/PageBanner";
+import CustomHelmet from "../components/tools/CustomHelmet";
 interface IFromInputs {
   name: string;
   email: string;
@@ -18,16 +18,17 @@ const CheckoutPage = () => {
     control,
     formState: { errors },
   } = useForm<IFromInputs>();
-  
+
   const formSubmit = (data: IFromInputs) => {
     console.log(data);
   };
   return (
     <>
-      <Helmet>
-        <title>CheckoutPage</title>
-        <meta name="description" content="Anything will never seo." />
-      </Helmet>
+      <CustomHelmet
+        title="Checkout Page"
+        description="Anything will never seo."
+      />
+
       <PageBanner title="Checkout Page" />
 
       <section>
@@ -152,7 +153,6 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
-
 
 const cities = [
   { value: "chuadanag", label: "Chuadanga" },

@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from "react";
-import { Helmet } from "react-helmet";
 import { useProducts } from "../hooks/useProducts";
 import PageBanner from "../components/PageBanner";
 import ProductListContent from "../components/Product/ProductListContent";
 import FilterSection from "../components/Product/FilterSection";
+import CustomHelmet from "../components/tools/CustomHelmet";
 
 type FilterState = {
   minPrice: number | undefined;
@@ -78,13 +78,10 @@ const ProductPage: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Product Page</title>
-        <meta
-          name="description"
-          content="Product listing page with filters and pagination."
-        />
-      </Helmet>
+      <CustomHelmet
+        title="Product Page"
+        description="Product listing page with filters and pagination."
+      />
 
       <PageBanner title="Product Page" />
 

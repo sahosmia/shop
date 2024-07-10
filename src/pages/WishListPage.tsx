@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet";
 import WishListItem from "../components/WishLists/WishListItem";
 import useAuth from "../hooks/useAuth";
 import useWishLists from "../hooks/useWishLists";
@@ -7,6 +6,7 @@ import { WishListItemReduxType } from "../types";
 import EmptyWishList from "../components/WishLists/EmptyWishList";
 import PageBanner from "../components/PageBanner";
 import LoginMessage from "../components/tools/LoginMessage";
+import CustomHelmet from "../components/tools/CustomHelmet";
 
 const WishListPage = () => {
   const wishLists = useWishLists();
@@ -25,10 +25,11 @@ const WishListPage = () => {
   }, [auth, wishLists]);
   return (
     <>
-      <Helmet>
-        <title>Wish Lists Page</title>
-        <meta name="description" content="Anything will never seo." />
-      </Helmet>
+     
+      <CustomHelmet
+        title="Wish Lists Page"
+        description="Anything will never seo."
+      />
       <PageBanner title="Wish List" />
 
       <section className="py-20">

@@ -1,6 +1,6 @@
-import { Helmet } from "react-helmet";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
+import CustomHelmet from "../components/tools/CustomHelmet";
 
 // Dummy data for orders
 const orders = [
@@ -34,13 +34,12 @@ const ProfilePage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Profile Page</title>
-        <meta
-          name="description"
-          content="View your profile information and order history."
-        />
-      </Helmet>
+     
+
+      <CustomHelmet
+        title="Profile Page"
+        description="View your profile information and order history."
+      />
       <div className="flex flex-col items-center min-h-screen bg-gray-100 text-gray-800 p-4">
         <div className="container mx-auto bg-white shadow-md rounded-lg p-8">
           <div className="flex items-center space-x-4 mb-6">

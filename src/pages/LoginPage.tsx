@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet";
 import useAuth from "../hooks/useAuth";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -7,6 +6,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { users } from "../data/users";
 import { useDispatch } from "react-redux";
 import { Login } from "../features/auth/authSlice";
+import CustomHelmet from "../components/tools/CustomHelmet";
 interface FromInputs {
   email: string;
   password: string;
@@ -66,10 +66,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>LoginPage</title>
-        <meta name="description" content="Anything will never seo." />
-      </Helmet>
+      <CustomHelmet title="Login Page" description="Anything will never seo." />
       <div className="grid place-content-center h-screen ">
         <div className=" p-5 border border-gray-200 rounded w-[500px]">
           <h4 className=" text-4xl poetsen-one-regular text-primary my-5  text-center">

@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom";
 import PageBanner from "../components/PageBanner";
-import { Helmet } from "react-helmet";
 import { brandsData } from "../data/dummy";
 import ProductNotFound from "../components/Error/ProductNotFound";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useProducts } from "../hooks/useProducts";
 import PriceFilter from "../components/Product/PriceFilter";
 import { MdFilterAlt } from "react-icons/md";
 import ProductListContent from "../components/Product/ProductListContent";
 import FilterItem from "../components/Product/FilterItem";
+import CustomHelmet from "../components/tools/CustomHelmet";
 
 const ProductBrandPage = () => {
   const { brand_slug } = useParams<{ brand_slug: string }>();
@@ -18,7 +18,6 @@ const ProductBrandPage = () => {
   const [maxPrice, setMaxPrice] = useState<number | undefined>(undefined);
 
   const selectedBrand = useMemo(() => (brand && [brand.title]) || [], [brand]);
-
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
   const [page, setPage] = useState<number>(1);
@@ -33,28 +32,26 @@ const ProductBrandPage = () => {
     selectedBrand
   );
 
-  if (!brand) {
-    return <ProductNotFound />;
-  }
-
   const handlePageChange = (value: number) => setPage(value);
   const handleFilterToggle = () => setFilterShow(!filterShow);
-  const handleFilterReset = () => {
+  const handleFilterReset = useCallback(() => {
     setMinPrice(0);
     setMaxPrice(1000);
     setSelectedCategory([]);
     setSelectedTags([]);
-  };
+  }, []);
+  
+  if (!brand) {
+    return <ProductNotFound />;
+  }
 
   return (
     <>
-      <Helmet>
-        <title>{brand.title} - Product Brand Page</title>
-        <meta
-          name="description"
-          content={`Find the best products in the ${brand.title} category.`}
-        />
-      </Helmet>
+      <CustomHelmet
+        title={`${brand.title} - Product Brand Page`}
+        description={`Find the best products in the ${brand.title} category.`}
+      />
+
       <PageBanner title={`Brand : ${brand.title}`} />
 
       <section>

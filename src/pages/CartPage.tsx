@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet";
 import { cupons, productsData } from "../data/dummy";
 import { useEffect, useState } from "react";
 import { CartItemReduxType, CuponType } from "../types";
@@ -11,6 +10,7 @@ import CartTable from "../components/Cart/CartTable";
 import { BiSend } from "react-icons/bi";
 import TotalCartCard from "../components/Cart/TotalCartCard";
 import { Link } from "react-router-dom";
+import CustomHelmet from "../components/tools/CustomHelmet";
 
 const CartPage = () => {
   const carts = useCarts();
@@ -78,10 +78,7 @@ const CartPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Cart Page</title>
-        <meta name="description" content="Cart Page" />
-      </Helmet>
+      <CustomHelmet title="Cart Page" description="Cart Page" />
       <PageBanner title="Cart Page" />
       <section className="py-20">
         <div className="container">

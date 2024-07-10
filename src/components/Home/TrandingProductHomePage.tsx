@@ -6,8 +6,8 @@ const TrandingProductHomePage = () => {
   return (
     <ProductSlider
       products={product4}
-      prevClass="c"
-      nextClass="d"
+      prevClass="tranding-prev"
+      nextClass="tranding-next"
       title="Tranding Product"
     />
   );
