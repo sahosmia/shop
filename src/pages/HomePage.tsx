@@ -2,8 +2,8 @@ import { Helmet } from "react-helmet";
 
 import {
   // ExploreCollections,
-  ProductForHomePage,
-  // ShopNowForHomePage,
+  PopulerProductHomePage,
+  TrandingProductHomePage,
   HeroSlider,
   BottomToTop,
   Brand,
@@ -22,10 +22,10 @@ const HomePage = () => {
         <meta name="description" content="Anything will never seo." />
       </Helmet>
       <HeroSlider />
-      <CategoryList/>
-      <ProductForHomePage />
-      <StoreBanner/>
-      <ProductForHomePage />
+      <CategoryList />
+      <PopulerProductHomePage />
+      <StoreBanner />
+      <TrandingProductHomePage />
       <Testimonials />
       <Brand />
       <BottomToTop />

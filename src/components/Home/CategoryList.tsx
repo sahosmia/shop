@@ -6,11 +6,10 @@ import "swiper/css";
 
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-const CategoryList = () => {  
+const CategoryList = () => {
   return (
     <div className="pt-16 pb-6">
       <div className="container flex flex-wrap gap-2 relative">
-
         <Swiper
           spaceBetween={20}
           loop={true}
@@ -34,13 +33,12 @@ const CategoryList = () => {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
           }}
-
-          
         >
-          <div >
-            <div className="swiper-button-prev"></div>
-            <div className="swiper-button-next"></div>
+          <div>
+            <div className="swiper-button-prev bg-primary flex justify-center items-center rounded-full shadow-lg !text-white !w-7 !h-7 !top-1/2 translate-y-1/2 hover:bg-secondary after:!text-[15px]"></div>
+            <div className="swiper-button-next bg-primary flex justify-center items-center rounded-full shadow-lg !text-white !w-7 !h-7 !top-1/2 translate-y-1/2 hover:bg-secondary after:!text-[15px]"></div>
           </div>
+
           {categoriesData.map((category) => (
             <SwiperSlide
               key={category.id}
@@ -60,11 +58,7 @@ const CategoryList = () => {
               </Link>
             </SwiperSlide>
           ))}
-          
-
         </Swiper>
-
-        
       </div>
     </div>
   );

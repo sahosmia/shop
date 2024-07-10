@@ -59,7 +59,7 @@ const ProductItem = ({ product }: ProductPropsType) => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="bg-white relative overflow-hidden rounded-lg border cursor-pointer block mt-5 w-80 min-w-72"
+        className="bg-white relative overflow-hidden rounded-lg border cursor-pointer block mt-5 w-80 min-w-60"
       >
         <div className="absolute top-3 left-3 z-10">
           <div className="uppercase bg-green-400 px-3 py-0.5 text-[10px] text-white inline-block rounded-full z-0 mr-2">
@@ -74,7 +74,7 @@ const ProductItem = ({ product }: ProductPropsType) => {
               alt={product.title}
               className="object-cover w-full h-full rounded-lg"
             />
-            <div className="absolute flex top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform-gpu bg-white shadow-lg rounded-lg overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute flex top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform-gpu bg-white shadow-lg rounded overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="flex items-center gap-2 p-2">
                 <Tooltip title="Quick View" placement="top" arrow>
                   <button
@@ -109,7 +109,7 @@ const ProductItem = ({ product }: ProductPropsType) => {
               </div>
             </div>
           </div>
-          <div className="mt-2 p-3">
+          <div className="mt-2 p-3 text-start">
             <h6 className="text-assLight mb-3 text-xs hover:text-secondary2 transition-all">
               {product.category}
             </h6>
